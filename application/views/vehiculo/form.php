@@ -19,6 +19,14 @@ if(isset ($vehiculo))  {  $datos=$vehiculo->row(); }
 
                 <?php } ?>
                 <div class="form-group">
+                    <label for="sel1">Seleccione Empresa</label>
+                    <select class="form-control" id="empresa">
+                        <option value="0">--seleccione--</option>
+                        <option value="1">Civa</option>
+                        <option value="2">Movil Tours</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="descripcion">Tipo</label>
                     <input type="text" required class="form-control" id="tipo" name="tipo" placeholder="Ingrese tipo"
                         value="<?php if(isset ($vehiculo)) echo $datos->veh_tipo; ?>" >
