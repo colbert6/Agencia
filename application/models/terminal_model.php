@@ -4,6 +4,7 @@
 	    
 	    function __construct(){
 	        parent::__construct();
+
     
 	    }
 
@@ -16,13 +17,7 @@
 	        $query_2=$this->db_pg->get('terminal');
 
 	        $query=array_merge($query_1->result(),$query_2->result());
-<<<<<<< HEAD
-=======
-
-	        //echo "<pre>"print_r( $query);exit();
-
->>>>>>> 8648182b392df7fee3719f6500d2bfe7e5ad909a
-	        return $query;
+	        return $query_1;
 	        
 	    }
 
