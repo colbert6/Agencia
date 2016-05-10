@@ -67,11 +67,7 @@ $db['mysql']['stricton'] = FALSE;
 
 $db['postgre']['hostname'] = 'localhost';
 $db['postgre']['username'] = 'postgres';
-<<<<<<< HEAD
 $db['postgre']['password'] = '123456';
-=======
-$db['postgre']['password'] = 'postgres';
->>>>>>> d35b146cc74ac9b320a43243f3c2b49298bde201
 $db['postgre']['database'] = 'movil_tour';
 $db['postgre']['dbdriver'] = 'postgre';
 $db['postgre']['dbprefix'] = '';

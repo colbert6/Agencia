@@ -20,7 +20,7 @@ if(isset ($personal))  {  $datos=$personal->row(); }
                 <?php } ?>
                 <div class="form-group">
                     <label for="sel1">Seleccione Empresa</label>
-                    <select class="form-control" id="empresa">
+                    <select class="form-control" id="empresa" name="empresa">
                         <option value="0">--seleccione--</option>
                         <option value="1">Civa</option>
                         <option value="2">Movil Tours</option>
@@ -53,7 +53,7 @@ if(isset ($personal))  {  $datos=$personal->row(); }
                 </div>
                 <div class="form-group">
                     <label for="abreviacion">Cargo</label>
-                    <input type="date" required class="form-control" id="cargo" name="cargo" placeholder="Ingrese fecha cargo"
+                    <input type="text" required class="form-control" id="cargo" name="cargo" placeholder="Ingrese fecha cargo"
                         value="<?php if(isset ($personal)) echo $datos->per_cargo ?>" >
                 </div>
                 <div class="box-fooper">
