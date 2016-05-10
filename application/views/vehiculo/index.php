@@ -4,6 +4,7 @@
             <table  id="tab" class="table table-bordered table-striped">
                 <thead>
                     <tr>
+                        <th>Empresa</th>
                         <th>Id</th>
                         <th>Descripcion</th>
                         <th>Matricula</th>
@@ -12,8 +13,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach (@$vehiculo->result() as $datos) {    ?>
+                    <?php foreach (@$vehiculo as $datos) {    ?>
                         <tr>
+                            <td><?= $datos->empresa; ?></td>
                             <td><?= $datos->veh_id; ?></td>
                             <td><?= $datos->veh_descripcion; ?></td> 
                             <td><?= $datos->veh_matricula; ?></td> 

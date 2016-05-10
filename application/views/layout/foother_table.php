@@ -50,7 +50,7 @@
                         }
                     },
                     'aaSorting': [[ 0, 'desc' ]],//ordenar
-                    'iDisplayLength': 5,
+                    'iDisplayLength': 10,
                     'aLengthMenu': [[5, 10, 20], [5, 10, 20]]
 
                 });

@@ -9,8 +9,18 @@
         }
 
         function select(){
+            $this->db_my->select(" 'Civa' as 'empresa', veh_id , veh_descripcion, veh_matricula, veh_fecha_compra, veh_num_asientos", FALSE);
             $this->db_my->where('veh_estado',1);
-            $query=$this->db_my->get('vehiculo');
+            $query_1=$this->db_my->get('vehiculo');
+
+             $this->db_pg->select(" 'Movil Tour' as empresa, veh_id , veh_descripcion,veh_matricula,  veh_fecha_compra, veh_num_asientos", FALSE);
+            $this->db_pg->where('veh_estado',1);
+            $query_2=$this->db_pg->get('vehiculo');
+
+            $query=array_merge($query_1->result(),$query_2->result());
+
+            //echo "<pre>";print_r( $query);exit();
+
             return $query;
             
         }
