@@ -64,13 +64,10 @@ $db['mysql']['swap_pre'] = '';
 $db['mysql']['autoinit'] = TRUE;
 $db['mysql']['stricton'] = FALSE;
 
+
 $db['postgre']['hostname'] = 'localhost';
 $db['postgre']['username'] = 'postgres';
-<<<<<<< HEAD
-$db['postgre']['password'] = '123456';
-=======
 $db['postgre']['password'] = 'postgres';
->>>>>>> 8648182b392df7fee3719f6500d2bfe7e5ad909a
 $db['postgre']['database'] = 'movil_tour';
 $db['postgre']['dbdriver'] = 'postgre';
 $db['postgre']['dbprefix'] = '';

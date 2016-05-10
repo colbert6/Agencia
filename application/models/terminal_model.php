@@ -17,7 +17,7 @@
 	        $query_2=$this->db_pg->get('terminal');
 
 	        $query=array_merge($query_1->result(),$query_2->result());
-	        return $query_1;
+	        return $query;
 	        
 	    }
 
