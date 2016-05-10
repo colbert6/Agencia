@@ -16,7 +16,7 @@
            
             $this->load->view("/layout/header.php",$dato);
             $this->load->view("/busqueda/index.php",$data);
-            $this->load->view("/layout/foother_table.php");
+            $this->load->view("/busqueda/foother_table.php");
         }
 
         public function ajax()
@@ -27,7 +27,7 @@
            
             $this->load->view("/layout/header.php",$dato);
             $this->load->view("/busqueda/ajax.php",$data);
-            $this->load->view("/layout/foother_table.php");
+            $this->load->view("/busqueda/foother_table.php");
         }
 
 

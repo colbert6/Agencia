@@ -11,6 +11,7 @@
 			            <th>Origen</th>
 			            <th>Destino</th>
 			            <th>Asiento</th>
+			            <th>Precio</th>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -23,6 +24,7 @@
 			                <td><?= $datos->ori; ?></td> 
 			                <td><?= $datos->dest; ?></td> 
 			                <td><?= $datos->asi_num; ?></td> 
+			                <td><?= $datos->venpas_precio; ?></td> 
 			                
 			            </tr>
 			        <?php } ?>
@@ -34,7 +36,8 @@
 			                <td><?= $datos->empresa; ?></td>			                			                
 			                <td><?= $datos->ori; ?></td> 
 			                <td><?= $datos->dest; ?></td> 
-			                <td><?= $datos->asi_num; ?></td> 
+			                <td><?= $datos->asi_num; ?></td>
+			                <td><?= $datos->venpas_precio; ?></td>  
 			                
 			            </tr>
 			        <?php } ?>

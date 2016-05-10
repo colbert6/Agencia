@@ -49,7 +49,7 @@
                             'sSortDescending': ': Activar para ordenar la columna de manera descendente'
                         }
                     },
-                    'aaSorting': [[ 0, 'asc' ]],//ordenar
+                    'aaSorting': [[ 0, 'desc' ]],//ordenar
                     'iDisplayLength': 10,
                     'aLengthMenu': [[5, 10, 20], [5, 10, 20]]
 

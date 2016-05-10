@@ -96,7 +96,7 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="<?= base_url(); ?>index.php; ?>"><i class="fa fa-angle-double-right"></i>Viajes</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/viaje"><i class="fa fa-angle-double-right"></i>Viajes</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -105,7 +105,7 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="<?= base_url(); ?>index.php; ?>"><i class="fa fa-angle-double-right"></i>Pasajes</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/pasaje; ?>"><i class="fa fa-angle-double-right"></i>Pasajes</a></li>
                             </ul>
                         </li>
                         <li class="treeview">

@@ -15,7 +15,8 @@
 			    <tbody>
 			        <?php foreach (@$terminal as $datos) {	?>
 			            <tr>
-			            	<td><?= $datos->ter_id; ?></td><?= $datos->empresa; ?></td>
+			            	<td><?= $datos->ter_id; ?></td>
+			            	<td><?= $datos->empresa; ?></td>
 			                <td><?= $datos->ter_descripcion; ?></td> 
 			                <td><?= $datos->ter_direccion; ?></td> 
 			                <td><?= $datos->ter_ciudad; ?></td> 
