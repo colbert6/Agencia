@@ -4,6 +4,7 @@
 			<table  id="tab" class="table table-bordered table-striped">
 			    <thead>
 			        <tr>
+			        	<th>Empresa</th>
 			            <th>Id</th>
 			            <th>Descripcion</th>
 			            <th>Direccion</th>
@@ -12,8 +13,9 @@
 			        </tr>
 			    </thead>
 			    <tbody>
-			        <?php foreach (@$terminal->result() as $datos) {	?>
+			        <?php foreach (@$terminal as $datos) {	?>
 			            <tr>
+			            	<td><?= $datos->empresa; ?></td>
 			                <td><?= $datos->ter_id; ?></td>
 			                <td><?= $datos->ter_descripcion; ?></td> 
 			                <td><?= $datos->ter_direccion; ?></td> 

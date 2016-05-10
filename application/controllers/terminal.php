@@ -21,7 +21,8 @@
         public function nuevo()
         {            
             if (@$_POST['guardar'] == 1) {
-                $data= array ( 'descripcion'=> $this->input->post('descripcion'),
+                $data= array ( 'empresa'=> $this->input->post('empresa'),
+                               'descripcion'=> $this->input->post('descripcion'),
                               'direccion'=> $this->input->post('direccion'),
                               'ciudad'=> $this->input->post('ciudad') );
 
