@@ -21,13 +21,13 @@
         public function nuevo()
         {            
             if (@$_POST['guardar'] == 1) {
-                $data= array ( 'dni'=> $this->input->post('dni'),
-                                'nombres'=> $this->input->post('nombres'),
+                $data= array ('empresa'=> $this->input->post('empresa'), 
+                             'dni'=> $this->input->post('dni'),
+                              'nombres'=> $this->input->post('nombres'),
                               'apellidos'=> $this->input->post('apellidos'),
                               'fecha_nac'=> $this->input->post('fecha_nac'),
-                              'fecha_reg'=> $this->input->post('fecha_reg'),
+                              'fecha_reg'=> $this->input->post('registro'),
                               'cargo'=> $this->input->post('cargo') );
-
                 $this->personal_model->crear($data);                
                 
                 redirect('personal', 'refresh');

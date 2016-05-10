@@ -23,12 +23,19 @@
         }
 
         function crear($data){
-            $this->db->insert('personal',array('per_dni' => $data['dni'],
-                                            'per_nombres' => $data['nombres'],
-                                            'per_apellidos' => $data['apellidos'],
-                                            'per_fecha_nac' => $data['fecha_nac'],
-                                            'per_fecha_reg' => $data['fecha_reg'],
-                                            'raz_estado' => 1 ));
+            $datos=array(
+                        'per_dni' => $data['dni'],
+                        'per_nombres' => $data['nombres'],
+                        'per_apellidos' => $data['apellidos'],
+                        'per_fecha_nac' => $data['fecha_nac'],
+                        'per_fecha_reg' => $data['fecha_reg'],
+                        'per_cargo' => $data['cargo'],
+                        'per_estado' => 1 );
+            if($data['empresa']==1){
+                $this->db_my->insert('personal',$datos);
+            }else if($data['empresa']==2){
+                $this->db_pg->insert('personal',$datos);
+            }
         }
 
         function editar($data){
