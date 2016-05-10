@@ -1,39 +1,39 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  
-    class Terminal extends CI_Controller
+    class Ruta extends CI_Controller
     {   
         
         function __construct(){
             parent::__construct();
-            $this->load->model('terminal_model');           
+            $this->load->model('ruta_model');           
         }
         
         public function index()
         {   
-            $data['terminal'] = $this->terminal_model->select();
-            $dato= array ( 'titulo'=> 'Terminales');
+            $data['ruta'] = $this->ruta_model->select();
+            $dato= array ( 'titulo'=> 'Rutas');
            
             $this->load->view("/layout/header.php",$dato);
-            $this->load->view("/terminal/index.php",$data);
+            $this->load->view("/ruta/index.php",$data);
             $this->load->view("/layout/foother_table.php");
         }
 
         public function nuevo()
         {            
             if (@$_POST['guardar'] == 1) {
-                $data= array ( 'descripcion'=> $this->input->post('descripcion'),
-                              'direccion'=> $this->input->post('direccion'),
-                              'ciudad'=> $this->input->post('ciudad') );
+                $data= array ( 'origen'=> $this->input->post('origen'),
+                              'destino'=> $this->input->post('destino'),
+                              'precio'=> $this->input->post('precio') );
 
-                $this->terminal_model->crear($data);                
+                $this->ruta_model->crear($data);                
                 
-                redirect('terminal', 'refresh');
+                redirect('ruta', 'refresh');
                 
             }else{
-                $dato= array ( 'titulo'=> 'Registrar terminal','action'=>  'terminal/nuevo' );
+                $dato= array ( 'titulo'=> 'Registrar ruta','action'=>  'ruta/nuevo' );
 
                 $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/terminal/form.php");
+                $this->load->view("/ruta/form.php");
                 $this->load->view("/layout/foother.php");
 
             }
@@ -50,19 +50,19 @@
                                 'ciudad'=> $this->input->post('ciudad')
                                   );
 
-                $this->terminal_model->editar($data);
+                $this->ruta_model->editar($data);
                 //$this->auditoria('modificar',$this->tabla,'', $data['id']);//auditoria
-                $this->redireccionar("terminal");
+                $this->redireccionar("ruta");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Editar terminal','action'=>  'terminal/editar');
+                $dato= array ( 'titulo'=> 'Editar ruta','action'=>  'ruta/editar');
                 $idRaza=$this->uri-> segment(3);
 
-                $data['terminal']=$this->terminal_model->selectId( $idRaza);
+                $data['ruta']=$this->ruta_model->selectId( $idRaza);
 
-                //echo "<pre>";print_r($data['terminal']->result());exit();
+                //echo "<pre>";print_r($data['ruta']->result());exit();
                 $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/terminal/form.php",$data);
+                $this->load->view("/ruta/form.php",$data);
                 $this->load->view("/layout/foother.php");
 
             }
@@ -72,9 +72,9 @@
         public function eliminar()
         {
             $id=$this->uri-> segment(3);
-            $this->terminal_model->eliminar($id);
+            $this->ruta_model->eliminar($id);
             //$this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
-            $this->redireccionar("terminal");
+            $this->redireccionar("ruta");
             
             
         }
