@@ -7,7 +7,8 @@
 			            <th>Id</th>
 			            <th>Descripcion</th>
 			            <th>Direccion</th>
-			            <th>Acciones</th>
+			            <th>Ciudad</th>
+			            <th>ACCIONES</th>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -17,10 +18,9 @@
 			                <td><?= $datos->ter_descripcion; ?></td> 
 			                <td><?= $datos->ter_direccion; ?></td> 
 			                <td><?= $datos->ter_ciudad; ?></td> 
-			                <td><?= $datos->ter_estado; ?></td> 
 			                <td>
-			                    <a href=<?php echo base_url()."index.php/terminal/editar/".$datos->raz_id; ?> class="btn  btn-minier"><i class="fa fa-pencil"></i></a>
-		                		<a href=<?php echo base_url()."index.php/terminal/eliminar/".$datos->raz_id; ?> class="btn  btn-minier"><i class="fa fa-trash-o"></i></a>
+			                    <a href=<?php echo base_url()."index.php/terminal/editar/".$datos->ter_id; ?> class="btn  btn-minier"><i class="fa fa-pencil"></i></a>
+		                		<a href=<?php echo base_url()."index.php/terminal/eliminar/".$datos->ter_id; ?> class="btn  btn-minier"><i class="fa fa-trash-o"></i></a>
 			                </td>
 			            </tr>
 			        <?php } ?>

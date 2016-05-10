@@ -1,5 +1,5 @@
 <?php 
-if(isset ($terminal))  {  $datos=$terminal->row(); }  
+if(isset ($cargo))  {  $datos=$cargo->row(); }  
 ?>
  
 <div class="col-md-6">
@@ -9,31 +9,21 @@ if(isset ($terminal))  {  $datos=$terminal->row(); }
         <form role="form" action="<?= base_url()."index.php/".$action ?>" method="post">
             <input name="guardar" id="guardar" type="hidden" value="1">
             <div class="box-body">
-                <?php if(isset ($terminal)) {?>  
+                <?php if(isset ($cargo)) {?>  
                    
                     <div class="form-group">
                         <label for="descripcion">Identificador</label>
                         <input type="text" required class="form-control" id="id" name="id" placeholder="Ingrese descripcion" readonly="readonly"
-                           value=<?= $datos->ter_id; ?>>
+                           value=<?= $datos->rut_id; ?>>
                     </div>
 
                 <?php } ?>  
                 <div class="form-group">
                     <label for="descripcion">Descripcion</label>
                     <input type="text" required class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion"
-                        value="<?php if(isset ($terminal)) echo $datos->ter_descripcion; ?>" >
+                        value="<?php if(isset ($cargo)) echo $datos->rut_descripcion; ?>" >
                 </div>
-                <div class="form-group">
-                    <label for="abreviacion">Dirección</label>
-                    <input type="text" required class="form-control" id="direccion" name="direccion" placeholder="Ingrese direccion"
-                        value="<?php if(isset ($terminal)) echo $datos->ter_direccion ?>" >
-                </div>
-                <div class="form-group">
-                    <label for="abreviacion">Ciudad</label>
-                    <input type="text" required class="form-control" id="ciudad" name="ciudad" placeholder="Ingrese ciudad"
-                        value="<?php if(isset ($terminal)) echo $datos->ter_ciudad ?>" >
-                </div>
-                <div class="box-footer">
+                <div class="box-foorut">
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
             </div>

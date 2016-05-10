@@ -23,16 +23,19 @@
 	    }
 
 	    function crear($data){
-	        $this->db->insert('terminal',array('ter_descripcion' => $data['descripcion'],
-	        								'ter_abreviacion' => $data['abreviacion'],
+	        $this->db->insert('terminal',array('ter_dni' => $data['dni'],
+	        								'ter_descripcion' => $data['descripcion'],
+	        								'ter_direccion' => $data['direccion'],
+	        								'ter_ciudad' => $data['ciudad'],
 	        								'raz_estado' => 1 ));
 	    }
 
 	    function editar($data){
-	    	$datos=array('raz_descripcion' => $data['descripcion'],
-	        			'raz_abreviacion' => $data['abreviacion']
+	    	$datos=array('ter_descripcion' => $data['descripcion'],
+	        			'ter_direccion' => $data['direccion'],
+	        			'ter_ciudad' => $data['ciudad']
 	        			);
-	    	$this->db->where('raz_id',$data['id']);
+	    	$this->db->where('ter_id',$data['id']);
 	        $query=$this->db->update('terminal',$datos);
 	        return $query;
 	    }
