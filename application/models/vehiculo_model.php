@@ -33,7 +33,7 @@
         }
 
         function crear($data){
-            $datos=array('veh_tipo' => $data['tipo'],
+            $datos=array('ciu_codigo_postal' => $data['codigo'],
                             'veh_descripcion' => $data['descripcion'],
                             'veh_matricula' => $data['matricula'],
                             'veh_fecha_compra' => $data['fecha_compra'],

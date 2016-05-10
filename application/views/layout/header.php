@@ -87,6 +87,7 @@
                                 <li><a href="<?= base_url(); ?>index.php/vehiculo/"><i class="fa fa-angle-double-right"></i>Vehiculo</a></li>
                                 <li><a href="<?= base_url(); ?>index.php/ruta/"><i class="fa fa-angle-double-right"></i>Ruta</a></li>
                                 <li><a href="<?= base_url(); ?>index.php/cargo/"><i class="fa fa-angle-double-right"></i>Cargo</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/ciudad/"><i class="fa fa-angle-double-right"></i>Ciudad</a></li>
                             </ul>
                         </li>
                         <li class="treeview">

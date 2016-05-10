@@ -17,7 +17,7 @@
 	        $query_2=$this->db_pg->get('terminal');
 
 	        $query=array_merge($query_1->result(),$query_2->result());
-	        return $query_1;
+	        return $query;
 	        
 	    }
 
@@ -30,10 +30,10 @@
 
 	    function crear($data){
 	    	$datos=array(
-    								'ter_descripcion' => $data['descripcion'],
-    								'ter_direccion' => $data['direccion'],
-    								'ter_ciudad' => $data['ciudad'],
-    								'ter_estado' => 1 );
+    					'ter_descripcion' => $data['descripcion'],
+    					'ter_direccion' => $data['direccion'],
+    					'ter_ciudad' => $data['ciudad'],
+    					'ter_estado' => 1 );
 			if($data['empresa']==1){
 	    		$this->db_my->insert('terminal',$datos);
 	    	}else if($data['empresa']==2){

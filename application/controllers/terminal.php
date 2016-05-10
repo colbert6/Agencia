@@ -25,7 +25,6 @@
                                'descripcion'=> $this->input->post('descripcion'),
                               'direccion'=> $this->input->post('direccion'),
                               'ciudad'=> $this->input->post('ciudad') );
-
                 $this->terminal_model->crear($data);                
                 
                 redirect('terminal', 'refresh');
