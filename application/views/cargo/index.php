@@ -5,14 +5,16 @@
                 <thead>
                     <tr>
                         <th>Id</th>
+                        <th>Empresa</th>
                         <th>Descripcion</th>
                         <th>ACCIONES</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach (@$cargo->result() as $datos) {    ?>
+                    <?php foreach (@$cargo as $datos) {    ?>
                         <tr>
                             <td><?= $datos->car_id; ?></td>
+                             <td><?= $datos->empresa; ?></td>
                             <td><?= $datos->car_descripcion; ?></td> 
                             <td>
                                 <a href=<?php echo base_url()."index.php/cargo/editar/".$datos->car_id; ?> class="btn  btn-minier"><i class="fa fa-pencil"></i></a>

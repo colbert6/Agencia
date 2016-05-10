@@ -12,7 +12,7 @@
         {   
             $data['cargo'] = $this->cargo_model->select();
             $dato= array ( 'titulo'=> 'Cargo');
-           
+            //print_r($data['cargo']);
             $this->load->view("/layout/header.php",$dato);
             $this->load->view("/cargo/index.php",$data);
             $this->load->view("/layout/foother_table.php");
@@ -21,7 +21,8 @@
         public function nuevo()
         {            
             if (@$_POST['guardar'] == 1) {
-                $data= array ( 'descripcion'=> $this->input->post('descripcion') );
+                $data= array ( 'empresa'=> $this->input->post('empresa'),
+                                'descripcion'=> $this->input->post('descripcion') );
 
                 $this->cargo_model->crear($data);                
                 

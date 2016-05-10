@@ -20,7 +20,7 @@ if(isset ($cargo))  {  $datos=$cargo->row(); }
                 <?php } ?>  
                 <div class="form-group">
                     <label for="sel1">Seleccione Empresa</label>
-                    <select class="form-control" id="empresa">
+                    <select class="form-control" id="empresa" name="empresa">
                         <option value="0">--seleccione--</option>
                         <option value="1">Civa</option>
                         <option value="2">Movil Tours</option>

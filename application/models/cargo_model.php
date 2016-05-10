@@ -30,14 +30,12 @@
 
         function crear($data){
             $datos=array(
-                        'ter_descripcion' => $data['descripcion'],
-                        'ter_direccion' => $data['direccion'],
-                        'ter_ciudad' => $data['ciudad'],
-                        'ter_estado' => 1 );
+                        'car_descripcion' => $data['descripcion'],
+                        'car_estado' => 1 );
             if($data['empresa']==1){
-                $this->db_my->insert('terminal',$datos);
+                $this->db_my->insert('cargo',$datos);
             }else if($data['empresa']==2){
-                $this->db_pg->insert('terminal',$datos);
+                $this->db_pg->insert('cargo',$datos);
             }
 
             
