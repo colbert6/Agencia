@@ -33,12 +33,17 @@
         }
 
         function crear($data){
-            $this->db->insert('vehiculo',array('veh_tipo' => $data['tipo'],
+            $datos=array('veh_tipo' => $data['tipo'],
                             'veh_descripcion' => $data['descripcion'],
                             'veh_matricula' => $data['matricula'],
                             'veh_fecha_compra' => $data['fecha_compra'],
                             'veh_num_asientos' => $data['num_asientos'],
-                            'raz_estado' => 1 ));
+                            'veh_estado' => 1 );
+            if($data['empresa']==1){
+                $this->db_my->insert('vehiculo',$datos);
+            }else if($data['empresa']==2){
+                $this->db_pg->insert('vehiculo',$datos);
+            }
         }
 
         function editar($data){

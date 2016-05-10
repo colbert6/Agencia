@@ -21,10 +21,11 @@
         public function nuevo()
         {            
             if (@$_POST['guardar'] == 1) {
-                $data= array ( 'tipo'=> $this->input->post('tipo'),
+                $data= array ( 'empresa'=> $this->input->post('empresa'),
+                                'tipo'=> $this->input->post('tipo'),
                                 'descripcion'=> $this->input->post('descripcion'),
                               'matricula'=> $this->input->post('matricula'),
-                              'fecha_compra'=> $this->input->post('fecha_nac'),
+                              'fecha_compra'=> $this->input->post('fecha_compra'),
                               'num_asientos'=> $this->input->post('num_asientos')
                                );
 

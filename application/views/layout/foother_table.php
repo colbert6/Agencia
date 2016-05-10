@@ -23,7 +23,7 @@
                     "bLengthChange": true,
                     "bFilter": true,
                     "bSort": true,
-                    "bInfo": false,
+                    "bInfo": true,
                     "bAutoWidth": false,
                     "oLanguage" :{
                         'sProcessing':     'Cargando...',
