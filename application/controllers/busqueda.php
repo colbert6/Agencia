@@ -5,16 +5,28 @@
         
         function __construct(){
             parent::__construct();   
-                
+            $this->load->model('busqueda_model');    
         }
         
         public function index()
         {   
-            $data['terminal'] = $this->terminal_model->select();
-            $dato= array ( 'titulo'=> 'Terminales');
+            $data['busqueda'] = $this->busqueda_model->select();
+            $dato= array ( 'titulo'=> 'Busqueda');
+            //echo "<pre>";print_r($data['busqueda']);exit;
            
             $this->load->view("/layout/header.php",$dato);
-            $this->load->view("/terminal/index.php",$data);
+            $this->load->view("/busqueda/index.php",$data);
+            $this->load->view("/layout/foother_table.php");
+        }
+
+        public function ajax()
+        {   
+            $data['busqueda'] = $this->busqueda_model->select();
+            $dato= array ( 'titulo'=> 'Busqueda');
+            //echo "<pre>";print_r($data['busqueda']);exit;
+           
+            $this->load->view("/layout/header.php",$dato);
+            $this->load->view("/busqueda/ajax.php",$data);
             $this->load->view("/layout/foother_table.php");
         }
 

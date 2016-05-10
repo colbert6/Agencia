@@ -109,11 +109,11 @@
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-money"></i> <span>Buscar</span>
+                                <i class="fa fa-search"></i> <span>Buscar</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="<?= base_url(); ?>index.php/busquedad"><i class="fa fa-angle-double-right"></i>Busquedad</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/busqueda"><i class="fa fa-angle-double-right"></i>Busquedad</a></li>
                             </ul>
                         </li>
 
