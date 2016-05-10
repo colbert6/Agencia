@@ -9,6 +9,14 @@ if(isset ($terminal))  {  $datos=$terminal->row(); }
         <form role="form" action="<?= base_url()."index.php/".$action ?>" method="post">
             <input name="guardar" id="guardar" type="hidden" value="1">
             <div class="box-body">
+                <div class="form-group">
+                    <label for="sel1">Seleccione Empresa</label>
+                    <select class="form-control" id="empresa" name="empresa">
+                        <option value="0">--seleccione--</option>
+                        <option value="1">Civa</option>
+                        <option value="2">Movil Tours</option>
+                    </select>
+                </div>
                 <?php if(isset ($terminal)) {?>  
                    
                     <div class="form-group">
@@ -18,14 +26,7 @@ if(isset ($terminal))  {  $datos=$terminal->row(); }
                     </div>
 
                 <?php } ?>  
-                <div class="form-group">
-                    <label for="sel1">Seleccione Empresa</label>
-                    <select class="form-control" id="empresa">
-                        <option value="0">--seleccione--</option>
-                        <option value="1">Civa</option>
-                        <option value="2">Movil Tours</option>
-                    </select>
-                </div>
+                
                 <div class="form-group">
                     <label for="descripcion">Descripcion</label>
                     <input type="text" required class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion"
