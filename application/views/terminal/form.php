@@ -19,6 +19,14 @@ if(isset ($terminal))  {  $datos=$terminal->row(); }
 
                 <?php } ?>  
                 <div class="form-group">
+                    <label for="sel1">Seleccione Empresa</label>
+                    <select class="form-control" id="empresa">
+                        <option value="0">--seleccione--</option>
+                        <option value="1">Civa</option>
+                        <option value="2">Movil Tours</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="descripcion">Descripcion</label>
                     <input type="text" required class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion"
                         value="<?php if(isset ($terminal)) echo $datos->ter_descripcion; ?>" >

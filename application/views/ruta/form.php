@@ -17,7 +17,15 @@ if(isset ($ruta))  {  $datos=$ruta->row(); }
                            value=<?= $datos->rut_id; ?>>
                     </div>
 
-                <?php } ?>  
+                <?php } ?> 
+                <div class="form-group">
+                    <label for="sel1">Seleccione Empresa</label>
+                    <select class="form-control" id="empresa">
+                        <option value="0">--seleccione--</option>
+                        <option value="1">Civa</option>
+                        <option value="2">Movil Tours</option>
+                    </select>
+                </div> 
                 <div class="form-group">
                     <label for="descripcion">Origen</label>
                     <input type="text" required class="form-control" id="origen" name="origen" placeholder="Ingrese origen"

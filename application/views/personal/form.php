@@ -19,6 +19,14 @@ if(isset ($personal))  {  $datos=$personal->row(); }
 
                 <?php } ?>
                 <div class="form-group">
+                    <label for="sel1">Seleccione Empresa</label>
+                    <select class="form-control" id="empresa">
+                        <option value="0">--seleccione--</option>
+                        <option value="1">Civa</option>
+                        <option value="2">Movil Tours</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="descripcion">DNI</label>
                     <input type="text" required class="form-control" id="dni" name="dni" placeholder="Ingrese dni"
                         value="<?php if(isset ($personal)) echo $datos->per_dni; ?>" >
