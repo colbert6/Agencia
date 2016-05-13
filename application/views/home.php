@@ -1,2 +1,2 @@
 
-<h1>Bienvenido</h1>
+<h1>Bienvenido a <?= $this->session->userdata('empresa') ?></h1>

@@ -1,5 +1,5 @@
 <?php 
-
+if(isset ($ciudad))  {  $datos=$ciudad->row(); }  
 ?>
  
 <div class="col-md-6">

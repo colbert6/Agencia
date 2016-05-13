@@ -5,15 +5,23 @@
     */
     class Home extends CI_Controller
     {
-        var $menu;
 
         public function index()
         {   
 
-            $this->load->view("/layout/header.php");
-            $this->load->view("home");
-            $this->load->view("/layout/foother.php");
+            if($this->session->userdata('login')){
 
+                $dato= array ( 'titulo'=> 'Menu Principal'); 
+
+                $this->load->view("/layout/header.php",$dato);
+                $this->load->view("home");
+                $this->load->view("/layout/foother.php");
+
+            }else{
+
+                redirect('login', 'refresh');
+            
+            }
             
             
         }

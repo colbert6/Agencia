@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,20 +12,13 @@
         <link href="<?= base_url(); ?>css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
         <link href="<?= base_url(); ?>css/AdminLTE.css" rel="stylesheet" type="text/css" />
-        
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
+       
     </head>
     <body class="skin-blue">
-        <!-- header logo: style can be found in header.less -->
+       
         <header class="header">
             <a href="<?= base_url(); ?>index.php" class="logo">
-                <!-- Add the class icon to your logo image or logo icon to add the margining -->
-                FISI
+               <?= $this->session->userdata('empresa'); ?>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
@@ -38,7 +30,35 @@
                     <span class="icon-bar"></span>
                 </a>
                 <div class="navbar-right">
-                    
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <span><?= $this->session->userdata('nombre'); ?> <i class="caret"></i></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="<?= base_url().'img/'.$this->session->userdata('logo');?>" alt="Imagen Logo" style="width: 95%;" />
+                                    <p>
+                                        <?= $this->session->userdata('user')?>
+                                        <small>Usuario Activo</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Body -->
+                                
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="#" class="btn btn-default btn-flat">Perfil</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="<?= base_url();?>index.php/login/cerrar" class="btn btn-default btn-flat">Cerrar Sesion</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </nav>
         </header>
@@ -48,31 +68,17 @@
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
-                    <div class="user-panel">
-                        <div class="pull-left image">
-                            <img src="<?= base_url();?>img/avatar04.png" class="img-circle" alt="User Image" />
-                        </div>
-                        <div class="pull-left info">
-                            <p>Hola, BIENVENIDO</p>
-
-                            <a href="#"><i class="fa fa-circle text-success"></i> Activo</a>
-                        </div>
-                    </div>
+                    <div class="user-panel">                   
+                        <img src="<?= base_url().'img/'.$this->session->userdata('logo');?>" alt="Imagen Logo" style="width: 95%;" />                                             
+                   </div>
                     <!-- search form -->
-                    <form action="#" method="get" class="sidebar-form">
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="Search..."/>
-                            <span class="input-group-btn">
-                                <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                            </span>
-                        </div>
-                    </form>
+                    
                     <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
                             <a href="<?= base_url(); ?>index.php">
-                                <i class="fa fa-dashboard"></i> <span>Inicio</span>
+                                <i class="fa fa-home"></i> <span>Inicio</span>
                             </a>
                         </li>   
 
@@ -82,11 +88,11 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="<?= base_url(); ?>index.php/terminal/"><i class="fa fa-angle-double-right"></i>Terminal</a></li>
+                                <li><a href="<?= base_url(); ?>mantenimiento/terminal/"><i class="fa fa-angle-double-right"></i>Terminal</a></li>
                                 <li><a href="<?= base_url(); ?>index.php/personal/"><i class="fa fa-angle-double-right"></i>Personal</a></li>
                                 <li><a href="<?= base_url(); ?>index.php/vehiculo/"><i class="fa fa-angle-double-right"></i>Vehiculo</a></li>
                                 <li><a href="<?= base_url(); ?>index.php/ruta/"><i class="fa fa-angle-double-right"></i>Ruta</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/cargo/"><i class="fa fa-angle-double-right"></i>Cargo</a></li>
+                                <li><a href="<?= base_url(); ?>mantenimiento/ver/cargo/"><i class="fa fa-angle-double-right"></i>Cargo</a></li>
                                 <li><a href="<?= base_url(); ?>index.php/ciudad/"><i class="fa fa-angle-double-right"></i>Ciudad</a></li>
                             </ul>
                         </li>
@@ -128,13 +134,11 @@
             <aside class="right-side">                
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>
-                       TITULO
+                    <h1> 
+                       <?= @$titulo;?>
                         <small> </small>
                     </h1>
-                    <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                    </ol>
+                    
                 </section>
 
                 <!-- Main content -->

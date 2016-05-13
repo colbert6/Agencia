@@ -5,7 +5,9 @@
         
         function __construct(){
             parent::__construct();
-            $this->load->model('viaje_model');           
+            $this->load->model('viaje_model');
+            $this->load->model('ciudad_model');
+             $this->load->model('vehiculo_model');           
         }
         
         public function index()
@@ -21,8 +23,8 @@
         {            
             if (@$_POST['guardar'] == 1) {
                 $data= array ('empresa'=> $this->input->post('empresa'),
-                              'codigo'=> $this->input->post('codigo'),
-                              'nombre'=> $this->input->post('nombre'));
+                              'origen'=> $this->input->post('origen'),
+                              'destino'=> $this->input->post('destino'));
                 $this->viaje_model->crear($data);                
                 redirect('viaje', 'refresh');
                 
