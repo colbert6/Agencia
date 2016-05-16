@@ -7,6 +7,7 @@ td.eliminar-data {
     background: url("../img/eliminar.png") no-repeat center center;
     cursor: pointer;
 }
+
 </style>
 <div class="row">
     <div class="col-md-10">
@@ -35,8 +36,7 @@ td.eliminar-data {
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title"><i class="fa fa-users"></i> Nuevo Cargo</h4>
             </div>
-            <form role="form" action="<?= base_url();?>cargo/guardar" method="post">
-                <input name="guardar" id="guardar" type="hidden" value="1">
+            <form role="form" action="" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="descripcion">Identificador</label>
@@ -46,12 +46,35 @@ td.eliminar-data {
                         <label for="descripcion">Descripcion</label>
                         <input type="text" required class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion" >
                     </div>
-                    <div class="box-foorut">
-                        <button type="button" id='submit_form'class="btn btn-primary">Guardar</button>
+                </div>
+                <div class="modal-footer clearfix">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
+                    <button type="submit" id='submit_form' class="btn btn-primary pull-left"><i class="fa fa-check"></i> Guardar</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->                
+
+<div class="modal fade" id="modal_delete" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"><i class=""></i>Alerta eliminar </h4>
+            </div>
+            <form role="form" action="" method="post">
+                <input type="hidden" id='id_dato_eliminar'></input>
+               
+                <div class="modal-body" >
+                    <div class="alert alert-danger alert-dismissable">
+                        <i class="fa fa-warning"></i>
+                        <h4>Estas seguro que desea eliminar el dato?</h4><h4 id="desc_dato_eliminar"></h4>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+                <div class="modal-footer clearfix">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
+                    <button type="submit" id="delete_click" class="btn btn-primary pull-left"><i class="fa fa-check"></i> Aceptar</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->

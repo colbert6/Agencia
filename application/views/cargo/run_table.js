@@ -73,26 +73,43 @@ $(document).ready(function() {
     } );
 
     $('#tab tbody').on('click', 'td.eliminar-data', function () {
-        alert('elminar?');
+        var tr = $(this).closest('tr');
+        var row = table.row( tr );
+        $("#modal_delete").modal({show: true});
+        $("#id_dato_eliminar").val(row.data().car_id);
+        $('#desc_dato_eliminar').empty();
+        
+        var b = document.createElement("b");
+        b.innerHTML = row.data().car_descripcion;
+        document.getElementById("desc_dato_eliminar").appendChild(b);
+
     } );
 
-    $('#submit_form').on('click', function (data) {        
+    $('#submit_form').on('click', function () {        
         var id = $("#id").val();
         var descripcion = $("#descripcion").val();
 
         $.post(base_url+"/Agencia/cargo/guardar",{id:id,descripcion:descripcion},function(valor){
             if(!isNaN(valor)){
-                alert('exitoso');
+                alert('guardar exitoso');
                 table.ajax.reload();
                 $("#modal_form").modal('hide');
             }else{
-                alert('error:'+valor);
+                alert('guardar error:'+valor);
             }
-            
-            
         });
-        
-        
+    } );
+
+    $('#delete_click').on('click', function () {   
+        var id = $("#id_dato_eliminar").val();
+        $.post(base_url+"/Agencia/cargo/eliminar",{id:id},function(valor){
+            if(!isNaN(valor)){
+                table.ajax.reload();
+                $("#modal_delete").modal('hide');
+            }else{
+                alert('eliminar error:'+valor);
+            }
+        });
     } );
 
 } );

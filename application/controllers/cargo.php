@@ -29,20 +29,14 @@
                 $guardar=$this->cargo_model->crear($data);
                 
             } 
-            echo json_encode($guardar);
-            
+            echo json_encode($guardar);            
             
         }
-
      
-
-        public function eliminar()
-        {
-            $id=$this->uri-> segment(3);
-            $this->cargo_model->eliminar($id);
-            //$this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
-            $this->redireccionar("cargo");
-            
+        public function eliminar($id)
+        {            
+            $guardar=$this->cargo_model->eliminar($_POST['id']);
+            echo json_encode($guardar);            
             
         }
 

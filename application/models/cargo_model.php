@@ -28,8 +28,7 @@
         }
 
         function crear($data){
-            $datos=array('car_id' => '2',
-                    'car_descripcion' => $data['descripcion'],
+            $datos=array('car_descripcion' => $data['descripcion'],
                         'car_estado' => 1 );
             if($this->db->insert('cargo',$datos)){
                  $query=0;
@@ -53,7 +52,13 @@
         }
 
         function eliminar($id){
-            
+            $datos=array('car_estado' => 0 );
+            $this->db->where("car_id",$id);
+            if($this->db->update('cargo',$datos)){
+                 $query=0;
+            }else{
+                 $query=$this->db->_error_message();
+            }
             return $query;
         }
 
