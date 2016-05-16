@@ -4,10 +4,12 @@
         
         function __construct(){
             parent::__construct();
-
+           
             if($this->session->userdata('base')=='civa'){
+               $this->db_my=$this->load->database('mysql',TRUE);
                $this->db=$this->db_my;
             }else if($data['base']=='movi_tour'){
+               $this->db_pg=$this->load->database('postgre',TRUE);
                $this->db=$this->db_pg;
             }
         }
@@ -25,12 +27,24 @@
         }
 
         function crear($data){
+            $datos=array('car_descripcion' => $data['descripcion'],
+                        'car_estado' => 1 );
+            if($this->db->insert('cargo',$datos)){
+                 $query=0;
+            }else{
+                 $query=$this->db->_error_message();
+            }
             return $query;
         }
 
 
         function editar($data){
-           
+           $datos=array('car_descripcion' => $data['descripcion']);
+            if($this->db->insert('cargo',$datos)){
+                 $query=0;
+            }else{
+                 $query=$this->db->_error_message();
+            }
             return $query;
         }
 

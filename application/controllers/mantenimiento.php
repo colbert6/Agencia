@@ -19,23 +19,28 @@
             $this->load->view("/mantenimiento/index.php",$datos_2);
             $this->load->view("/layout/foother_table.php");
 
-
         }
 
 
-       
-
-        public function ajax()
+        public function cargar_datos($tabla='')
         {   
-            $data['busqueda'] = $this->busqueda_model->select();
-            $dato= array ( 'titulo'=> 'Busqueda');
-            //echo "<pre>";print_r($data['busqueda']);exit;
-           
-            $this->load->view("/layout/header.php",$dato);
-            $this->load->view("/busqueda/ajax.php",$data);
-            $this->load->view("/busqueda/foother_table.php");
+            $consulta=$this->mi_model->select($tabla);
+            $i=0;
+            foreach ($consulta->result_array() as $prueba ) {
+                $nuevo[$i]=array_values($prueba);
+                $i++;
+            }
+            $result= array("draw"=>1,
+                "recordsTotal"=>$consulta->num_rows(),
+                 "recordsFiltered"=>$consulta->num_rows(),
+                 "data"=>$nuevo);
+            
+            //echo "<pre>";
+            //print_r($nuevo);exit();
+            echo json_encode($result);
         }
 
+        
 
     }
  ?>

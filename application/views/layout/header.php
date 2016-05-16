@@ -88,11 +88,11 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
+                                <li><a href="<?= base_url(); ?>cargo/"><i class="fa fa-angle-double-right"></i>Cargo</a></li>
                                 <li><a href="<?= base_url(); ?>mantenimiento/terminal/"><i class="fa fa-angle-double-right"></i>Terminal</a></li>
                                 <li><a href="<?= base_url(); ?>index.php/personal/"><i class="fa fa-angle-double-right"></i>Personal</a></li>
                                 <li><a href="<?= base_url(); ?>index.php/vehiculo/"><i class="fa fa-angle-double-right"></i>Vehiculo</a></li>
                                 <li><a href="<?= base_url(); ?>index.php/ruta/"><i class="fa fa-angle-double-right"></i>Ruta</a></li>
-                                <li><a href="<?= base_url(); ?>mantenimiento/ver/cargo/"><i class="fa fa-angle-double-right"></i>Cargo</a></li>
                                 <li><a href="<?= base_url(); ?>index.php/ciudad/"><i class="fa fa-angle-double-right"></i>Ciudad</a></li>
                             </ul>
                         </li>

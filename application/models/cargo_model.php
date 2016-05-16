@@ -5,56 +5,55 @@
         function __construct(){
             parent::__construct();
 
+            if($this->session->userdata('base')=='civa'){
+               $this->db_my=$this->load->database('mysql',TRUE);
+               $this->db=$this->db_my;
+            }else if($data['base']=='movi_tour'){
+               $this->db_pg=$this->load->database('postgre',TRUE);
+               $this->db=$this->db_pg;
+            }
     
         }
 
         function select(){
-            $this->db_my->select(" 'Civa' as 'empresa', car_id , car_descripcion", FALSE);
-            $this->db_my->where('car_estado',1);
-            $query_1=$this->db_my->get('cargo');
-            $this->db_pg->select(" 'Movil Tour' as empresa, car_id , car_descripcion",FALSE);
-            $this->db_pg->where('car_estado',1);
-            $query_2=$this->db_pg->get('cargo');
-
-            $query=array_merge($query_1->result(),$query_2->result());
-            return $query;
-            
+            $this->db->where("car_estado",1);  
+            $query=$this->db->get("cargo");      
+            return $query;            
         }
 
         function selectId($id){
-            $this->db->where('car_id',$id);
-            $query=$this->db->get('cargo');
+            
             return $query;
        
         }
 
         function crear($data){
-            $datos=array(
-                        'car_descripcion' => $data['descripcion'],
+            $datos=array('car_id' => '2',
+                    'car_descripcion' => $data['descripcion'],
                         'car_estado' => 1 );
-            if($data['empresa']==1){
-                $this->db_my->insert('cargo',$datos);
-            }else if($data['empresa']==2){
-                $this->db_pg->insert('cargo',$datos);
+            if($this->db->insert('cargo',$datos)){
+                 $query=0;
+            }else{
+                 $query=$this->db->_error_message();
             }
+            return $query;
 
             
         }
 
         function editar($data){
-            $datos=array('ter_descripcion' => $data['descripcion'],
-                        'ter_direccion' => $data['direccion'],
-                        'ter_ciudad' => $data['ciudad']
-                        );
-            $this->db->where('ter_id',$data['id']);
-            $query=$this->db->update('terminal',$datos);
+            $datos=array('car_descripcion' => $data['descripcion'] );
+            $this->db->where("car_id",$data['id']);
+            if($this->db->update('cargo',$datos)){
+                 $query=0;
+            }else{
+                 $query=$this->db->_error_message();
+            }
             return $query;
         }
 
         function eliminar($id){
-            $datos=array('ter_estado' => 0   );
-            $this->db->where('ter_id',$id);
-            $query=$this->db->update('terminal',$datos);
+            
             return $query;
         }
 

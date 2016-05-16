@@ -10,61 +10,31 @@
         
         public function index()
         {   
-            $data['cargo'] = $this->cargo_model->select();
-            $dato= array ( 'titulo'=> 'Cargo');
-            //print_r($data['cargo']);
-            $this->load->view("/layout/header.php",$dato);
-            $this->load->view("/cargo/index.php",$data);
+            $dato_header= array ( 'titulo'=> 'Cargos');
+
+            $this->load->view("/layout/header.php",$dato_header);
+            $this->load->view("/cargo/index.php");
             $this->load->view("/layout/foother_table.php");
         }
 
-        public function nuevo()
-        {            
-            if (@$_POST['guardar'] == 1) {
-                $data= array ( 'empresa'=> $this->input->post('empresa'),
-                                'descripcion'=> $this->input->post('descripcion') );
-
-                $this->cargo_model->crear($data);                
-                
-                redirect('cargo', 'refresh');
-                
-            }else{
-                $dato= array ( 'titulo'=> 'Registrar cargo','action'=>  'cargo/nuevo' );
-
-                $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/cargo/form.php");
-                $this->load->view("/layout/foother.php");
-
-            }
-            
-        }
-
-        public function editar()
-        {
-            
-            if (@$_POST['guardar'] == 1) {
+        public function guardar()
+        {   
+            if(!empty($_POST['id'])) {
                 $data= array ( 'id'=> $this->input->post('id'),
-                                'descripcion'=> $this->input->post('descripcion')
-                                  );
+                                'descripcion'=> $this->input->post('descripcion'));
+                $guardar=$this->cargo_model->editar($data);   
 
-                $this->cargo_model->editar($data);
-                //$this->auditoria('modificar',$this->tabla,'', $data['id']);//auditoria
-                $this->redireccionar("cargo");
-                
             }else{
-                $dato= array ( 'titulo'=> 'Editar cargo','action'=>  'cargo/editar');
-                $idRaza=$this->uri-> segment(3);
-
-                $data['cargo']=$this->cargo_model->selectId( $idRaza);
-
-                //echo "<pre>";print_r($data['cargo']->result());exit();
-                $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/cargo/form.php",$data);
-                $this->load->view("/layout/foother.php");
-
-            }
+                $data= array ( 'descripcion'=> $this->input->post('descripcion') );
+                $guardar=$this->cargo_model->crear($data);
+                
+            } 
+            echo json_encode($guardar);
+            
             
         }
+
+     
 
         public function eliminar()
         {
@@ -75,6 +45,20 @@
             
             
         }
+
+        public function cargar_datos($tabla='cargo')
+        {   
+            $consulta=$this->cargo_model->select($tabla);
+            $result= array("draw"=>1,
+                "recordsTotal"=>$consulta->num_rows(),
+                 "recordsFiltered"=>$consulta->num_rows(),
+                 "data"=>$consulta->result());
+            
+            //echo "<pre>";
+            //print_r($nuevo);exit();
+            echo json_encode($result);
+        }
+
 
 
     }

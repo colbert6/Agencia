@@ -31,14 +31,11 @@ class CI_Model {
 	 *
 	 * @access public
 	 */
-	public $db_my;
-	public $db_pg;
 
 	function __construct()
 	{
 		log_message('debug', "Model Class Initialized");
-		$this->db_my=$this->load->database('mysql',TRUE);
-		$this->db_pg=$this->load->database('postgre',TRUE);
+		
 	}
 
 	/**
