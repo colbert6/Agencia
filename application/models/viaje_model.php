@@ -4,26 +4,26 @@
         
         function __construct(){
             parent::__construct();
-            
-           // $this->db_pg=$this->load->database('pgsql',TRUE);
+           
+            if($this->session->userdata('base')=='civa'){
+               $this->db_my=$this->load->database('mysql',TRUE);
+               $this->db=$this->db_my;
+            }else if($data['base']=='movi_tour'){
+               $this->db_pg=$this->load->database('postgre',TRUE);
+               $this->db=$this->db_pg;
+            }
         }
 
         function select(){
 
-            $sql_civa="SELECT 'Civa' as 'empresa' ";
-            $sql_movil="SELECT 'Movil Tour' as empresa ";
-            $sql=" ,c_ori.ciu_nombre as ori,c_des.ciu_nombre as dest,veh.veh_descripcion,veh.veh_matricula,veh.veh_tipo,
+            $sql="SELECT c_ori.ciu_nombre as ori,c_des.ciu_nombre as dest,veh.veh_descripcion,veh.veh_matricula,veh.veh_tipo,
                         v.via_precio,v.via_fecha_salida,v.via_hora_salida, v.via_id,veh.veh_tipo
 
                     FROM viaje as v,  ciudad as c_ori,    ciudad as c_des, vehiculo as veh
 
                     WHERE v.via_origen=c_ori.ciu_id and v.via_destino=c_des.ciu_id and v.via_vehiculo=veh.veh_id ";
-                        
-            
-            $query_1=$this->db_my->query($sql_civa.$sql);
-            $query_2=$this->db_pg->query($sql_movil.$sql);
-            
-            $query=array_merge($query_1->result(),$query_2->result());
+                    
+            $query=$this->db->query($sql);
             return $query;
             
         }

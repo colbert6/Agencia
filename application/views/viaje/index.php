@@ -16,7 +16,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach (@$viaje as $datos) {  ?>
+                    <?php foreach (@$viaje->result() as $datos) {  ?>
                         <tr>
                             <td><?= $datos->via_id; ?></td>
                             <td><?= $datos->via_fecha_salida ;  ?></td>
@@ -27,8 +27,9 @@
                             <td><?= $datos->veh_descripcion; ?></td>  
                             <td><?= $datos->via_precio; ?></td>  
                             <td>
-                                <a href=<?php echo base_url()."index.php/viaje/editar/".$datos->via_id; ?> class="btn  btn-minier"><i class="fa fa-pencil"></i></a>
-                                <a href=<?php echo base_url()."index.php/viaje/eliminar/".$datos->via_id; ?> class="btn  btn-minier"><i class="fa fa-trash-o"></i></a>
+                                <a href=<?php echo base_url()."viaje/editar/".$datos->via_id; ?> class="btn  btn-minier"><i class="fa fa-pencil"></i></a>
+                                <a href=<?php echo base_url()."viaje/eliminar/".$datos->via_id; ?> class="btn  btn-minier"><i class="fa fa-trash-o"></i></a>
+                                <a href=<?php echo base_url()."viaje/venta_pasaje/".$datos->via_id."/".$datos->veh_tipo; ?> class="btn  btn-minier"><i class="fa fa-trash-o"></i></a>
                             </td>
                         </tr>
                     <?php } ?>

@@ -8,76 +8,48 @@
             $this->load->model('ciudad_model');           
         }
         
-        public function index()
+       public function index()
         {   
-            $data['ciudad'] = $this->ciudad_model->select();
-            $dato= array ( 'titulo'=> 'ciudad');
-            $this->load->view("/layout/header.php",$dato);
-            $this->load->view("/ciudad/index.php",$data);
+            $dato_header= array ( 'titulo'=> 'Ciudades');
+
+            $this->load->view("/layout/header.php",$dato_header);
+            $this->load->view("/ciudad/index.php");
             $this->load->view("/layout/foother_table.php");
         }
 
-        public function nuevo()
-        {            
-            if (@$_POST['guardar'] == 1) {
-                $data= array ('empresa'=> $this->input->post('empresa'),
-                              'codigo'=> $this->input->post('codigo'),
-                              'nombre'=> $this->input->post('nombre'));
-                $this->ciudad_model->crear($data);                
-                redirect('ciudad', 'refresh');
-                
+        public function guardar()
+        {   
+            if(!empty($_POST['id'])) {
+                $data= array ( 'id'=> $this->input->post('id'),
+                                'codigo_postal'=> $this->input->post('codigo_postal'),
+                                'nombre'=> $this->input->post('nombre'));
+                $guardar=$this->ciudad_model->editar($data);   
+
             }else{
-                $dato= array ( 'titulo'=> 'Registrar ciudad','action'=>  'ciudad/nuevo' );
-
-                $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/ciudad/form.php");
-                $this->load->view("/layout/foother.php");
-
-            }
+                $data= array ( 'codigo_postal'=> $this->input->post('codigo_postal'),
+                                'nombre'=> $this->input->post('nombre') );
+                $guardar=$this->ciudad_model->crear($data);
+                
+            } 
+            echo json_encode($guardar);            
             
         }
-
-        public function editar()
-        {
-            
-            if (@$_POST['guardar'] == 1) {
-                $data= array ( 'per_dni' => $this->input->post('dni'),
-                                'per_nombres' => $this->input->post('nombres'),
-                                'per_apellidos' => $this->input->post('apellidos'),
-                                'per_fecha_nac' => $this->input->post('fecha_nac'),
-                                'per_fecha_reg' => $this->input->post('fecha_reg')
-                                  );
-
-                $this->ciudad_model->editar($data);
-                //$this->auditoria('modificar',$this->tabla,'', $data['id']);//auditoria
-                $this->redireccionar("ciudad");
-                
-            }else{
-                $dato= array ( 'titulo'=> 'Editar ciudad','action'=>  'ciudad/editar');
-                $idRaza=$this->uri-> segment(3);
-
-                $data['ciudad']=$this->ciudad_model->selectId( $idRaza);
-
-                //echo "<pre>";print_r($data['ciudad']->result());exit();
-                $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/ciudad/form.php",$data);
-                $this->load->view("/layout/foother.php");
-
-            }
-            
-        }
-
+     
         public function eliminar()
-        {
-            $id=$this->uri-> segment(3);
-            $this->ciudad_model->eliminar($id);
-            //$this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
-            $this->redireccionar("ciudad");
-            
+        {            
+            $guardar=$this->ciudad_model->eliminar($_POST['id']);
+            echo json_encode($guardar);            
             
         }
 
-
+        public function cargar_datos($tabla='ciudad')
+        {   
+            $consulta=$this->ciudad_model->select($tabla);
+            $result= array("draw"=>1,
+                "recordsTotal"=>$consulta->num_rows(),
+                 "recordsFiltered"=>$consulta->num_rows(),
+                 "data"=>$consulta->result());
+            echo json_encode($result);
+        }
     }
  ?>
-

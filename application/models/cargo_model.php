@@ -4,7 +4,6 @@
         
         function __construct(){
             parent::__construct();
-
             if($this->session->userdata('base')=='civa'){
                $this->db_my=$this->load->database('mysql',TRUE);
                $this->db=$this->db_my;
@@ -24,7 +23,6 @@
         function selectId($id){
             
             return $query;
-       
         }
 
         function crear($data){
@@ -35,9 +33,7 @@
             }else{
                  $query=$this->db->_error_message();
             }
-            return $query;
-
-            
+            return $query;            
         }
 
         function editar($data){

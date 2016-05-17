@@ -4,13 +4,13 @@ $(document).ready(function() {
 
         "processing": true,
         "ajax": {
-            "url": base_url+"/Agencia/cargo/cargar_datos/",
+            "url": base_url+"/Agencia/ciudad/cargar_datos/",
             "type": "POST"
         },
         "columns": [
-            { "data": "car_id" },
-            { "data": "car_descripcion" },
-            { "data": "car_estado" }, 
+            { "data": "ciu_id" },
+            { "data": "ciu_nombre" },
+            { "data": "ciu_codigo_postal" }, 
             {
                 "className":      'editar-data',
                 "orderable":      false,
@@ -59,53 +59,51 @@ $(document).ready(function() {
         'aLengthMenu': [[5, 10, 20], [5, 10, 20]]
     } );
     
-    $('#nuevo_modal').on('click', function () {      //Limpiar los datos del modal-form
+    $('#nuevo_modal').on('click', function () {        
         $("#id").val('');
-        $("#descripcion").val('');
+        $("#nombre").val('');
+        $("#codigo_postal").val('');
     } );
 
-    $('#tab tbody').on('click', 'td.editar-data', function () { //Agregar los datos correspondientes al modal-form
+    $('#tab tbody').on('click', 'td.editar-data', function () {
         var tr = $(this).closest('tr');
         var row = table.row( tr );
-        $("#id").val(row.data().car_id);
-        $("#descripcion").val(row.data().car_descripcion);
+        $("#id").val(row.data().ciu_id);
+        $("#nombre").val(row.data().ciu_nombre);
+        $("#codigo_postal").val(row.data().ciu_codigo_postal);
         $("#modal_form").modal({show: true});
     } );
 
-    $('#tab tbody').on('click', 'td.eliminar-data', function () { //Agregar los datos correspondientes al modal-delete
+    $('#tab tbody').on('click', 'td.eliminar-data', function () {
         var tr = $(this).closest('tr');
         var row = table.row( tr );
         $("#modal_delete").modal({show: true});
-        $("#id_dato_eliminar").val(row.data().car_id);
+        $("#id_dato_eliminar").val(row.data().ciu_id);
         $('#desc_dato_eliminar').empty();
         
         var b = document.createElement("b");
-        b.innerHTML = row.data().car_descripcion;
+        b.innerHTML = row.data().ciu_nombre;
         document.getElementById("desc_dato_eliminar").appendChild(b);
 
     } );
 
-    $('#submit_form').on('click', function () {        //Enviar los datos del modal-form a guardar en el controlador
-        var d = new Object();
-        id = $("#id").val();
-        d.descripcion = $("#descripcion").val();
-        
-        if(validar_campo(d)){
-            $.post(base_url+"/Agencia/cargo/guardar",{id:id,descripcion:d.descripcion},function(valor){
-                if(!isNaN(valor)){
-                    alert('guardar exitoso');
-                    table.ajax.reload();
-                    $("#modal_form").modal('hide');
-                }else{
-                    alert('guardar error:'+valor);
-                }
-            });
-        } 
+    $('#submit_form').on('click', function () {        
+        var id = $("#id").val();
+        var nombre = $("#nombre").val();
+        var codigo_postal = $("#codigo_postal").val();
+        $.post(base_url+"/Agencia/ciudad/guardar",{id:id,nombre:nombre,codigo_postal:codigo_postal},function(valor){
+            if(!isNaN(valor)){
+                table.ajax.reload();
+                $("#modal_form").modal('hide');
+            }else{
+                alert('guardar error:'+valor);
+            }
+        });
     } );
 
-    $('#delete_click').on('click', function () {   //Enviar los datos del modal-form a eliminar en el controlador
+    $('#delete_click').on('click', function () {   
         var id = $("#id_dato_eliminar").val();
-        $.post(base_url+"/Agencia/cargo/eliminar",{id:id},function(valor){
+        $.post(base_url+"/Agencia/ciudad/eliminar",{id:id},function(valor){
             if(!isNaN(valor)){
                 table.ajax.reload();
                 $("#modal_delete").modal('hide');
@@ -116,13 +114,3 @@ $(document).ready(function() {
     } );
 
 } );
-
-function validar_campo ( datos ) {
-  var resultado=true;
-  for ( var i in datos) {
-    if(datos[i]==null ||  datos[i].length == 0){
-            return false;
-    }
-  }
-  return true;
-}

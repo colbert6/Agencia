@@ -33,7 +33,7 @@
             
         }
      
-        public function eliminar($id)
+        public function eliminar()
         {            
             $guardar=$this->cargo_model->eliminar($_POST['id']);
             echo json_encode($guardar);            

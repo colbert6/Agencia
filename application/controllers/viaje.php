@@ -14,9 +14,20 @@
         {   
             $data['viaje'] = $this->viaje_model->select();
             $dato= array ( 'titulo'=> 'viaje');
+            //echo"<pre>";print_r($data['viaje']);exit();
             $this->load->view("/layout/header.php",$dato);
             $this->load->view("/viaje/index.php",$data);
             $this->load->view("/layout/foother_table.php");
+        }
+
+        public function venta_pasaje($id,$tipo)
+        {   
+            $data= array ( 'id'=> $id);
+            $dato= array ( 'titulo'=> 'Venta de Pasaje(s)');
+            //echo"<pre>";print_r($data['viaje']);exit();
+            $this->load->view("/layout/header.php",$dato);
+            $this->load->view("/viaje/venta_".$tipo.".php",$data);
+            $this->load->view("/viaje/foother_venta_pasaje.php");
         }
 
         public function nuevo()
