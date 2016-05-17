@@ -1,42 +1,35 @@
 $(document).ready(function(){            
     $('#valor tbody tr').on('click', 'td.iu-asiento ', function () {
-        if ($(this).hasClass('iu-asiento')){
+        if ($(this).hasClass('iu-asiento') && $('.asiento-seleccionado').length<4){
             $(this).removeClass( "iu-asiento" );
             $(this).addClass ( "asiento-seleccionado" );
-        }   
-        cant_asiento('aumentar',$(this).text());
-
+            evaluar_asientos();
+        } else{
+            alert('Maximo de asientos : 4');
+        }
+        
     } );
 
     $('#valor tbody tr').on('click', 'td.asiento-seleccionado ', function () {
-       if ($(this).hasClass('asiento-seleccionado')){
+       if ($(this).hasClass('asiento-seleccionado') && $('.asiento-seleccionado').length<4){
             $(this).removeClass( "asiento-seleccionado" );
             $(this).addClass ( "iu-asiento" );
-        }  
-        cant_asiento('disminuir',$(this).text());
+            evaluar_asientos();
+        }  else{
+            alert('Maximo de asientos : 4');
+        }
+        
     } );
 
 });
-function cant_asiento (operacion,numero){
+function evaluar_asientos (){    
     asientos  = $('.asiento-seleccionado');
-    alert(asientos.length);
-    for ( var i in asientos) {
-        alert(asientos[i].text());
-    }
-    
-
-   
-
-
-   /* var cant=parseInt(document.getElementById('cant_asiento').innerText); 
-    $('#num_asientos').text($('#num_asientos').text()+" "+numero); 
-    $('#cant_asiento').empty();
-    if (operacion=='aumentar') {
-        $('#cant_asiento').text(cant+1); 
-    }else{
-        $('#cant_asiento').text(cant-1); 
-    }*/
-    
+    var num_asientos='';    
+        for(var i=0; i<asientos.length; i++){
+            num_asientos=num_asientos+' '+asientos.eq(i).text();        
+        }
+    $('#num_asientos').text(num_asientos); 
+    $('#cant_asiento').text(asientos.length);     
 
 }
     
