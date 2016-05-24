@@ -4,45 +4,63 @@
         
         function __construct(){
             parent::__construct();
-            
-           // $this->db_pg=$this->load->database('pgsql',TRUE);
+            if($this->session->userdata('base')=='civa'){
+               $this->db_my=$this->load->database('mysql',TRUE);
+               $this->db=$this->db_my;
+            }else if($data['base']=='movi_tour'){
+               $this->db_pg=$this->load->database('postgre',TRUE);
+               $this->db=$this->db_pg;
+            }
+    
         }
 
         function select(){
-            $this->db_my->where('rut_estado',1);
-            $query=$this->db_my->get('ruta');
-            return $query;
-            
+            $this->db->where("rut_estado",1);  
+            $query=$this->db->get("ruta");    
+            return $query;            
         }
 
         function selectId($id){
-            $this->db->where('rut_id',$id);
-            $query=$this->db->get('ruta');
+            
             return $query;
-       
         }
 
         function crear($data){
-            $this->db->insert('ruta',array('rut_origen' => $data['origen'],
-                                            'rut_destino' => $data['destino'],
-                                            'rut_precio_base' => $data['precio'],
-                                            'raz_estado' => 1 ));
+            $datos=array(
+                        'ter_descripcion' => $data['descripcion'],
+                        'ter_direccion' => $data['direccion'],
+                        'ter_ciudad' => $data['ciudad'],
+                        'ter_estado' => 1 );
+            if($this->db->insert('terminal',$datos)){
+                 $query=0;
+            }else{
+                 $query=$this->db->_error_message();
+            }
+            return $query;            
         }
 
         function editar($data){
-            $datos=array('rut_origen' => $data['origen'],
-                        'rut_destino' => $data['destino'],
-                        'rut_precio_base' => $data['precio']
-                        );
-            $this->db->where('rut_id',$data['id']);
-            $query=$this->db->update('ruta',$datos);
+            $datos=array(
+                        'ter_descripcion' => $data['descripcion'],
+                        'ter_direccion' => $data['direccion'],
+                        'ter_ciudad' => $data['ciudad']);
+            $this->db->where("ter_id",$data['id']);
+            if($this->db->update('terminal',$datos)){
+                 $query=0;
+            }else{
+                 $query=$this->db->_error_message();
+            }
             return $query;
         }
 
         function eliminar($id){
-            $datos=array('rut_estado' => 0   );
-            $this->db->where('rut_id',$id);
-            $query=$this->db->update('ruta',$datos);
+            $datos=array('ter_estado' => 0 );
+            $this->db->where("ter_id",$id);
+            if($this->db->update('terminal',$datos)){
+                 $query=0;
+            }else{
+                 $query=$this->db->_error_message();
+            }
             return $query;
         }
 

@@ -5,86 +5,60 @@
         
         function __construct(){
             parent::__construct();
-            $this->load->model('personal_model'); 
-            $this->load->model('cargo_model');              
+            $this->load->model('personal_model');           
         }
         
-        public function index()
+       public function index()
         {   
-            $data['personal'] = $this->personal_model->select();
-            $dato= array ( 'titulo'=> 'Personal');
-           
-            $this->load->view("/layout/header.php",$dato);
-            $this->load->view("/personal/index.php",$data);
+            $dato_header= array ( 'titulo'=> 'Personal');
+
+            $this->load->view("/layout/header.php",$dato_header);
+            $this->load->view("/personal/index.php");
             $this->load->view("/layout/foother_table.php");
         }
 
-        public function nuevo()
-        {            
-            if (@$_POST['guardar'] == 1) {
-                $data= array ('empresa'=> $this->input->post('empresa'), 
-                             'dni'=> $this->input->post('dni'),
-                              'nombres'=> $this->input->post('nombres'),
-                              'apellidos'=> $this->input->post('apellidos'),
-                              'fecha_nac'=> $this->input->post('fecha_nac'),
-                              'fecha_reg'=> $this->input->post('registro'),
-                              'cargo'=> $this->input->post('cargo') );
-                $this->personal_model->crear($data);                
-                
-                redirect('personal', 'refresh');
-                
+        public function guardar()
+        {   
+            if(!empty($_POST['id'])) {
+                $data= array (  'id'=> $this->input->post('id'),
+                                'dni'=> $this->input->post('dni'),
+                                'nombre'=> $this->input->post('nombre'),
+                                'apellidos'=> $this->input->post('apellidos'),
+                                'nacimiento'=> $this->input->post('nacimiento'),
+                                'registro'=> $this->input->post('registro'),
+                                'cargo'=> $this->input->post('cargo'));
+                $guardar=$this->terminal_model->editar($data);   
+
             }else{
-                $dato= array ( 'titulo'=> 'Registrar personal','action'=>  'personal/nuevo' );
+                $data= array (  
+                                'dni'=> $this->input->post('dni'),
+                                'nombre'=> $this->input->post('nombre'),
+                                'apellidos'=> $this->input->post('apellidos'),
+                                'nacimiento'=> $this->input->post('nacimiento'),
+                                'registro'=> $this->input->post('registro'),
+                                'cargo'=> $this->input->post('cargo'));
+                $guardar=$this->personal_model->crear($data);
 
-                $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/personal/form.php");
-                $this->load->view("/layout/foother.php");
-
-            }
+            } 
+            echo json_encode($guardar);     
             
         }
-
-        public function editar()
-        {
-            
-            if (@$_POST['guardar'] == 1) {
-                $data= array ( 'per_dni' => $this->input->post('dni'),
-                                'per_nombres' => $this->input->post('nombres'),
-                                'per_apellidos' => $this->input->post('apellidos'),
-                                'per_fecha_nac' => $this->input->post('fecha_nac'),
-                                'per_fecha_reg' => $this->input->post('fecha_reg')
-                                  );
-
-                $this->personal_model->editar($data);
-                //$this->auditoria('modificar',$this->tabla,'', $data['id']);//auditoria
-                $this->redireccionar("personal");
-                
-            }else{
-                $dato= array ( 'titulo'=> 'Editar personal','action'=>  'personal/editar');
-                $idRaza=$this->uri-> segment(3);
-
-                $data['personal']=$this->personal_model->selectId( $idRaza);
-
-                //echo "<pre>";print_r($data['personal']->result());exit();
-                $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/personal/form.php",$data);
-                $this->load->view("/layout/foother.php");
-
-            }
-            
-        }
-
+     
         public function eliminar()
-        {
-            $id=$this->uri-> segment(3);
-            $this->personal_model->eliminar($id);
-            //$this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
-            $this->redireccionar("personal");
-            
+        {            
+            $guardar=$this->personal_model->eliminar($_POST['id']);
+            echo json_encode($guardar);            
             
         }
 
-
+        public function cargar_datos($tabla='personal')
+        {   
+            $consulta=$this->personal_model->select($tabla);
+            $result= array("draw"=>1,
+                "recordsTotal"=>$consulta->num_rows(),
+                 "recordsFiltered"=>$consulta->num_rows(),
+                 "data"=>$consulta->result());
+            echo json_encode($result);
+        }
     }
  ?>
-

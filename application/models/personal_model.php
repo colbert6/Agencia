@@ -4,56 +4,70 @@
         
         function __construct(){
             parent::__construct();
-            
-           // $this->db_pg=$this->load->database('pgsql',TRUE);
+            if($this->session->userdata('base')=='civa'){
+               $this->db_my=$this->load->database('mysql',TRUE);
+               $this->db=$this->db_my;
+            }else if($data['base']=='movi_tour'){
+               $this->db_pg=$this->load->database('postgre',TRUE);
+               $this->db=$this->db_pg;
+            }
+    
         }
 
         function select(){
-            $this->db_my->where('per_estado',1);
-            $query=$this->db_my->get('personal');
-            return $query;
-            
+            $this->db->where("per_estado",1);  
+            $query=$this->db->get("personal");    
+            return $query;            
         }
 
         function selectId($id){
-            $this->db->where('per_id',$id);
-            $query=$this->db->get('personal');
+            
             return $query;
-       
         }
 
         function crear($data){
             $datos=array(
                         'per_dni' => $data['dni'],
-                        'per_nombres' => $data['nombres'],
+                        'per_nombres' => $data['nombre'],
                         'per_apellidos' => $data['apellidos'],
-                        'per_fecha_nac' => $data['fecha_nac'],
-                        'per_fecha_reg' => $data['fecha_reg'],
+                        'per_fecha_nac' => $data['nacimiento'],
+                        'per_fecha_reg' => $data['registro'],
                         'per_cargo' => $data['cargo'],
                         'per_estado' => 1 );
-            if($data['empresa']==1){
-                $this->db_my->insert('personal',$datos);
-            }else if($data['empresa']==2){
-                $this->db_pg->insert('personal',$datos);
+            if($this->db->insert('personal',$datos)){
+                 $query=0;
+            }else{
+                 $query=$this->db->_error_message();
             }
+            return $query;            
         }
 
         function editar($data){
-            $datos=array('per_dni' => $data['dni'],
-                        'per_nombres' => $data['nombres'],
+            $datos=array(
+                        'per_dni' => $data['dni'],
+                        'per_nombres' => $data['nombre'],
                         'per_apellidos' => $data['apellidos'],
-                        'per_fecha_nac' => $data['fecha_nac'],
-                        'per_fecha_reg' => $data['fecha_reg']
-                        );
-            $this->db->where('per_id',$data['id']);
-            $query=$this->db->update('personal',$datos);
+                        'per_fecha_nac' => $data['nacimiento'],
+                        'per_fecha_reg' => $data['registro'],
+                        'per_cargo' => $data['cargo'],);
+            $this->db->where("per_id",$data['id']);
+            if($this->db->update('personal',$datos)){
+                 $query=0;
+            }else{
+                 $query=$this->db->_error_message();
+            }
             return $query;
         }
 
         function eliminar($id){
-            $datos=array('per_estado' => 0   );
-            $this->db->where('per_id',$id);
-            $query=$this->db->update('personal',$datos);
+
+            $datos=array('per_estado' => 0 );
+            $this->db->where("per_id",$id);
+            if($this->db->update('personal',$datos)){
+                 $query=0;
+            }else{
+                 $query=$this->db->_error_message();
+            }
             return $query;
         }
 
