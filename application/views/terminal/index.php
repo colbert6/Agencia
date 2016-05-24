@@ -23,11 +23,18 @@ td.eliminar-data {
             <table  id="tab" class="table table-bordered table-striped">
                 <thead>
                     <tr>
+<<<<<<< HEAD
                         <th></th>
                         <th>Id</th>
                         <th>Tipo</th>
                         <th>Descripcion</th>
                         <th>Matricula</th>
+=======
+                        <th>Id</th>
+                        <th>Descripcion</th>
+                        <th>Direccion</th>
+                        <th>Ciudad</th>
+>>>>>>> 1fb3545e04d60a26b33b9e9d210ed49783bf123a
                         <th colspan="2">Acciones</th>
                     </tr>
                 </thead>  
@@ -44,7 +51,11 @@ td.eliminar-data {
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<<<<<<< HEAD
                 <h4 class="modal-title"><i class="fa fa-users"></i> Nuevo terminal</h4>
+=======
+                <h4 class="modal-title"><i class="fa fa-users"></i> Nuevo Terminal</h4>
+>>>>>>> 1fb3545e04d60a26b33b9e9d210ed49783bf123a
             </div>
             <form role="form" >
                 <div class="modal-body">
@@ -53,6 +64,7 @@ td.eliminar-data {
                         <input type="text" class="form-control" id="id" name="id" readonly="readonly" >
                     </div>  
                     <div class="form-group">
+<<<<<<< HEAD
                         <label for="tipo">Tipo</label>
                         <select class="form-control" id="tipo" name="tipo" required>
                             <option value='bus_simple'>Bus Simple</option>
@@ -61,10 +73,13 @@ td.eliminar-data {
                         </select>
                     </div>
                     <div class="form-group">
+=======
+>>>>>>> 1fb3545e04d60a26b33b9e9d210ed49783bf123a
                         <label for="descripcion">Descripcion</label>
                         <input type="text" required class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion" >
                     </div>
                     <div class="form-group">
+<<<<<<< HEAD
                         <label for="descripcion">Matricula</label>
                         <input type="text" required class="form-control" id="matricula" name="matricula" placeholder="Ingrese matricula" >
                     </div>
@@ -80,6 +95,14 @@ td.eliminar-data {
                     <div class="form-group">
                         <label for="capacidad">Capacidad</label>
                         <input type="number" required class="form-control" id="capacidad" name="capacidad" min="1" max="150" placeholder="Ingrese capacidad" >
+=======
+                        <label for="descripcion">Direccion</label>
+                        <input type="text" required class="form-control" id="direccion" name="direccion" placeholder="Ingrese direccion" >
+                    </div>
+                    <div class="form-group">
+                        <label for="capacidad">Ciudad</label>
+                        <input type="number" required class="form-control" id="ciudad" name="ciudad" min="1" max="150" placeholder="Ingrese ciudad" >
+>>>>>>> 1fb3545e04d60a26b33b9e9d210ed49783bf123a
                     </div>
                 </div>
                 <div class="modal-footer clearfix">

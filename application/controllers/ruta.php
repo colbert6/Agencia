@@ -8,78 +8,55 @@
             $this->load->model('ruta_model');           
         }
         
-        public function index()
+       public function index()
         {   
-            $data['ruta'] = $this->ruta_model->select();
-            $dato= array ( 'titulo'=> 'Rutas');
-           
-            $this->load->view("/layout/header.php",$dato);
-            $this->load->view("/ruta/index.php",$data);
+            $dato_header= array ( 'titulo'=> 'Ruta');
+
+            $this->load->view("/layout/header.php",$dato_header);
+            $this->load->view("/ruta/index.php");
             $this->load->view("/layout/foother_table.php");
         }
 
-        public function nuevo()
-        {            
-            if (@$_POST['guardar'] == 1) {
-                $data= array ( 'origen'=> $this->input->post('origen'),
-                              'destino'=> $this->input->post('destino'),
-                              'precio'=> $this->input->post('precio') );
+        public function guardar()
+        {   
+            if(!empty($_POST['id'])) {
+                $data= array (  'id'=> $this->input->post('id'),
+                                'dni'=> $this->input->post('dni'),
+                                'nombre'=> $this->input->post('nombre'),
+                                'apellidos'=> $this->input->post('apellidos'),
+                                'nacimiento'=> $this->input->post('nacimiento'),
+                                'registro'=> $this->input->post('registro'),
+                                'cargo'=> $this->input->post('cargo'));
+                $guardar=$this->terminal_model->editar($data);   
 
-                $this->ruta_model->crear($data);                
-                
-                redirect('ruta', 'refresh');
-                
             }else{
-                $dato= array ( 'titulo'=> 'Registrar ruta','action'=>  'ruta/nuevo' );
+                $data= array (  
+                                'origen'=> $this->input->post('origen'),
+                                'destino'=> $this->input->post('destino'),
+                                'precio'=> $this->input->post('precio'));
+                print_r($data);exit();
+                $guardar=$this->personal_model->crear($data);
 
-                $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/ruta/form.php");
-                $this->load->view("/layout/foother.php");
-
-            }
+            } 
+            echo json_encode($guardar);     
             
         }
-
-        public function editar()
-        {
-            
-            if (@$_POST['guardar'] == 1) {
-                $data= array ( 'id'=> $this->input->post('id'),
-                                'descripcion'=> $this->input->post('descripcion'),
-                                'direccion'=> $this->input->post('direccion'),
-                                'ciudad'=> $this->input->post('ciudad')
-                                  );
-
-                $this->ruta_model->editar($data);
-                //$this->auditoria('modificar',$this->tabla,'', $data['id']);//auditoria
-                $this->redireccionar("ruta");
-                
-            }else{
-                $dato= array ( 'titulo'=> 'Editar ruta','action'=>  'ruta/editar');
-                $idRaza=$this->uri-> segment(3);
-
-                $data['ruta']=$this->ruta_model->selectId( $idRaza);
-
-                //echo "<pre>";print_r($data['ruta']->result());exit();
-                $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/ruta/form.php",$data);
-                $this->load->view("/layout/foother.php");
-
-            }
-            
-        }
-
+     
         public function eliminar()
-        {
-            $id=$this->uri-> segment(3);
-            $this->ruta_model->eliminar($id);
-            //$this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
-            $this->redireccionar("ruta");
-            
+        {            
+            $guardar=$this->personal_model->eliminar($_POST['id']);
+            echo json_encode($guardar);            
             
         }
 
-
+        public function cargar_datos($tabla='ruta')
+        {   
+            $consulta=$this->ruta_model->select($tabla);
+            $result= array("draw"=>1,
+                "recordsTotal"=>$consulta->num_rows(),
+                 "recordsFiltered"=>$consulta->num_rows(),
+                 "data"=>$consulta->result());
+            echo json_encode($result);
+        }
     }
  ?>
-
