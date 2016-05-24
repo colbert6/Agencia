@@ -49,7 +49,7 @@ td.eliminar-data {
                 </div>
                 <div class="modal-footer clearfix">
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
-                    <button type="submit" id='submit_form' class="btn btn-primary pull-left"><i class="fa fa-check"></i> Guardar</button>
+                    <button type="button" id='submit_form' class="btn btn-primary pull-left"><i class="fa fa-check"></i> Guardar</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->

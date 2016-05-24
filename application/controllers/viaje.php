@@ -22,9 +22,10 @@
 
         public function venta_pasaje($id,$tipo)
         {   
-            $data= array ( 'id'=> $id);
+            $data['viaje'] = $this->viaje_model->selectId($id);
+            $data['id']= $id;
             $dato= array ( 'titulo'=> 'Venta de Pasaje(s)');
-            //echo"<pre>";print_r($data['viaje']);exit();
+            //echo"<pre>";print_r($data['viaje']->result());exit();
             $this->load->view("/layout/header.php",$dato);
             $this->load->view("/viaje/venta_".$tipo.".php",$data);
             $this->load->view("/viaje/foother_venta_pasaje.php");

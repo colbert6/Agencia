@@ -29,8 +29,15 @@
         }
 
         function selectId($id){
-            $this->db->where('via_id',$id);
-            $query=$this->db->get('viaje');
+            $sql="SELECT c_ori.ciu_nombre as ori,c_des.ciu_nombre as dest,veh.veh_descripcion,veh.veh_matricula,veh.veh_tipo,
+                        v.via_precio,v.via_fecha_salida,v.via_hora_salida, v.via_id,veh.veh_tipo
+
+                    FROM viaje as v,  ciudad as c_ori,    ciudad as c_des, vehiculo as veh
+
+                    WHERE v.via_origen=c_ori.ciu_id and v.via_destino=c_des.ciu_id and v.via_vehiculo=veh.veh_id and 
+                           v.via_id=".$id;
+                    
+            $query=$this->db->query($sql);
             return $query;
        
         }
