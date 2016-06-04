@@ -29,7 +29,7 @@
                             <td>
                                 <a href=<?php echo base_url()."viaje/editar/".$datos->via_id; ?> class="btn  btn-minier"><i class="fa fa-pencil"></i></a>
                                 <a href=<?php echo base_url()."viaje/eliminar/".$datos->via_id; ?> class="btn  btn-minier"><i class="fa fa-trash-o"></i></a>
-                                <a href=<?php echo base_url()."viaje/venta_pasaje/".$datos->via_id."/".$datos->veh_tipo; ?> class="btn  btn-minier"><i class="fa fa-shopping-cart"></i></a>
+                                <a href=<?php echo base_url()."viaje/venta_pasaje?idviaje=".$datos->via_id."&tipobus=".$datos->veh_tipo?> class="btn  btn-minier"><i class="fa fa-shopping-cart"></i></a>
                             </td>
                         </tr>
                     <?php } ?>

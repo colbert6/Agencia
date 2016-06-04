@@ -20,8 +20,10 @@
             $this->load->view("/layout/foother_table.php");
         }
 
-        public function venta_pasaje($id,$tipo)
+        public function venta_pasaje()
         {   
+            $id=$_REQUEST['idviaje'];
+            $tipo=$_REQUEST['tipobus'];
             $data['viaje'] = $this->viaje_model->selectId($id);
             $data['id']= $id;
             $dato= array ( 'titulo'=> 'Venta de Pasaje(s)');
@@ -29,6 +31,15 @@
             $this->load->view("/layout/header.php",$dato);
             $this->load->view("/viaje/venta_".$tipo.".php",$data);
             $this->load->view("/viaje/foother_venta_pasaje.php");
+        }
+
+        public function mostrar()
+        {
+            $viaje=$this->input->post('idviaje');
+            echo "<pre>";print_r($_POST);exit();
+          
+            
+            
         }
 
         public function nuevo()
@@ -80,7 +91,13 @@
             }
             
         }
+        public function guardar(){
+        // echo "<pre>"; print_r($_REQUEST);
+         $obj=  $this->viaje_model->guardarViaje($_REQUEST);
+            print_r(json_encode($obj));
 
+
+        }
         public function eliminar()
         {
             $id=$this->uri-> segment(3);
