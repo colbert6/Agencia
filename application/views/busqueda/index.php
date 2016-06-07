@@ -4,48 +4,44 @@
 			<table  id="tab" class="table table-bordered table-striped">
 			    <thead>
 			        <tr>
-			        	<th>Fecha</th>			        	
-			            <th>Nombre</th>
-			            <th>Dni</th>
-			            <th>Empresa</th>			            
+			        	<th>Empresa</th>	
+			        	<th>Fecha de Viaje</th>			        			            
 			            <th>Origen</th>
-			            <th>Destino</th>
+			            <th>Destino</th>			        	
 			            <th>Asiento</th>
-			            <th>Precio</th>
+			            <th>Dni</th>
+			            <th>Pasajero</th>	
 			        </tr>
 			    </thead>
 			    <tbody>
 			        <?php foreach (@$busqueda['civa'] as $datos) {	?>
 			            <tr>
-			            	<td><?= $datos->via_fecha_salida; ?></td> 
-			            	<td><?= $datos->pas_nombres." ".$datos->pas_apellidos; ?></td> 
-			                <td><?= $datos->pas_num_documento; ?></td>
-			                <td><?= $datos->empresa; ?></td>			                			                
-			                <td><?= $datos->ori; ?></td> 
-			                <td><?= $datos->dest; ?></td> 
-			                <td><?= $datos->asi_num; ?></td> 
-			                <td><?= $datos->venpas_precio; ?></td> 
+			            	<td><?= $datos->empresa; ?></td>
+			            	<td><?= $datos->via_fecha_salida; ?></td>			            			                			                
+			                <td><?= $datos->origen; ?></td> 
+			                <td><?= $datos->destino; ?></td>  			                	
+			                <td><?= $datos->asi_num; ?></td> 			                
+			                <td><?= $datos->pas_dni; ?></td>
+			            	<td><?= $datos->pas_nombre; ?></td> 
 			                
 			            </tr>
 			        <?php } ?>
+
 			        <?php foreach (@$busqueda['movil'] as $datos) {	?>
 			            <tr>
-			                <td><?= $datos->via_fecha_salida; ?></td> 
-			            	<td><?= $datos->pas_nombres." ".$datos->pas_apellidos; ?></td> 
-			                <td><?= $datos->pas_num_documento; ?></td>
-			                <td><?= $datos->empresa; ?></td>			                			                
-			                <td><?= $datos->ori; ?></td> 
-			                <td><?= $datos->dest; ?></td> 
-			                <td><?= $datos->asi_num; ?></td>
-			                <td><?= $datos->venpas_precio; ?></td>  
+			            	<td><?= $datos->empresa; ?></td>
+			            	<td><?= $datos->via_fecha_salida; ?></td>			            			                			                
+			                <td><?= $datos->origen; ?></td> 
+			                <td><?= $datos->destino; ?></td>  			                	
+			                <td><?= $datos->asi_num; ?></td> 			                
+			                <td><?= $datos->pas_dni; ?></td>
+			            	<td><?= $datos->pas_nombre; ?></td> 
 			                
 			            </tr>
 			        <?php } ?>
+			       
 			    </tbody>
 			</table>
-			<div class="btn-group">
-			        <a class="btn btn-primary" href="<?= base_url();?>index.php/terminal/nuevo" class="k-button">Nuevo</a>
-			</div>
 		</div>
  	</div>	 
 </div>	

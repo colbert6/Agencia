@@ -106,7 +106,7 @@
                                 <li><a href="<?= base_url(); ?>viaje/"><i class="fa fa-angle-double-right"></i>Viajes</a></li>
                             </ul>
                         </li>
-                        <li class="treeview">
+                        <!--li class="treeview">
                             <a href="#">
                                 <i class="fa fa-money"></i> <span>Venta de Pasajes</span>
                                 <i class="fa fa-angle-left pull-right"></i>
@@ -114,7 +114,7 @@
                             <ul class="treeview-menu">
                                 <li><a href="<?= base_url(); ?>index.php/pasaje; ?>"><i class="fa fa-angle-double-right"></i>Pasajes</a></li>
                             </ul>
-                        </li>
+                        </li-->
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-search"></i> <span>Buscar</span>

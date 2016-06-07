@@ -5,29 +5,28 @@
 	    function __construct(){
 	        parent::__construct();
 	        
+            $this->db_my=$this->load->database('mysql',TRUE);            
+            $this->db_pg=$this->load->database('postgre',TRUE);
+            
           
 	    }
 
 	    function select(){
 
-	    	$sql_civa="SELECT 'Civa' as 'empresa' ";
-	    	$sql_movil="SELECT 'Movil Tour' as empresa ";
-	    	$sql=" ,c_ori.ciu_nombre as ori,c_des.ciu_nombre as dest,veh.veh_descripcion,veh.veh_matricula,veh.veh_tipo,
-	    				v.via_precio,v.via_fecha_salida,v.via_hora_salida,a.asi_num,p.pas_nombres,
-	    				p.pas_apellidos,p.pas_num_documento ,vp.venpas_precio 
+	    	$sql_civa="SELECT 'Civa' as 'empresa' ,";
+	    	$sql_movil="SELECT 'Movil Tour' as empresa ,";
+	    	$sql=" ori.ciu_nombre as origen,dest.ciu_nombre as destino, via.via_fecha_salida,
+	    		asi.asi_num,asi.pas_dni,asi.pas_nombre, asi.pas_edad
+				FROM asiento as asi, viaje as via ,ciudad as ori,ciudad as dest 
+				WHERE asi.asi_viaje=via.via_id and via.via_origen=ori.ciu_id 
+						and via.via_destino=dest.ciu_id ";
 
-					FROM viaje as v, asiento as a, venta_pasaje as vp, pasajero as p, ciudad as c_ori, 
-						ciudad as c_des, vehiculo as veh
-
-					WHERE v.via_origen=c_ori.ciu_id and v.via_destino=c_des.ciu_id and v.via_vehiculo=veh.veh_id 
-						and v.via_id=a.asi_viaje and a.asi_id=vp.venpas_asiento and vp.venpas_pasajero=p.pas_id ";
 	    	
 	        $query=$this->db_my->query($sql_civa.$sql);
 	        $result['civa']=$query->result();
 	        $query=$this->db_pg->query($sql_movil.$sql);
 	        $result['movil']=$query->result();
 	        
-	        //$query['movil']=$this->db_pg->get($sql);
 	        return $result;
 	        
 	    }

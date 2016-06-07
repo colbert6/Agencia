@@ -37,9 +37,6 @@
         {
             $viaje=$this->input->post('idviaje');
             echo "<pre>";print_r($_POST);exit();
-          
-            
-            
         }
 
         public function nuevo()

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2016 a las 15:55:44
+-- Tiempo de generación: 07-06-2016 a las 16:07:32
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -61,7 +61,46 @@ CREATE TABLE IF NOT EXISTS `cargo` (
 `car_id` int(11) NOT NULL,
   `car_descripcion` varchar(50) NOT NULL,
   `car_estado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `cargo`
+--
+
+INSERT INTO `cargo` (`car_id`, `car_descripcion`, `car_estado`) VALUES
+(1, 'chofer 2', 0),
+(2, 'Terramozas', 1),
+(3, 'prueba_editar', 1),
+(4, 'prueba', 1),
+(5, 'prueba', 1),
+(6, 'prueba', 1),
+(7, 'asss', 1),
+(8, 'as', 1),
+(9, 'as', 1),
+(10, 's', 1),
+(11, 'as', 1),
+(12, 'as', 1),
+(13, 'qw', 1),
+(14, 'nuevo', 1),
+(15, 'nuevo', 1),
+(16, 'adasd', 1),
+(17, '', 1),
+(18, '', 1),
+(19, 'asd', 1),
+(20, 'hola', 1),
+(21, 'as', 1),
+(22, 'as', 1),
+(23, 'as', 1),
+(24, 'rrr', 1),
+(25, 'asas', 0),
+(26, 'd', 0),
+(27, 'assada', 0),
+(28, '´rueba', 0),
+(29, 'colberts', 0),
+(30, '', 1),
+(31, '', 1),
+(32, '', 1),
+(33, 'hola', 1);
 
 -- --------------------------------------------------------
 
@@ -74,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `ciudad` (
   `ciu_codigo_postal` varchar(20) NOT NULL,
   `ciu_nombre` varchar(100) NOT NULL,
   `ciu_estado` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `ciudad`
@@ -87,7 +126,9 @@ INSERT INTO `ciudad` (`ciu_id`, `ciu_codigo_postal`, `ciu_nombre`, `ciu_estado`)
 (4, '004', 'Cuzco', 1),
 (5, '005', 'Arequipa', 1),
 (6, '006', 'Lima', 1),
-(7, '007', 'Chiclayo', 1);
+(7, '007', 'Chiclayo', 0),
+(8, '12', '12s', 1),
+(9, '12', '12', 1);
 
 -- --------------------------------------------------------
 
@@ -138,7 +179,8 @@ CREATE TABLE IF NOT EXISTS `personal` (
   `per_apellidos` varchar(100) NOT NULL,
   `per_fecha_nac` date NOT NULL,
   `per_fecha_reg` date NOT NULL,
-  `per_cargo` int(11) NOT NULL
+  `per_cargo` int(11) NOT NULL,
+  `per_estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -167,7 +209,35 @@ CREATE TABLE IF NOT EXISTS `terminal` (
   `ter_direccion` varchar(100) NOT NULL,
   `ter_ciudad` int(11) NOT NULL,
   `ter_estado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `terminal`
+--
+
+INSERT INTO `terminal` (`ter_id`, `ter_descripcion`, `ter_direccion`, `ter_ciudad`, `ter_estado`) VALUES
+(1, 'Termina Civa 01', 'Jr. Termina Civa 01', 1, 1),
+(3, 'wewewewewe', 'dsdsdsdsd', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE IF NOT EXISTS `usuario` (
+`usu_id` int(11) NOT NULL,
+  `usu_name` varchar(50) NOT NULL,
+  `usu_password` varchar(100) NOT NULL,
+  `usu_estado` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`usu_id`, `usu_name`, `usu_password`, `usu_estado`) VALUES
+(2, 'admin', '81dc9bdb52d04dc20036dbd8313ed055', 1);
 
 -- --------------------------------------------------------
 
@@ -183,17 +253,18 @@ CREATE TABLE IF NOT EXISTS `vehiculo` (
   `veh_fecha_compra` date NOT NULL,
   `veh_num_asientos` int(11) NOT NULL,
   `veh_estado` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `vehiculo`
 --
 
 INSERT INTO `vehiculo` (`veh_id`, `veh_tipo`, `veh_descripcion`, `veh_matricula`, `veh_fecha_compra`, `veh_num_asientos`, `veh_estado`) VALUES
-(1, 'bus', 'Optimus', 'OPT-001', '2016-05-01', 50, 1),
-(2, 'bus', 'Megatron', 'MEG-002', '2016-05-08', 50, 1),
-(3, 'bus', 'futbrok', 'FB003', '2015-12-02', 80, 1),
-(4, 'bus', 'People2b', 'p2b', '2016-01-04', 82, 1);
+(1, 'bus_simple', 'Optimus', 'OPT-001', '0000-00-00', 50, 1),
+(2, 'bus_simple', 'Megatron', 'MEG-002', '0000-00-00', 50, 1),
+(3, 'bus_simple', 'futbrok', 'FB003', '0000-00-00', 80, 1),
+(4, 'bus_simple', 'People2b', 'p2b', '0000-00-00', 82, 1),
+(5, 'bus_doble', 'Herbie', 'Her-123', '0000-00-00', 12, 1);
 
 -- --------------------------------------------------------
 
@@ -321,6 +392,12 @@ ALTER TABLE `terminal`
  ADD PRIMARY KEY (`ter_id`), ADD KEY `ter_ciudad` (`ter_ciudad`);
 
 --
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+ ADD PRIMARY KEY (`usu_id`);
+
+--
 -- Indices de la tabla `vehiculo`
 --
 ALTER TABLE `vehiculo`
@@ -357,12 +434,12 @@ MODIFY `asi_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 -- AUTO_INCREMENT de la tabla `cargo`
 --
 ALTER TABLE `cargo`
-MODIFY `car_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `car_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT de la tabla `ciudad`
 --
 ALTER TABLE `ciudad`
-MODIFY `ciu_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `ciu_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `pasajero`
 --
@@ -382,12 +459,17 @@ MODIFY `rut_id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `terminal`
 --
 ALTER TABLE `terminal`
-MODIFY `ter_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `ter_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+MODIFY `usu_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `vehiculo`
 --
 ALTER TABLE `vehiculo`
-MODIFY `veh_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `veh_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `venta_pasaje`
 --
