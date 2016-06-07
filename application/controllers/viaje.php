@@ -36,12 +36,11 @@
         public function mostrar()
         {
             $viaje=$this->input->post('idviaje');
-            echo "<pre>";print_r($_POST);exit();
-          
-            
+            echo "<pre>";print_r($_POST);exit();  
+        }
+        public function mostrarasi(){
             
         }
-
         public function nuevo()
         {            
             if (@$_POST['guardar'] == 1) {
@@ -92,9 +91,9 @@
             
         }
         public function guardar(){
-        // echo "<pre>"; print_r($_REQUEST);
+        
          $obj=  $this->viaje_model->guardarViaje($_REQUEST);
-            print_r(json_encode($obj));
+         print_r(json_encode($obj));
 
 
         }

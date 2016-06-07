@@ -12,10 +12,10 @@ $(document).ready(function(){
        htmlBodyTable = '';
        if(asientoSeleccionados.length >1){
             for(i=0;i<asientoSeleccionados.length;i++){
-            htmlBodyTable += '<tr><td>'+(i+1)+'</td><td>'+data['dni[]'][i]+'</td><td>'+data['nombre[]'][i]+'</td><td>'+data['telefono[]'][i]+'</td><td>'+data['sexo[]'][i]+'</td></tr>';
+            htmlBodyTable += '<tr><td>'+(i+1)+'</td><td>'+data['dni[]'][i]+'</td><td>'+data['nombre[]'][i]+'</td><td>'+data['apellidos[]'][i]+'</td><td>'+data['sexo[]'][i]+'</td></tr>';
            }
        }else{
-         htmlBodyTable += '<tr><td>1</td><td>'+data['dni[]']+'</td><td>'+data['nombre[]']+'</td><td>'+data['telefono[]']+'</td><td>'+data['sexo[]']+'</td></tr>';       
+         htmlBodyTable += '<tr><td>1</td><td>'+data['dni[]']+'</td><td>'+data['nombre[]']+'</td><td>'+data['apellidos[]']+'</td><td>'+data['sexo[]']+'</td></tr>';       
        }
 
        
@@ -90,11 +90,15 @@ $('#sgt_datos').on('click', function() {
     cueroFormulario.empty();
     for(i=0;i<num_asientos;i++){
         html += '<div class="col-xs-5 " id="form_1"> <div class="form-group"><label for="descripcion">DNI</label>';
-        html += '<input type="text" class="form-control" id="dni" name="dni[]" placeholder="Ingrese codigo" required>';
+        html += '<input type="text" class="form-control" id="dni" name="dni[]" placeholder="Ingrese dni" maxlength="8" required>';
         html += '</div>';
         html += '<div class="form-group">';
-        html += '<label for="abreviacion">Nombre y Apellidos</label>';
-        html += '<input type="text" class="form-control" id="nombre" name="nombre[]" placeholder="Ingrese nombre y apellidos" required>';
+        html += '<label for="abreviacion">Nombre</label>';
+        html += '<input type="text" class="form-control" id="nombre" name="nombre[]" placeholder="Ingrese nombre" required>';
+        html += '</div>';
+        html += '<div class="form-group">';
+        html += '<label for="abreviacion">Apellidos</label>';
+        html += '<input type="text" class="form-control" id="apellidos" name="apellidos[]" placeholder="Ingrese apellidos" required>';
         html += '</div>';
         html += '<div class="form-group">';
         html += '<label for="abreviacion">Telefono</label>';

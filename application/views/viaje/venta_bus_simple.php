@@ -42,10 +42,12 @@ td{width: 34px;height: 28px;margin-right: 8px;}
             <div class="civa">
                 <div class="dato_viaje">
                   <?php echo "<h3>".$viaje->ori." - ".$viaje->dest.
-                            " / Salida: ".$viaje->via_fecha_salida." - ".$viaje->via_hora_salida.
+                        " / Salida: ".$viaje->via_fecha_salida." - ".$viaje->via_hora_salida.
                             " / ".$viaje->veh_tipo.
                             "</h3>";
+
                   ?>
+    
                 </div>
                 <div class="leyenda">
                     <div class="img">
@@ -185,11 +187,11 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                             <table class="table table-striped" id="tablaDatos">
                                 <thead>
                                     <tr>
-                                        <th>Qty</th>
-                                        <th>Product</th>
-                                        <th>Serial #</th>
-                                        <th>Description</th>
-                                        <th>Subtotal</th>
+                                        <th>N°</th>
+                                        <th>DNI</th>
+                                        <th>Nombre</th>
+                                        <th>Apellidos</th>
+                                        <th>Sexo</th>
                                     </tr>                                    
                                 </thead>
                                 <tbody>
@@ -266,7 +268,7 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                     <!-- this row will not appear when printing -->
                     <div class="row no-print">
                         <div class="col-xs-12">
-                            <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
+                            <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Imprimir</button>
                             <button id="submit" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Comprar Pasaje(s)</button>  
                             <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
                         </div>
