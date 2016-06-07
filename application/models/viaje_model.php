@@ -15,27 +15,25 @@
         }
         function guardarViaje($_P){
 
-             foreach ($_P['asiento'] as $key => $value) {
-            $datos=array(
-                        'asi_viaje' => (int)$_P['idviaje'],
-                         'asi_num' => $value,
-                        'asi_estado'=>1,
-                        'pas_tipo_documento' => 1,
-                        'pas_dni' =>  $_P['dni'][$key],
-                        'pas_nombre' => $_P['nombre'][$key],
-                        'pas_apellidos'=>'apellido',
-                        'pas_edad' => 22,
-                        'pas_email'=> 'email',
-                        'pas_telefono'=> $_P['telefono'][$key]
-                         );
+            foreach ($_P['asiento'] as $key => $value) {
+                $datos=array(
+                            'asi_viaje' => (int)$_P['idviaje'],
+                             'asi_num' => $value,
+                            'asi_estado'=>1,
+                            'pas_tipo_documento' => 1,
+                            'pas_dni' =>  $_P['dni'][$key],
+                            'pas_nombre' => $_P['nombre'][$key],
+                            'pas_apellidos' => $_P['apellidos'][$key],
+                            'pas_edad' => 18,
+                            'pas_email'=> 'email',
+                            'pas_telefono'=> $_P['telefono'][$key]
+                             );
 
-            if($this->db->insert('asiento',$datos)){
-                             $query=array('resp'=>1,'msg'=>'ok');
-                        }else{
-                             $query=array('resp'=>0,'msg'=>$this->db->_error_message());
-                        }
-           
-
+                if($this->db->insert('asiento',$datos)){
+                                 $query=array('resp'=>1,'msg'=>'ok');
+                            }else{
+                                 $query=array('resp'=>0,'msg'=>$this->db->_error_message());
+                            }
             }
              return $query;   
         }
