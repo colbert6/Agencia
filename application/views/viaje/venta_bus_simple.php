@@ -151,6 +151,7 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                         </div><!-- /.col -->
                     </div>
                     <!-- info row -->
+                    <!--
                     <div class="row invoice-info">
                         <div class="col-sm-4 invoice-col">
                             From
@@ -161,7 +162,7 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                                 Phone: (804) 123-5432<br/>
                                 Email: info@almasaeedstudio.com
                             </address>
-                        </div><!-- /.col -->
+                        </div>
                         <div class="col-sm-4 invoice-col">
                             To
                             <address>
@@ -171,15 +172,16 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                                 Phone: (555) 539-1037<br/>
                                 Email: john.doe@example.com
                             </address>
-                        </div><!-- /.col -->
+                        </div>
                         <div class="col-sm-4 invoice-col">
                             <b>Invoice #007612</b><br/>
                             <br/>
                             <b>Order ID:</b> 4F3S8J<br/>
                             <b>Payment Due:</b> 2/22/2014<br/>
                             <b>Account:</b> 968-34567
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
+                        </div>
+                    </div>-->
+
 
                     <!-- Table row -->
                     <div class="row">
