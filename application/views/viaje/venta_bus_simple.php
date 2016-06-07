@@ -14,7 +14,7 @@ h4{position: absolute;margin:0;top: 12px;left: 33px;text-transform: uppercase;co
 .asiento-acupado{background: url('/Agencia/img/asiento_no_disponible.png')no-repeat;}
 .asiento-seleccionado{background: url('/Agencia/img/asiento_seleccionado.png')no-repeat;cursor: pointer;}
 .op-asiento{cursor: pointer;}
-h5{font-size: 10px;margin:0;padding-left: 4px;color:#666666;}
+h5{font-size: 12px;margin:0;padding-left: 4px;color:#666666;}
 td{width: 34px;height: 28px;margin-right: 8px;}
 .sal{width: 100%;height: 130px;position: absolute;top: 250px;}
 .salida{width: 270px;height: 90px;margin-top: 0px;padding: 0 50px}
@@ -34,7 +34,7 @@ td{width: 34px;height: 28px;margin-right: 8px;}
 <div class="nav-tabs-custom">
     <ul class="nav nav-tabs">
         <li id="li_tab_1" class="active"><a href="#tab_1" data-toggle="tab">Asiento(s)</a></li>
-        <li id="li_tab_2"><a >Datos</a></li>
+        <li id="li_tab_2"><a >Datos del pasajero(s)</a></li>
         <li id="li_tab_3"><a href="#tab_3" data-toggle="tab">Confirmacion</a></li>       
     </ul>
     <div class="tab-content">
@@ -117,76 +117,24 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                 </div>
             </div>
         </div><!-- /.tab-pane -->
-
-        
         <div class="tab-pane" id="tab_2">
+            <form id="datos_pasajeros" action="<?= base_url()."viaje/mostrar"?>" method="post" accept-charset="utf-8">
+                
+            <input type="hidden" name="idviaje" value="<?= $_REQUEST['idviaje'] ?>">
             <div class="box box-danger">
                 <div class="box-header">
                     <h3 class="box-title">Datos de los Pasajero(s)</h3>
                 </div>
                 <div class="box-body">
-                    <div class="row">
-                        <div class="col-xs-5 " id="form_1">
-                            <div class="form-group">
-                                <label for="descripcion">DNI</label>
-                                <input type="text" required class="form-control" id="codigo" name="codigo" placeholder="Ingrese codigo">
-                            </div>
-                            <div class="form-group">
-                                <label for="abreviacion">Nombre y Apellidos</label>
-                                <input type="text" required class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre">
-                            </div>
-                            <div class="form-group">
-                                <label for="abreviacion">Telefono</label>
-                                <input type="text" required class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre">
-                            </div>
-                        </div>
-                        <div class="col-xs-5 col-md-offset-1" id="form_2">
-                            <div class="form-group">
-                                <label for="descripcion">DNI</label>
-                                <input type="text" required class="form-control" id="codigo" name="codigo" placeholder="Ingrese codigo">
-                            </div>
-                            <div class="form-group">
-                                <label for="abreviacion">Nombre y Apellidos</label>
-                                <input type="text" required class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre">
-                            </div>
-                            <div class="form-group">
-                                <label for="abreviacion">Telefono</label>
-                                <input type="text" required class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre">
-                            </div>
-                        </div>
+                    <div class="row" id="cueroFormulario">
                     </div>
-                    <div class="row">
-                         <div class="col-xs-5 " id="form_3">
-                            <div class="form-group">
-                                <label for="descripcion">DNI</label>
-                                <input type="text" required class="form-control" id="codigo" name="codigo" placeholder="Ingrese codigo">
-                            </div>
-                            <div class="form-group">
-                                <label for="abreviacion">Nombre y Apellidos</label>
-                                <input type="text" required class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre">
-                            </div>
-                            <div class="form-group">
-                                <label for="abreviacion">Telefono</label>
-                                <input type="text" required class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre">
-                            </div>
-                        </div>
-                        <div class="col-xs-5 col-md-offset-1" id="form_4">
-                            <div class="form-group">
-                                <label for="descripcion">DNI</label>
-                                <input type="text" required class="form-control" id="codigo" name="codigo" placeholder="Ingrese codigo">
-                            </div>
-                            <div class="form-group">
-                                <label for="abreviacion">Nombre y Apellidos</label>
-                                <input type="text" required class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre">
-                            </div>
-                            <div class="form-group">
-                                <label for="abreviacion">Telefono</label>
-                                <input type="text" required class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre">
-                            </div>
-                        </div>     
+                    <div class="siguiente">
+                    <button class="btn btn-primary pull-left" id="sgt_recibo"  type="submit" >Sigiente</button>
+                      <!--  <a  ><i class="fa  fa-arrow-right"></i> <strong>Siguiente </strong></a>-->
                     </div>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
+            </form>
         </div><!-- /.tab-pane -->
         <div class="tab-pane" id="tab_3">
             <!-- Main content -->
@@ -195,8 +143,8 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                     <div class="row">
                         <div class="col-xs-12">
                             <h2 class="page-header">
-                                <i class="fa fa-globe"></i> AdminLTE, Inc.
-                                <small class="pull-right">Date: 2/10/2014</small>
+                                <i class="fa fa-globe"></i> Datos de la venta
+                                <small class="pull-right">fecha: 31/05/2016</small>
                             </h2>                            
                         </div><!-- /.col -->
                     </div>
@@ -234,7 +182,7 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                     <!-- Table row -->
                     <div class="row">
                         <div class="col-xs-12 table-responsive">
-                            <table class="table table-striped">
+                            <table class="table table-striped" id="tablaDatos">
                                 <thead>
                                     <tr>
                                         <th>Qty</th>
@@ -319,7 +267,7 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                     <div class="row no-print">
                         <div class="col-xs-12">
                             <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
-                            <button class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</button>  
+                            <button id="submit" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Comprar Pasaje(s)</button>  
                             <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
                         </div>
                     </div>
