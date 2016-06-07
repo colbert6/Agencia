@@ -15,7 +15,7 @@
             if($data['base']=='civa'){
                $this->db_my=$this->load->database('mysql',TRUE);
                $query=$this->db_my->query($sql);
-            }else if($data['base']=='movi_tour'){
+            }else if($data['base']=='movil_tour'){
                $this->db_pg=$this->load->database('postgre',TRUE);
                $query=$this->db_pg->query($sql);
             }

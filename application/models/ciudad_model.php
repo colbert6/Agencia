@@ -7,7 +7,7 @@
             if($this->session->userdata('base')=='civa'){
                $this->db_my=$this->load->database('mysql',TRUE);
                $this->db=$this->db_my;
-            }else if($data['base']=='movi_tour'){
+            }else if($this->session->userdata('base')=='movil_tour'){
                $this->db_pg=$this->load->database('postgre',TRUE);
                $this->db=$this->db_pg;
             }    

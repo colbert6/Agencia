@@ -67,6 +67,30 @@ $(document).ready(function() {
         $("#descripcion").val('');
         $("#direccion").val('');
         $("#ciudad").val('');
+        var base_url = window.location.origin;
+        
+        $.post(base_url+"/Agencia/ciudad/cargar_datos/",function(ciudades){ 
+
+            var ciudad = JSON.parse(ciudades);
+            formulario     ="";
+            formulario    += "<label>Ciudad:</label>";
+            formulario    += "<select class='form-control' id='id_ciudad'>";
+            
+            for (var i = 0; i < ciudad.length; i++) {
+                alert(ciudad[i].ciu_id);
+                var seleccion = "";
+                
+                if(ciudad[i].ciu_id == 1){
+                    seleccion = "selected";    
+                }
+                
+                formulario    += "<option "+seleccion+" value='"+ciudad[i].ciu_id+"'>"+ciudad[i].ciu_nombre+"</option>";
+            }
+            formulario    += "</select>";
+            alert(formulario);
+            $("#ciudades_form").html(formulario); 
+        });
+
     } );
 
     $('#tab tbody').on('click', 'td.editar-data', function () { //Agregar los datos correspondientes al modal-form
