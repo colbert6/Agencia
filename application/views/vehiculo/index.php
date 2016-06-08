@@ -74,7 +74,7 @@ td.eliminar-data {
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" required id="fecha_compra" class="form-control"  data-inputmask="'alias': 'dd/mm/yyyy'" data-mask/>
+                            <input type="date" required id="fecha_compra" name="fecha_compra" class="form-control" />
                         </div><!-- /.input group -->
                     </div>
                     <div class="form-group">

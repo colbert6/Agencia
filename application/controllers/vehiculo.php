@@ -10,11 +10,14 @@
         
        public function index()
         {   
+
+            //echo "<pre>";print_r($this->vehiculo_model->select()->result());exit();
             $dato_header= array ( 'titulo'=> 'Vehiculos');
 
             $this->load->view("/layout/header.php",$dato_header);
             $this->load->view("/vehiculo/index.php");
             $this->load->view("/layout/foother_table.php");
+
         }
 
         public function guardar()

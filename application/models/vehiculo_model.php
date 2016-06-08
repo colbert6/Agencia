@@ -20,11 +20,6 @@
             return $query;            
         }
 
-        function selectId($id){
-            
-            return $query;
-        }
-
         function crear($data){
             $datos=array('veh_tipo' => $data['tipo'],
                         'veh_descripcion' => $data['descripcion'],

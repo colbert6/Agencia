@@ -1,9 +1,14 @@
+function formatear_fecha( fecha ) {
+    var aux=fecha.split("-")
+    return aux[2]+"-"+aux[1]+"-"+aux[0];
+}
+
 function format ( d ) {
     // `d` is the original data object for the row
     return '<table cellpadding="2" cellspacing="0" border="0" style="padding-left:50px;">'+
         '<tr>'+
             '<td>Fecha de Compra:</td>'+
-            '<td>'+d.veh_fecha_compra+'</td>'+
+            '<td>'+formatear_fecha(d.veh_fecha_compra)+'</td>'+
             '<td width=50></td>'+
             '<td>Capacidad:</td>'+
             '<td>'+d.veh_num_asientos+'</td>'+
@@ -112,9 +117,7 @@ $(document).ready(function() {
         $("#descripcion").val(row.data().veh_descripcion);
         $("#tipo").val(row.data().veh_tipo);
 
-        var aux=row.data().veh_fecha_compra.split("-")
-        var fecha=aux[2]+"-"+aux[1]+"-"+aux[0];
-        $("#fecha_compra").val(fecha);
+        $("#fecha_compra").val(row.data().veh_fecha_compra);
 
         $("#capacidad").val(row.data().veh_num_asientos);
         $("#matricula").val(row.data().veh_matricula);
@@ -171,8 +174,6 @@ $(document).ready(function() {
             alert('asa');
         });        
     } );
-
-$("[data-mask]").inputmask();
 
 
 } );
