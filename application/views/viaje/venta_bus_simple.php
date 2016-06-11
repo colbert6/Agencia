@@ -29,7 +29,9 @@ td{width: 34px;height: 28px;margin-right: 8px;}
 .cuerpo2{position:absolute;width: 32%;left:45.7%;background: #fff;top: 12px;height: 196px;border-radius: 5px;border:1px solid #cdcdcd;}
 </style>
 
-<?php $viaje=$viaje->row(); ?>
+<?php $viaje=$viaje->row(); 
+    $asiento=$asiento->result();
+?>
 <!-- Custom Tabs -->
 <div class="nav-tabs-custom">
     <ul class="nav nav-tabs">
@@ -46,8 +48,7 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                             " / ".$viaje->veh_tipo.
                             "</h3>";
 
-                  ?>
-    
+                  ?>                       
                 </div>
                 <div class="leyenda">
                     <div class="img">
@@ -74,14 +75,40 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                             </thead>
                             <tbody>
                                 <tr>
-                                    <?php for ($i=3; $i<=51 ; $i=$i+4) { ?>
-                                      <td class="iu-asiento" id="asiento-<?php echo $i;?>"><h5><?php echo $i;?></h5></td>
-                                    <?php }?>                       
+                                <?php for ($i=3; $i <=51 ; $i=$i+4) {
+                                    $cont=0;
+                                    foreach ($asiento as $value) {
+                                        $asi=$value->asi_num;
+                                        if ($i==$asi) { $cont=1;?>
+                                            <td class="asiento-acupado" id="asiento-<?= $i;?>"><h5><?= $i;?></h5></td>
+                                        <?php
+                                        }
+                                    }
+                                    if ($cont!=1) {?>
+                                        
+                                        <td class="iu-asiento" id="asiento-<?= $i;?>"><h5><?= $i;?></h5></td>
+                                    <?php
+                                    }
+                                    ?>                                      
+                                <?php }?>                               
                                 </tr>
                                 <tr>
-                                    <?php for ($i=4; $i <=52 ; $i=$i+4) { ?>
-                                      <td class="iu-asiento" id="asiento-<?= $i;?>"><h5><?= $i;?></h5></td>
-                                   <?php }?>                            
+                                <?php for ($i=4; $i <=52 ; $i=$i+4) {
+                                    $cont=0;
+                                    foreach ($asiento as $value) {
+                                        $asi=$value->asi_num;
+                                        if ($i==$asi) { $cont=1;?>
+                                            <td class="asiento-acupado" id="asiento-<?= $i;?>"><h5><?= $i;?></h5></td>
+                                        <?php
+                                        }
+                                    }
+                                    if ($cont!=1) {?>
+                                        
+                                        <td class="iu-asiento" id="asiento-<?= $i;?>"><h5><?= $i;?></h5></td>
+                                    <?php
+                                    }
+                                    ?>                                      
+                                <?php }?>                               
                                 </tr>
                                 <tr>
                                     <td><img src="/Agencia/img/icon_tv.png" alt=""></td>
@@ -91,15 +118,41 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                                     <td><img src="/Agencia/img/icon_tv.png" alt=""></td>
                                 </tr>
                                 <tr>
-                                    <?php for ($i=2; $i <=50 ; $i=$i+4) { ?>
-                                      <td class="iu-asiento" id="asiento-<?= $i;?>"><h5><?= $i;?></h5></td>
-                                    <?php }?> 
+                                <?php for ($i=2; $i <=50 ; $i=$i+4) {
+                                    $cont=0;
+                                    foreach ($asiento as $value) {
+                                        $asi=$value->asi_num;
+                                        if ($i==$asi) { $cont=1;?>
+                                            <td class="asiento-acupado" id="asiento-<?= $i;?>"><h5><?= $i;?></h5></td>
+                                        <?php
+                                        }
+                                    }
+                                    if ($cont!=1) {?>
+                                        
+                                        <td class="iu-asiento" id="asiento-<?= $i;?>"><h5><?= $i;?></h5></td>
+                                    <?php
+                                    }
+                                    ?>                                      
+                                <?php }?>                               
                                 </tr>
                                 <tr>
-                                    <?php for ($i=1; $i <=53 ; $i=$i+4) { ?>
-                                      <td class="iu-asiento" id="asiento-<?= $i;?>"><h5><?= $i;?></h5></td>
-                                    <?php }?> 
-                                </tr>                  
+                                <?php for ($i=1; $i <=53 ; $i=$i+4) {
+                                    $cont=0;
+                                    foreach ($asiento as $value) {
+                                        $asi=$value->asi_num;
+                                        if ($i==$asi) { $cont=1;?>
+                                            <td class="asiento-acupado" id="asiento-<?= $i;?>"><h5><?= $i;?></h5></td>
+                                        <?php
+                                        }
+                                    }
+                                    if ($cont!=1) {?>
+                                        
+                                        <td class="iu-asiento" id="asiento-<?= $i;?>"><h5><?= $i;?></h5></td>
+                                    <?php
+                                    }
+                                    ?>                                      
+                                <?php }?>                               
+                                </tr>                 
                             </tbody>
                         </table>
                     </div>

@@ -35,7 +35,7 @@
                     </div>  
                     <div class="form-group">
                         <label for="descripcion">Descripcion</label>
-                        <input type="text" required class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion" >
+                        <input type="text" required class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion" onkeypress="return soloLetras(event)">
                     </div>
                 </div>
                 <div class="modal-footer clearfix">

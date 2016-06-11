@@ -34,11 +34,11 @@
                     </div>  
                     <div class="form-group">
                         <label for="Nombre">Nombre</label>
-                        <input type="text" required class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre" >
+                        <input type="text" required class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre" required>
                     </div>
                     <div class="form-group">
                         <label for="Codigo Postal">Codigo Postal</label>
-                        <input type="text" required class="form-control" id="codigo_postal" name="codigo_postal" placeholder="Ingrese codigo postal" >
+                        <input type="text" required class="form-control" id="codigo_postal" name="codigo_postal" placeholder="Ingrese codigo postal" onkeypress="return soloNumeros(event)">
                     </div>
                 </div>
                 <div class="modal-footer clearfix">

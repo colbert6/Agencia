@@ -36,13 +36,14 @@
                     </div>
                     <div class="form-group">
                         <label for="descripcion">DNI</label>
-                        <input type="text" required class="form-control" id="dni" name="dni" placeholder="Ingrese dni" maxlength="8">
+                        <input type="text" required class="form-control" id="dni" name="dni" placeholder="Ingrese dni" maxlength="8" onkeypress="return soloNumeros(event)">
                     </div>
                     <div class="form-group">
                         <label for="descripcion">Nombre</label>
-                        <input type="text" required class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre" >
+                        <input type="text" required class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre" onkeypress="return soloLetras(event)">
                     </div>
                     <div class="form-group">
+
                         <label for="capacidad">Fecha de Nacimiento</label>
                         <input type="date" required class="form-control" id="nacimiento" name="nacimiento" min="1" max="150" placeholder="Ingrese fecha nacimiento" >
                     </div>
