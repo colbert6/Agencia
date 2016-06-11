@@ -65,6 +65,11 @@
             return $query;
        
         }
+        function selectAsi($asi){
+            $sql="SELECT asi_num from asiento where asi_viaje=".$asi;
+            $query=$this->db->query($sql);
+            return $query;
+        }
 
          function crear($data){
             $datos=array(

@@ -25,6 +25,7 @@
             $id=$_REQUEST['idviaje'];
             $tipo=$_REQUEST['tipobus'];
             $data['viaje'] = $this->viaje_model->selectId($id);
+            $data['asiento']=$this->viaje_model->selectAsi($id);
             $data['id']= $id;
             $dato= array ( 'titulo'=> 'Venta de Pasaje(s)');
             //echo"<pre>";print_r($data['viaje']->result());exit();
