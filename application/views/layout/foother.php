@@ -10,7 +10,5 @@
         <script src="<?= base_url(); ?>js/bootstrap.min.js" type="text/javascript"></script>
         <!-- AdminLTE App -->
         <script src="<?= base_url(); ?>js/AdminLTE/app.js" type="text/javascript"></script>
-        <script src="<?= base_url(); ?>js/jquery.validate.js" type="text/javascript"></script>
-       
     </body>
 </html>

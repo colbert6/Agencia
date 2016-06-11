@@ -5,15 +5,17 @@
         
         function __construct(){
             parent::__construct();
-            $this->load->model('personal_model');           
+            $this->load->model('personal_model');  
+            $this->load->model('cargo_model');           
         }
         
        public function index()
         {   
             $dato_header= array ( 'titulo'=> 'Personal');
+            $data['cargo'] = $this->cargo_model->select();
 
             $this->load->view("/layout/header.php",$dato_header);
-            $this->load->view("/personal/index.php");
+            $this->load->view("/personal/index.php",$data);
             $this->load->view("/layout/foother_table.php");
         }
 
@@ -23,19 +25,15 @@
                 $data= array (  'id'=> $this->input->post('id'),
                                 'dni'=> $this->input->post('dni'),
                                 'nombre'=> $this->input->post('nombre'),
-                                'apellidos'=> $this->input->post('apellidos'),
                                 'nacimiento'=> $this->input->post('nacimiento'),
-                                'registro'=> $this->input->post('registro'),
                                 'cargo'=> $this->input->post('cargo'));
-                $guardar=$this->terminal_model->editar($data);   
+                $guardar=$this->personal_model->editar($data);   
 
             }else{
                 $data= array (  
                                 'dni'=> $this->input->post('dni'),
                                 'nombre'=> $this->input->post('nombre'),
-                                'apellidos'=> $this->input->post('apellidos'),
                                 'nacimiento'=> $this->input->post('nacimiento'),
-                                'registro'=> $this->input->post('registro'),
                                 'cargo'=> $this->input->post('cargo'));
                 $guardar=$this->personal_model->crear($data);
 
@@ -55,7 +53,7 @@
         {   
             $consulta=$this->personal_model->select($tabla);
             $result= array("draw"=>1,
-                "recordsTotal"=>$consulta->num_rows(),
+                 "recordsTotal"=>$consulta->num_rows(),
                  "recordsFiltered"=>$consulta->num_rows(),
                  "data"=>$consulta->result());
             echo json_encode($result);

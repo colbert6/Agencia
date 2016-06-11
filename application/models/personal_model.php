@@ -15,23 +15,20 @@
         }
 
         function select(){
-            $this->db->where("per_estado",1);  
-            $query=$this->db->get("personal");    
+            $sql="SELECT per.per_id,per.per_dni,per.per_nombres ,
+                        per.per_fecha_nac,per.per_fecha_reg,per.per_cargo,car.car_descripcion 
+                    FROM personal as per, cargo as car 
+                    WHERE per.per_cargo=car.car_id and per.per_estado=1";  
+            $query=$this->db->query($sql);  
             return $query;            
-        }
-
-        function selectId($id){
-            
-            return $query;
         }
 
         function crear($data){
             $datos=array(
                         'per_dni' => $data['dni'],
                         'per_nombres' => $data['nombre'],
-                        'per_apellidos' => $data['apellidos'],
                         'per_fecha_nac' => $data['nacimiento'],
-                        'per_fecha_reg' => $data['registro'],
+                        'per_fecha_reg' => date('Y-m-d') ,
                         'per_cargo' => $data['cargo'],
                         'per_estado' => 1 );
             if($this->db->insert('personal',$datos)){
@@ -39,6 +36,7 @@
             }else{
                  $query=$this->db->_error_message();
             }
+            
             return $query;            
         }
 
@@ -46,10 +44,8 @@
             $datos=array(
                         'per_dni' => $data['dni'],
                         'per_nombres' => $data['nombre'],
-                        'per_apellidos' => $data['apellidos'],
                         'per_fecha_nac' => $data['nacimiento'],
-                        'per_fecha_reg' => $data['registro'],
-                        'per_cargo' => $data['cargo'],);
+                        'per_cargo' => $data['cargo']);
             $this->db->where("per_id",$data['id']);
             if($this->db->update('personal',$datos)){
                  $query=0;

@@ -15,14 +15,12 @@
         }
 
         function select(){
-            $this->db->where("ter_estado",1);  
-            $query=$this->db->get("terminal");    
-            return $query;            
-        }
 
-        function selectId($id){
-            
-            return $query;
+            $sql="SELECT t.ter_id,t.ter_descripcion,t.ter_direccion,t.ter_ciudad,c.ciu_nombre 
+                    FROM terminal as t,ciudad as c
+                    WHERE t.ter_estado=1 and t.ter_ciudad=c.ciu_id";
+            $query=$this->db->query($sql); 
+            return $query;            
         }
 
         function crear($data){

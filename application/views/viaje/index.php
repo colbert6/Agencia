@@ -1,3 +1,28 @@
+<!--div class="row">
+    <div class="col-md-10">
+        <div class="box-body table-responsive">
+            <table  id="tab" class="table table-bordered table-striped">
+                <thead>
+                     <tr>
+                        <th>Id</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Origen </th>
+                        <th>Destino </th>
+                        <th>Tipo Veh</th>
+                        <th>Vehiculo</th>
+                        <th>Precio Base</th>
+                        <th>ACCIONES</th>
+                    </tr>
+                </thead>  
+            </table>
+            <div class="btn-group">
+                    <a class="btn btn-primary k-button" id="nuevo_modal" data-toggle="modal" data-target="#modal_form"><i class="fa  fa-plus"></i> Nuevo</a>
+            </div>
+        </div>
+    </div>   
+</div-->
+
 <div class="row">
     <div class="col-md-10">
         <div class="box-body table-responsive">

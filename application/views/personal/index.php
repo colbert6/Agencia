@@ -1,32 +1,14 @@
-<style type="text/css">
-td.detail-control {
-    background: url('../img/details_open.png') no-repeat center center;
-    cursor: pointer;
-}
-tr.shown td.detail-control {
-    background: url('../img/details_close.png') no-repeat center center;
-}
-td.editar-data {
-    background: url("../../img/edit.png") no-repeat center center;
-    cursor: pointer;
-}
-td.eliminar-data {
-    background: url("../../img/eliminar.png") no-repeat center center;
-    cursor: pointer;
-}
-
-</style>
-
 <div class="row">
     <div class="col-md-10">
         <div class="box-body table-responsive">
             <table  id="tab" class="table table-bordered table-striped">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Id</th>
                         <th>DNI</th>
                         <th>Nombres</th>
-                        <th>Apellidos</th>
+                        <th>Cargo</th>
                         <th colspan="2">Acciones</th>
                     </tr>
                 </thead>  
@@ -47,6 +29,7 @@ td.eliminar-data {
             </div>
             <form role="form" >
                 <div class="modal-body">
+                    <div id="msg" class="form-group has-warning"></div>
                     <div class="form-group">
                         <label for="descripcion">Identificador</label>
                         <input type="text" class="form-control" id="id" name="id" readonly="readonly" >
@@ -60,25 +43,25 @@ td.eliminar-data {
                         <input type="text" required class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre" onkeypress="return soloLetras(event)">
                     </div>
                     <div class="form-group">
-                        <label for="capacidad">Apellidos</label>
-                        <input type="text" required class="form-control" id="apellidos" name="apellidos" placeholder="Ingrese apellidos" onkeypress="return soloLetras(event)">
-                    </div>
-                    <div class="form-group">
+
                         <label for="capacidad">Fecha de Nacimiento</label>
                         <input type="date" required class="form-control" id="nacimiento" name="nacimiento" min="1" max="150" placeholder="Ingrese fecha nacimiento" >
                     </div>
                     <div class="form-group">
-                        <label for="capacidad">Fecha de Registro</label>
-                        <input type="date" required class="form-control" id="registro" name="registro" placeholder="Ingrese fecha registro" >
-                    </div>
-                    <div class="form-group">
-                        <label for="capacidad">Cargo</label>
-                        <input type="number" required class="form-control" id="cargo" name="cargo" min="1" max="150" placeholder="Ingrese cargo" onkeypress="return soloLetras(event)">
+                    <label for="tipo">Cargo</label>
+                        <select class="form-control" id="cargo" name="cargo" >
+                             <option value="0"></option>
+                            <?php
+                            foreach ($cargo->result() as $datos ) {
+                                echo "<option value='".$datos->car_id."'>".$datos->car_descripcion."</option>";
+                            }
+                            ?>
+                        </select>       
                     </div>
                 </div>
                 <div class="modal-footer clearfix">
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
-                    <button type="submit" id='submit_form' class="btn btn-primary pull-left"><i class="fa fa-check"></i> Guardar</button>
+                    <button type="button" id='submit_form' class="btn btn-primary pull-left"><i class="fa fa-check"></i> Guardar</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->
@@ -90,7 +73,7 @@ td.eliminar-data {
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title"><i class=""></i>Alerta eliminar </h4>
+                <h4 class="modal-title"><i class="fa fa-exclamation-circle"></i>Alerta eliminar </h4>
             </div>
             <form role="form" action="" method="post">
                 <input type="hidden" id='id_dato_eliminar'></input>
@@ -103,7 +86,7 @@ td.eliminar-data {
                 </div>
                 <div class="modal-footer clearfix">
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
-                    <button type="submit" id="delete_click" class="btn btn-primary pull-left"><i class="fa fa-check"></i> Aceptar</button>
+                    <button type="button" id="delete_click" class="btn btn-primary pull-left"><i class="fa fa-check"></i> Aceptar</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->

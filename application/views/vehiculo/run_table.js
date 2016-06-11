@@ -17,12 +17,12 @@ function format ( d ) {
 }
 
 $(document).ready(function() {
-    var base_url = window.location.origin;
+    var base_url = $("#base_url").val();
     var table =$('#tab').DataTable( {
 
         "processing": true,
         "ajax": {
-            "url": base_url+"/Agencia/vehiculo/cargar_datos/",
+            "url": base_url+"vehiculo/cargar_datos/",
             "type": "POST"
         },
         "columns": [
@@ -116,9 +116,7 @@ $(document).ready(function() {
         $("#id").val(row.data().veh_id);
         $("#descripcion").val(row.data().veh_descripcion);
         $("#tipo").val(row.data().veh_tipo);
-
         $("#fecha_compra").val(row.data().veh_fecha_compra);
-
         $("#capacidad").val(row.data().veh_num_asientos);
         $("#matricula").val(row.data().veh_matricula);
         $("#modal_form").modal({show: true});
@@ -129,24 +127,24 @@ $(document).ready(function() {
         var row = table.row( tr );
         $("#modal_delete").modal({show: true});
         $("#id_dato_eliminar").val(row.data().veh_id);
-        $('#desc_dato_eliminar').empty();
-        
-        var b = document.createElement("b");
-        b.innerHTML = row.data().veh_descripcion;
-        document.getElementById("desc_dato_eliminar").appendChild(b);
-
+        $('#desc_dato_eliminar').html(row.data().veh_descripcion);
     } );
 
-    $('#submit_form').on('click', function () {        
+    $('#submit_form').on('click', function () {    
+        var campos_form = ["capacidad","fecha_compra","matricula","descripcion","tipo"];//campos que queremos que se validen
+        if(!validar_form(campos_form)){
+            return false;            
+        }
+
         var id = $("#id").val();
         var descripcion = $("#descripcion").val();
         var tipo= document.getElementById("tipo").value ;
         var fecha_compra =document.getElementById("fecha_compra").value ;
         var capacidad =document.getElementById("capacidad").value ;
         var matricula =document.getElementById("matricula").value ;
-        $.post(base_url+"/Agencia/vehiculo/guardar",{id:id,descripcion:descripcion,tipo:tipo,fecha_compra:fecha_compra,capacidad:capacidad,matricula:matricula},function(valor){
+        $.post(base_url+"vehiculo/guardar",{id:id,descripcion:descripcion,tipo:tipo,fecha_compra:fecha_compra,capacidad:capacidad,matricula:matricula},function(valor){
             if(!isNaN(valor)){
-                alert('guardar exitoso');
+                alert('Guardado exitoso');
                 table.ajax.reload();
                 $("#modal_form").modal('hide');
             }else{
@@ -158,20 +156,15 @@ $(document).ready(function() {
     } );
 
     $('#delete_click').on('click', function () {   
-        var id = $("#id").val();
-        var descripcion = $("#descripcion").val();
-        var tipo =$("#tipo").val('');
-        var fecha_compra =$("#fecha_compra").val('');
-        var capacidad =$("#capacidad").val('');
-        var matricula =$("#matricula").val('');
-        $.post(base_url+"/Agencia/vehiculo/eliminar",{id:id,descripcion:descripcion,tipo:tipo,fecha_compra:fecha_compra,capacidad:capacidad,matricula:matricula},function(valor){
+        var id = $("#id_dato_eliminar").val();
+        $.post(base_url+"vehiculo/eliminar",{id:id},function(valor){
             if(!isNaN(valor)){
+                alert('Dato eliminado');
                 table.ajax.reload();
                 $("#modal_delete").modal('hide');
             }else{
                 alert('eliminar error:'+valor);
             }
-            alert('asa');
         });        
     } );
 

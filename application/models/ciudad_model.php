@@ -18,11 +18,7 @@
             $query=$this->db->get("ciudad");      
             return $query;            
         }
-
-        function selectId($id){            
-            return $query;
-        }
-
+        
         function crear($data){
             $datos=array('ciu_codigo_postal' => $data['codigo_postal'],
                           'ciu_nombre' => $data['nombre'],

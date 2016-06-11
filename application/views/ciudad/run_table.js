@@ -1,10 +1,10 @@
 $(document).ready(function() {
-    var base_url = window.location.origin;
+    var base_url = $("#base_url").val();
     var table =$('#tab').DataTable( {
 
         "processing": true,
         "ajax": {
-            "url": base_url+"/Agencia/ciudad/cargar_datos/",
+            "url": base_url+"ciudad/cargar_datos/",
             "type": "POST"
         },
         "columns": [
@@ -79,20 +79,22 @@ $(document).ready(function() {
         var row = table.row( tr );
         $("#modal_delete").modal({show: true});
         $("#id_dato_eliminar").val(row.data().ciu_id);
-        $('#desc_dato_eliminar').empty();
-        
-        var b = document.createElement("b");
-        b.innerHTML = row.data().ciu_nombre;
-        document.getElementById("desc_dato_eliminar").appendChild(b);
+        $('#desc_dato_eliminar').html(row.data().ciu_nombre);
 
     } );
 
     $('#submit_form').on('click', function () {        
+        var campos_form = ["codigo_postal","nombre"];//campos que queremos que se validen
+        if(!validar_form(campos_form)){
+            return false;            
+        }
+
         var id = $("#id").val();
         var nombre = $("#nombre").val();
         var codigo_postal = $("#codigo_postal").val();
-        $.post(base_url+"/Agencia/ciudad/guardar",{id:id,nombre:nombre,codigo_postal:codigo_postal},function(valor){
+        $.post(base_url+"ciudad/guardar",{id:id,nombre:nombre,codigo_postal:codigo_postal},function(valor){
             if(!isNaN(valor)){
+                alert('Guardado exitoso');
                 table.ajax.reload();
                 $("#modal_form").modal('hide');
             }else{
@@ -103,8 +105,9 @@ $(document).ready(function() {
 
     $('#delete_click').on('click', function () {   
         var id = $("#id_dato_eliminar").val();
-        $.post(base_url+"/Agencia/ciudad/eliminar",{id:id},function(valor){
+        $.post(base_url+"ciudad/eliminar",{id:id},function(valor){
             if(!isNaN(valor)){
+                alert('Dato eliminado');
                 table.ajax.reload();
                 $("#modal_delete").modal('hide');
             }else{
