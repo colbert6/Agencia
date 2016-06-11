@@ -90,19 +90,19 @@ $('#sgt_datos').on('click', function() {
     cueroFormulario.empty();
     for(i=0;i<num_asientos;i++){
         html += '<div class="col-xs-5 " id="form_1"> <div class="form-group"><label for="descripcion">DNI</label>';
-        html += '<input type="text" class="form-control" id="dni" name="dni[]" placeholder="Ingrese dni" maxlength="8" required>';
+        html += '<input type="text" class="form-control" id="dni" name="dni[]" placeholder="Ingrese dni" maxlength="8" required onkeypress="return soloNumeros(event)">';
         html += '</div>';
         html += '<div class="form-group">';
         html += '<label for="abreviacion">Nombre</label>';
-        html += '<input type="text" class="form-control" id="nombre" name="nombre[]" placeholder="Ingrese nombre" required>';
+        html += '<input type="text" class="form-control" id="nombre" name="nombre[]" placeholder="Ingrese nombre" required onkeypress="return soloLetras(event)">';
         html += '</div>';
         html += '<div class="form-group">';
         html += '<label for="abreviacion">Apellidos</label>';
-        html += '<input type="text" class="form-control" id="apellidos" name="apellidos[]" placeholder="Ingrese apellidos" required>';
+        html += '<input type="text" class="form-control" id="apellidos" name="apellidos[]" placeholder="Ingrese apellidos" required onkeypress="return soloLetras(event)">';
         html += '</div>';
         html += '<div class="form-group">';
         html += '<label for="abreviacion">Telefono</label>';
-        html += '<input type="text" class="form-control" id="telefono" name="telefono[]" placeholder="Ingrese telefono" required>';
+        html += '<input type="text" class="form-control" id="telefono" name="telefono[]" placeholder="Ingrese telefono" required onkeypress="return soloNumeros(event)>';
         html += '</div>';
         html += '<div class="form-group">';
         html += '<label for="sexo">Sexo</label>';

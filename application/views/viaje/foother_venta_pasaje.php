@@ -18,5 +18,6 @@
         <!-- AdminLTE App -->
         <script src="<?= base_url(); ?>js/AdminLTE/app.js" type="text/javascript"></script>
         <script src="<?= base_url(); ?>application/views/viaje/venta_pasaje.js" type="text/javascript"></script>
+         <script src="<?= base_url(); ?>js/validaciones.js"></script>
     </body>
 </html>
