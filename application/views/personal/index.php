@@ -53,15 +53,15 @@ td.eliminar-data {
                     </div>
                     <div class="form-group">
                         <label for="descripcion">DNI</label>
-                        <input type="text" required class="form-control" id="dni" name="dni" placeholder="Ingrese dni" maxlength="8">
+                        <input type="text" required class="form-control" id="dni" name="dni" placeholder="Ingrese dni" maxlength="8" onkeypress="return soloNumeros(event)">
                     </div>
                     <div class="form-group">
                         <label for="descripcion">Nombre</label>
-                        <input type="text" required class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre" >
+                        <input type="text" required class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre" onkeypress="return soloLetras(event)">
                     </div>
                     <div class="form-group">
                         <label for="capacidad">Apellidos</label>
-                        <input type="text" required class="form-control" id="apellidos" name="apellidos" placeholder="Ingrese apellidos" >
+                        <input type="text" required class="form-control" id="apellidos" name="apellidos" placeholder="Ingrese apellidos" onkeypress="return soloLetras(event)">
                     </div>
                     <div class="form-group">
                         <label for="capacidad">Fecha de Nacimiento</label>
@@ -73,7 +73,7 @@ td.eliminar-data {
                     </div>
                     <div class="form-group">
                         <label for="capacidad">Cargo</label>
-                        <input type="number" required class="form-control" id="cargo" name="cargo" min="1" max="150" placeholder="Ingrese cargo" >
+                        <input type="number" required class="form-control" id="cargo" name="cargo" min="1" max="150" placeholder="Ingrese cargo" onkeypress="return soloLetras(event)">
                     </div>
                 </div>
                 <div class="modal-footer clearfix">

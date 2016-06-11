@@ -34,7 +34,7 @@ td.eliminar-data {
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title"><i class="fa fa-users"></i> Nuevo Cargo</h4>
+                <h4 class="modal-title"><i class="fa fa-users"></i> Nueva Ciudad</h4>
             </div>
             <form role="form" action="" method="post">
                 <div class="modal-body">
@@ -44,11 +44,11 @@ td.eliminar-data {
                     </div>  
                     <div class="form-group">
                         <label for="Nombre">Nombre</label>
-                        <input type="text" required class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre" >
+                        <input type="text" required class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre" required>
                     </div>
                     <div class="form-group">
                         <label for="Codigo Postal">Codigo Postal</label>
-                        <input type="text" required class="form-control" id="codigo_postal" name="codigo_postal" placeholder="Ingrese codigo postal" >
+                        <input type="text" required class="form-control" id="codigo_postal" name="codigo_postal" placeholder="Ingrese codigo postal" onkeypress="return soloNumeros(event)">
                     </div>
                 </div>
                 <div class="modal-footer clearfix">
