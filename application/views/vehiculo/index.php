@@ -1,22 +1,3 @@
-<style type="text/css">
-td.detail-control {
-    background: url('../img/details_open.png') no-repeat center center;
-    cursor: pointer;
-}
-tr.shown td.detail-control {
-    background: url('../img/details_close.png') no-repeat center center;
-}
-td.editar-data {
-    background: url("../img/edit.png") no-repeat center center;
-    cursor: pointer;
-}
-td.eliminar-data {
-    background: url("../img/eliminar.png") no-repeat center center;
-    cursor: pointer;
-}
-
-</style>
-
 <div class="row">
     <div class="col-md-10">
         <div class="box-body table-responsive">
@@ -44,12 +25,13 @@ td.eliminar-data {
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title"><i class="fa fa-users"></i> Nuevo Vehiculo</h4>
+                <h4 class="modal-title"><i class="fa fa-bus"></i> Formulario Vehiculo</h4>
             </div>
             <form role="form" >
                 <div class="modal-body">
+                    <div id="msg" class="form-group has-warning"></div>
                     <div class="form-group">
-                        <label for="idu">Identificador</label>
+                        <label for="id">Identificador</label>
                         <input type="text" class="form-control" id="id" name="id" readonly="readonly" >
                     </div>  
                     <div class="form-group">
@@ -96,7 +78,7 @@ td.eliminar-data {
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title"><i class=""></i>Alerta eliminar </h4>
+                <h4 class="modal-title"><i class="fa fa-exclamation-triangle"></i> Alerta Eliminar </h4>
             </div>
             <form role="form" action="" method="post">
                 <input type="hidden" id='id_dato_eliminar'></input>
@@ -109,7 +91,7 @@ td.eliminar-data {
                 </div>
                 <div class="modal-footer clearfix">
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
-                    <button type="submit" id="delete_click" class="btn btn-primary pull-left"><i class="fa fa-check"></i> Aceptar</button>
+                    <button type="button" id="delete_click" class="btn btn-primary pull-left"><i class="fa fa-check"></i> Aceptar</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->

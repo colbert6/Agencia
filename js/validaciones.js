@@ -1,3 +1,10 @@
+function validar_form ( datos ) {
+  validez=true;  
+  for ( var i in datos) {
+        validez=validez && $("#"+datos[i]).required();
+  }
+  return validez;
+}
 
 function soloNumeros(evt){
 	evt = (evt) ? evt : event; //Validar la existencia del objeto event
@@ -72,11 +79,12 @@ function editar(url){
     window.location = url;
 }
 
+
 $(function() {
   $.fn.required = function() {
     if ( $(this).val() == '' || $(this).val() == 0 ) {
         $(this).css('border','solid 1px red');
-        $('#msg').html('<label class="lbl_msg">Debes llenar todos los campos necesarios</label>');
+        $('#msg').html('<label class="control-label" for="inputWarning"><i class="fa fa-warning"></i> Debes llenar todos los campos necesarios</label>');
         $(this).focus();
         return false;
     }else {

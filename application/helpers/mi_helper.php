@@ -5,7 +5,7 @@ if ( ! function_exists('vista_ver_inicio'))
 {
 	function prueba()
     {
-        return 'pueba';
+        return base_url();
     }
 }
 

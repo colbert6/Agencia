@@ -7,9 +7,19 @@
             parent::__construct();
             $this->load->model('viaje_model');
             $this->load->model('ciudad_model');
-             $this->load->model('vehiculo_model');           
+            $this->load->model('vehiculo_model');           
         }
         
+
+        public function nuevo_viaje()
+        {            
+            $dato_header= array ( 'titulo'=> 'Registrar Viaje');
+
+            $this->load->view("/layout/header.php",$dato_header);
+            $this->load->view("/viaje/nuevo_viaje.php");
+            $this->load->view("/viaje/foother_nuevo_viaje.php");
+        }
+
         public function index()
         {   
             $data['viaje'] = $this->viaje_model->select();

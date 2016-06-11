@@ -1,17 +1,40 @@
+function formatear_fecha( fecha ) {
+    var aux=fecha.split("-")
+    return aux[2]+"-"+aux[1]+"-"+aux[0];
+}
+
+function format ( d ) {
+    // `d` is the original data object for the row
+    return '<table cellpadding="2" cellspacing="0" border="0" style="padding-left:50px;">'+
+        '<tr>'+
+            '<td>Fecha Nacimiento:</td>'+
+            '<td>'+formatear_fecha(d.per_fecha_nac)+'</td>'+
+            '<td width=50></td>'+
+            '<td>Fecha Registro:</td>'+
+            '<td>'+formatear_fecha(d.per_fecha_reg)+'</td>'+
+        '</tr>'+
+    '</table>';
+}
 $(document).ready(function() {
-    var base_url = window.location.origin;
+    var base_url = $("#base_url").val();
     var table =$('#tab').DataTable( {
 
         "processing": true,
         "ajax": {
-            "url": base_url+"/Agencia/personal/cargar_datos/",
+            "url": base_url+"personal/cargar_datos/",
             "type": "POST"
         },
         "columns": [
+            {
+                "className":      'detail-control',
+                "orderable":      false,
+                "data":           null,
+                "defaultContent": ''
+            },
             { "data": "per_id" },
             { "data": "per_dni" },
             { "data": "per_nombres" }, 
-            { "data": "per_apellidos" },
+            { "data": "car_descripcion" },
             {
                 "className":      'editar-data',
                 "orderable":      false,
@@ -55,7 +78,7 @@ $(document).ready(function() {
                 'sSortDescending': ': Activar para ordenar la columna de manera descendente'
             }
         },
-        'aaSorting': [[ 0, 'asc' ]],//ordenar
+        'aaSorting': [[ 1, 'asc' ]],//ordenar
         'iDisplayLength': 10,
         'aLengthMenu': [[5, 10, 20], [5, 10, 20]]
     } );
@@ -70,16 +93,31 @@ $(document).ready(function() {
         $("#cargo").val('');
     } );
 
+    $('#tab tbody').on('click', 'td.detail-control', function () {
+        var tr = $(this).closest('tr');
+        var row = table.row( tr );
+
+        if ( row.child.isShown() ) {
+            // This row is already open - close it
+            row.child.hide();
+            tr.removeClass('shown');
+        }
+        else {
+            // Open this row
+            row.child( format(row.data()) ).show();
+            tr.addClass('shown');
+        }
+    } );
+
     $('#tab tbody').on('click', 'td.editar-data', function () { //Agregar los datos correspondientes al modal-form
         var tr = $(this).closest('tr');
         var row = table.row( tr );
         
+        $("#id").val(row.data().per_id);
         $("#dni").val(row.data().per_dni);
         $("#nombre").val(row.data().per_nombres);
-        $("#apellidos").val(row.data().per_apellidos);
-        $("#nacimiento").val(row.data().per_nacimiento);
-        $("#apellidos").val(row.data().per_apellidos);
-        $("#apellidos").val(row.data().per_apellidos);
+        $("#nacimiento").val(row.data().per_fecha_nac);
+        $("#cargo").val(row.data().per_cargo);
         $("#modal_form").modal({show: true});
     } );
 
@@ -88,41 +126,42 @@ $(document).ready(function() {
         var row = table.row( tr );
         $("#modal_delete").modal({show: true});
         $("#id_dato_eliminar").val(row.data().per_id);
-        $('#desc_dato_eliminar').empty();
-        
-        var b = document.createElement("b");
-        b.innerHTML = row.data().car_descripcion;
-        document.getElementById("desc_dato_eliminar").appendChild(b);
+        $('#desc_dato_eliminar').html(row.data().per_nombres);
 
     } );
 
     $('#submit_form').on('click', function () {        //Enviar los datos del modal-form a guardar en el controlador
-        var d = new Object();
-        id = $("#id").val();
-        d.dni = $("#dni").val();
-        d.nombre = $("#nombre").val();
-        d.apellidos = $("#apellidos").val();
-        d.nacimiento = $("#nacimiento").val();
-        d.registro = $("#registro").val();
-        d.cargo = $("#cargo").val();
+        var campos_form = ["cargo","registro","nacimiento","nombre","dni"];//campos que queremos que se validen
+        if(!validar_form(campos_form)){
+            return false;            
+        }
 
-        if(validar_campo(d)){
-            $.post(base_url+"/Agencia/personal/guardar",{id:id,dni:d.dni,nombre:d.nombre,apellidos:d.apellidos,nacimiento:d.nacimiento,registro:d.registro,cargo:d.cargo},function(valor){
-                if(!isNaN(valor)){
-                    alert('guardar exitoso');
-                    table.ajax.reload();
-                    $("#modal_form").modal('hide');
-                }else{
-                    alert('guardar error:'+valor);
-                }
-            });
-        } 
+
+        id = $("#id").val();
+        dni = $("#dni").val();
+        nombre = $("#nombre").val();
+        nacimiento = $("#nacimiento").val();
+        registro = $("#registro").val();
+        cargo = $("#cargo").val();
+
+    //alert(d.cargo);return false;
+
+        $.post(base_url+"personal/guardar",{id:id,dni:dni,nombre:nombre,nacimiento:nacimiento,registro:registro,cargo:cargo},function(valor){
+            if(!isNaN(valor)){
+                alert('Guardado exitoso');
+                table.ajax.reload();
+                $("#modal_form").modal('hide');
+            }else{
+                alert('guardar error:'+valor);
+            }
+        });
     } );
 
     $('#delete_click').on('click', function () {   //Enviar los datos del modal-form a eliminar en el controlador
         var id = $("#id_dato_eliminar").val();
-        $.post(base_url+"/Agencia/personal/eliminar",{id:id},function(valor){
+        $.post(base_url+"personal/eliminar",{id:id},function(valor){
             if(!isNaN(valor)){
+                alert('Dato eliminado');
                 table.ajax.reload();
                 $("#modal_delete").modal('hide');
             }else{
@@ -133,12 +172,3 @@ $(document).ready(function() {
 
 } );
 
-function validar_campo ( datos ) {
-  var resultado=true;
-  for ( var i in datos) {
-    if(datos[i]==null ||  datos[i].length == 0){
-            return false;
-    }
-  }
-  return true;
-}

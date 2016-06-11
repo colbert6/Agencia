@@ -12,8 +12,10 @@
        public function index()
         {   
             $dato_header= array ( 'titulo'=> 'Terminales');
+            $data['ciudad'] = $this->ciudad_model->select();
+
             $this->load->view("/layout/header.php",$dato_header);
-            $this->load->view("/terminal/index.php");
+            $this->load->view("/terminal/index.php",$data);
             $this->load->view("/layout/foother_table.php");
 
         }

@@ -1,12 +1,11 @@
-
-
 $(document).ready(function() {
-    var base_url = window.location.origin;
+
+    var base_url = $("#base_url").val();
     var table =$('#tab').DataTable( {
 
         "processing": true,
         "ajax": {
-            "url": base_url+"/Agencia/terminal/cargar_datos/",
+            "url": base_url+"terminal/cargar_datos/",
             "type": "POST"
         },
         "columns": [
@@ -14,6 +13,7 @@ $(document).ready(function() {
             { "data": "ter_descripcion" },
             { "data": "ter_direccion" }, 
             { "data": "ter_ciudad" },
+            { "data": "ciu_nombre" },
             {
                 "className":      'editar-data',
                 "orderable":      false,
@@ -57,6 +57,11 @@ $(document).ready(function() {
                 'sSortDescending': ': Activar para ordenar la columna de manera descendente'
             }
         },
+        "columnDefs": [
+                    {
+                        "targets": [ 3 ],
+                        "visible": false
+                    }],
         'aaSorting': [[ 0, 'asc' ]],//ordenar
         'iDisplayLength': 10,
         'aLengthMenu': [[5, 10, 20], [5, 10, 20]]
@@ -67,30 +72,7 @@ $(document).ready(function() {
         $("#descripcion").val('');
         $("#direccion").val('');
         $("#ciudad").val('');
-        var base_url = window.location.origin;
         
-        $.post(base_url+"/Agencia/ciudad/cargar_datos/",function(ciudades){ 
-
-            var ciudad = JSON.parse(ciudades);
-            formulario     ="";
-            formulario    += "<label>Ciudad:</label>";
-            formulario    += "<select class='form-control' id='id_ciudad'>";
-            
-            for (var i = 0; i < ciudad.length; i++) {
-                alert(ciudad[i].ciu_id);
-                var seleccion = "";
-                
-                if(ciudad[i].ciu_id == 1){
-                    seleccion = "selected";    
-                }
-                
-                formulario    += "<option "+seleccion+" value='"+ciudad[i].ciu_id+"'>"+ciudad[i].ciu_nombre+"</option>";
-            }
-            formulario    += "</select>";
-            alert(formulario);
-            $("#ciudades_form").html(formulario); 
-        });
-
     } );
 
     $('#tab tbody').on('click', 'td.editar-data', function () { //Agregar los datos correspondientes al modal-form
@@ -108,39 +90,38 @@ $(document).ready(function() {
         var row = table.row( tr );
         $("#modal_delete").modal({show: true});
         $("#id_dato_eliminar").val(row.data().ter_id);
-        $('#desc_dato_eliminar').empty();
-        
-        var b = document.createElement("b");
-        b.innerHTML = row.data().car_descripcion;
-        document.getElementById("desc_dato_eliminar").appendChild(b);
+        $('#desc_dato_eliminar').html(row.data().ter_descripcion);
 
     } );
 
 
     $('#submit_form').on('click', function () {        //Enviar los datos del modal-form a guardar en el controlador
-        var d = new Object();
+        var campos_form = ["ciudad", "direccion","descripcion"];//campos que queremos que se validen
+        if(!validar_form(campos_form)){
+            return false;            
+        }          
+
         id = $("#id").val();
-        d.descripcion = $("#descripcion").val();
-        d.direccion = $("#direccion").val();
-        d.ciudad = $("#ciudad").val();
-        
-        if(validar_campo(d)){
-            $.post(base_url+"/Agencia/terminal/guardar",{id:id,descripcion:d.descripcion,direccion:d.direccion,ciudad:d.ciudad},function(valor){
-                if(!isNaN(valor)){
-                    alert('guardar exitoso');
-                    table.ajax.reload();
-                    $("#modal_form").modal('hide');
-                }else{
-                    alert('guardar error:'+valor);
-                }
-            });
-        } 
+        descripcion = $("#descripcion").val();
+        direccion = $("#direccion").val();
+        ciudad = $("#ciudad").val();
+
+        $.post(base_url+"terminal/guardar",{id:id,descripcion:descripcion,direccion:direccion,ciudad:ciudad},function(valor){
+            if(!isNaN(valor)){
+                alert('Guardado exitoso');
+                table.ajax.reload();
+                $("#modal_form").modal('hide');
+            }else{
+                alert('guardar error:'+valor);
+            }
+        });
     } );
 
     $('#delete_click').on('click', function () {   //Enviar los datos del modal-form a eliminar en el controlador
         var id = $("#id_dato_eliminar").val();
-        $.post(base_url+"/Agencia/terminal/eliminar",{id:id},function(valor){
+        $.post(base_url+"terminal/eliminar",{id:id},function(valor){
             if(!isNaN(valor)){
+                alert('Dato eliminado');
                 table.ajax.reload();
                 $("#modal_delete").modal('hide');
             }else{
@@ -152,12 +133,3 @@ $(document).ready(function() {
 
 } );
 
-function validar_campo ( datos ) {
-  var resultado=true;
-  for ( var i in datos) {
-    if(datos[i]==null ||  datos[i].length == 0){
-            return false;
-    }
-  }
-  return true;
-}

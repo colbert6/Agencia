@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,10 +13,12 @@
         <link href="<?= base_url(); ?>css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
         <link href="<?= base_url(); ?>css/AdminLTE.css" rel="stylesheet" type="text/css" />
+        <link href="<?= base_url(); ?>css/style.css" rel="stylesheet" type="text/css" />
        
     </head>
     <body class="skin-blue">
-       
+        <input type="hidden" id="base_url" value="<?= base_url(); ?>">
+                   
         <header class="header">
             <a href="<?= base_url(); ?>index.php" class="logo">
                <?= $this->session->userdata('empresa'); ?>
@@ -93,7 +96,7 @@
                                 <li><a href="<?= base_url(); ?>vehiculo/"><i class="fa fa-angle-double-right"></i>Vehiculo</a></li>
                                 <li><a href="<?= base_url(); ?>terminal/"><i class="fa fa-angle-double-right"></i>Terminal</a></li>
                                 <li><a href="<?= base_url(); ?>personal/"><i class="fa fa-angle-double-right"></i>Personal</a></li>
-                                <li><a href="<?= base_url(); ?>ruta/"><i class="fa fa-angle-double-right"></i>Ruta</a></li>
+                                <!--li><a href="<?= base_url(); ?>ruta/"><i class="fa fa-angle-double-right"></i>Ruta</a></li-->
                                 <li><a href="<?= base_url(); ?>ciudad/"><i class="fa fa-angle-double-right"></i>Ciudad</a></li>
                             </ul>
                         </li>
@@ -103,7 +106,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="<?= base_url(); ?>viaje/"><i class="fa fa-angle-double-right"></i>Viajes</a></li>
+                                <li><a href="<?= base_url(); ?>viaje/nuevo_viaje"><i class="fa fa-angle-double-right"></i>Nuevo Viaje</a></li>
+                                <li><a href="<?= base_url(); ?>viaje/"><i class="fa fa-angle-double-right"></i>Lsita de Viajes</a></li>
                             </ul>
                         </li>
                         <!--li class="treeview">
