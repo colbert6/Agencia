@@ -7,16 +7,22 @@
             parent::__construct();
             $this->load->model('viaje_model');
             $this->load->model('ciudad_model');
-            $this->load->model('vehiculo_model');           
+            $this->load->model('vehiculo_model');
+            $this->load->model('cargo_model');  
+            $this->load->model('personal_model');           
         }
         
 
         public function nuevo_viaje()
         {            
             $dato_header= array ( 'titulo'=> 'Registrar Viaje');
+            $data= array (  'ciudad'=>$this->ciudad_model->select(),
+                            'vehiculo'=>$this->vehiculo_model->select(),
+                            'cargo'=>$this->cargo_model->select(),
+                            'personal'=>$this->personal_model->select());
 
             $this->load->view("/layout/header.php",$dato_header);
-            $this->load->view("/viaje/nuevo_viaje.php");
+            $this->load->view("/viaje/nuevo_viaje.php",$data);
             $this->load->view("/viaje/foother_nuevo_viaje.php");
         }
 
