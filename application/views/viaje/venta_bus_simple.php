@@ -158,7 +158,7 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                     </div>
                     <div class="sal">                
                         <div class="salida">
-                            <strong>Salida: 3:00 pm</strong>
+                            <strong><?php echo "Salida: ".$viaje->via_hora_salida;?></strong>
                         </div>
                         <div class="totales">
                             <strong>Números de Asientos: </strong><p id='num_asientos'></p>
@@ -199,41 +199,32 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                         <div class="col-xs-12">
                             <h2 class="page-header">
                                 <i class="fa fa-globe"></i> Datos de la venta
-                                <small class="pull-right">fecha: 31/05/2016</small>
+                                <small class="pull-right"><?php echo "Fecha: ".date("d/m/Y");?></small>
                             </h2>                            
                         </div><!-- /.col -->
                     </div>
                     <!-- info row -->
-                    <!--
+                    
                     <div class="row invoice-info">
                         <div class="col-sm-4 invoice-col">
-                            From
+                            <b>Fecha de salida </b><br/>
+                            <?php echo $viaje->via_fecha_salida;?>
+                        </div>
+                        <div class="col-sm-4 invoice-col">
                             <address>
-                                <strong>Admin, Inc.</strong><br>
-                                795 Folsom Ave, Suite 600<br>
-                                San Francisco, CA 94107<br>
-                                Phone: (804) 123-5432<br/>
-                                Email: info@almasaeedstudio.com
+                                <strong>Ciudad origen</strong><br>
+                                <?php echo $viaje->ori;?>  
                             </address>
                         </div>
                         <div class="col-sm-4 invoice-col">
-                            To
+                        
                             <address>
-                                <strong>John Doe</strong><br>
-                                795 Folsom Ave, Suite 600<br>
-                                San Francisco, CA 94107<br>
-                                Phone: (555) 539-1037<br/>
-                                Email: john.doe@example.com
+                                <strong>Ciudad destino</strong><br>
+                                <?php echo $viaje->dest;?>  
                             </address>
                         </div>
-                        <div class="col-sm-4 invoice-col">
-                            <b>Invoice #007612</b><br/>
-                            <br/>
-                            <b>Order ID:</b> 4F3S8J<br/>
-                            <b>Payment Due:</b> 2/22/2014<br/>
-                            <b>Account:</b> 968-34567
-                        </div>
-                    </div>-->
+                        
+                    </div>
 
 
                     <!-- Table row -->
@@ -251,35 +242,7 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                                     </tr>                              
                                 </thead>
                                 <tbody>
-                                    <!--
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Call of Duty</td>
-                                        <td>455-981-221</td>
-                                        <td>El snort testosterone trophy driving gloves handsome</td>
-                                        <td>$64.50</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Need for Speed IV</td>
-                                        <td>247-925-726</td>
-                                        <td>Wes Anderson umami biodiesel</td>
-                                        <td>$50.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Monsters DVD</td>
-                                        <td>735-845-642</td>
-                                        <td>Terry Richardson helvetica tousled street art master</td>
-                                        <td>$10.70</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Grown Ups Blue Ray</td>
-                                        <td>422-568-642</td>
-                                        <td>Tousled lomo letterpress</td>
-                                        <td>$25.99</td>
-                                    </tr>-->
+                                   
                                 </tbody>
                             </table>                            
                         </div><!-- /.col -->
@@ -288,17 +251,13 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                     <div class="row">
                         <!-- accepted payments column -->
                         <div class="col-xs-6">
-                            <p class="lead">Payment Methods:</p>
-                            <img src="/Agencia/img/credit/visa.png" alt="Visa"/>
-                            <img src="/Agencia/img/credit/mastercard.png" alt="Mastercard"/>
-                            <img src="/Agencia/img/credit/american-express.png" alt="American Express"/>
-                            <img src="/Agencia/img/credit/paypal2.png" alt="Paypal"/>
+                            <p class="lead">Condiciones de pago:</p>
                             <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                                Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
+                                Una vez realizada la venta, ya no habra devolucion de su dinero su dinero.
                             </p>
                         </div><!-- /.col -->
                         <div class="col-xs-6">
-                            <p class="lead">Amount Due 2/22/2014</p>
+                            <p class="lead"><?php echo "Monto a pagar: ".date("d/m/Y");?></p>
                             <div class="table-responsive">
                                 <table class="table">
                                     <tr>
@@ -327,7 +286,6 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                         <div class="col-xs-12">
                             <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Imprimir</button>
                             <button id="submit" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Comprar Pasaje(s)</button>  
-                            <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
                         </div>
                     </div>
                 </section><!-- /.content -->
