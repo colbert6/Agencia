@@ -198,7 +198,7 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                     <div class="row">
                         <div class="col-xs-12">
                             <h2 class="page-header">
-                                <i class="fa fa-globe"></i> Datos de la venta
+                                <i class="fa fa-globe"></i> Datos de la venta de pasaje(s)
                                 <small class="pull-right"><?php echo "Fecha: ".date("d/m/Y");?></small>
                             </h2>                            
                         </div><!-- /.col -->
@@ -253,7 +253,7 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                         <div class="col-xs-6">
                             <p class="lead">Condiciones de pago:</p>
                             <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                                Una vez realizada la venta, ya no habra devolucion de su dinero su dinero.
+                                Una vez realizada la venta de pasaje(s), ya no hay devolucion de su dinero.
                             </p>
                         </div><!-- /.col -->
                         <div class="col-xs-6">
@@ -262,19 +262,19 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                                 <table class="table">
                                     <tr>
                                         <th style="width:50%">Subtotal:</th>
-                                        <td>$250.30</td>
+                                        <td><?php echo "S/ ".$viaje->via_precio;?></td>
                                     </tr>
                                     <tr>
-                                        <th>Tax (9.3%)</th>
-                                        <td>$10.34</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Shipping:</th>
-                                        <td>$5.80</td>
+                                        <th>Cantidad pasajes: </th>
+                                        <td id="cant_asientos"></td>
                                     </tr>
                                     <tr>
                                         <th>Total:</th>
-                                        <td>$265.24</td>
+                                        <td><?php
+
+                                         $total=3*$viaje->via_precio;
+                                                echo "S/ ".$total;
+                                        ?></td>
                                     </tr>
                                 </table>
                             </div>

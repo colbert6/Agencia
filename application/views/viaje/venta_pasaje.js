@@ -20,8 +20,8 @@ $(document).ready(function(){
 
        
        $("#tablaDatos tbody").html(htmlBodyTable);
-       console.log(data);
-       console.log(data['dni[]'][0]);
+       //console.log(data);
+       //console.log(data['dni[]'][0]);
 
         $('#li_tab_3,#li_tab_2,#tab_3,#tab_2').toggleClass('active');
         return false;
@@ -60,26 +60,31 @@ $(document).ready(function(){
             //asientoSeleccionados.push(NroAsiento);
             remover(asientoSeleccionados,NroAsiento);
         }
-        console.log(asientoSeleccionados);
+        //console.log(asientoSeleccionados);
         $(this).removeClass( "asiento-seleccionado" );
         $(this).addClass ( "iu-asiento" );
-        evaluar_asientos();
-                
+        evaluar_asientos();        
     } );
 
 });
 
 function evaluar_asientos (){    
     asientos  = $('.asiento-seleccionado');
+    
     var num_asientos='';    
-        for(var i=0; i<asientos.length; i++){
-            num_asientos=num_asientos+' '+asientos.eq(i).text();        
-        }
+    for(var i=0; i<asientos.length; i++){
+      num_asientos=num_asientos+' '+asientos.eq(i).text();        
+    }
     $('#num_asientos').text(num_asientos); 
     $('#cant_asiento').text(asientos.length);     
 
 }
 
+  $(".siguiente").click(function(){
+     asientos  = $('.asiento-seleccionado');
+
+     $('#cant_asientos').text(asientos.length);  
+  });
 
 $('#sgt_datos').on('click', function() {
 
