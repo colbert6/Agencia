@@ -102,7 +102,7 @@ $('#sgt_datos').on('click', function() {
         html += '</div>';
         html += '<div class="form-group">';
         html += '<label for="abreviacion">Telefono</label>';
-        html += '<input type="text" class="form-control" id="telefono" name="telefono[]" placeholder="Ingrese telefono" required onkeypress="return soloNumeros(event)>';
+        html += '<input type="text" class="form-control" id="telefono" name="telefono[]" placeholder="Ingrese telefono" required onkeypress="return soloNumeros(event)">';
         html += '</div>';
         html += '<div class="form-group">';
         html += '<label for="sexo">Sexo</label>';
