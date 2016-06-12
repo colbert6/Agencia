@@ -241,15 +241,17 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                         <div class="col-xs-12 table-responsive">
                             <table class="table table-striped" id="tablaDatos">
                                 <thead>
+                                    
                                     <tr>
                                         <th>N°</th>
                                         <th>DNI</th>
                                         <th>Nombre</th>
                                         <th>Apellidos</th>
                                         <th>Sexo</th>
-                                    </tr>                                    
+                                    </tr>                              
                                 </thead>
                                 <tbody>
+                                    <!--
                                     <tr>
                                         <td>1</td>
                                         <td>Call of Duty</td>
@@ -277,7 +279,7 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                                         <td>422-568-642</td>
                                         <td>Tousled lomo letterpress</td>
                                         <td>$25.99</td>
-                                    </tr>
+                                    </tr>-->
                                 </tbody>
                             </table>                            
                         </div><!-- /.col -->
