@@ -37,6 +37,21 @@
 
         }
 
+        /*public function mostrar()
+        {
+            $this->load->model('usuario_model');
+            //$data= array('user' =>  'admin_pg','password'=>'1234','base' =>  'movil_tour');
+            //$data= array('user' =>  'admin','password'=>'1234','base' =>  'civa');
+            $user=$this->usuario_model->ValidarUsuario($data);
+            echo "<pre>";print_r($data);
+            print_r($user);
+        
+        } */
+
+
+
+
+
         public function cerrar()
         {
             $this->session->sess_destroy();

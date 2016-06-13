@@ -28,7 +28,7 @@
 
         public function guardar_nuevo_viaje()
         {
-            
+            echo "<pre>";print_r($_POST);//exit();
             if (@$_POST['guardar'] == 1) {
                 $fecha=$this->input->post('fecha_viaje');
                 $fecha_viaje = explode(" ", $fecha);
@@ -43,14 +43,22 @@
                               'via_hora_llegada'=>  $fecha_viaje[4]
                               );
                 $result=$this->viaje_model->crearViaje($data) ;
+                $viaje_nuevo=$result['msg']->result_array();
+                $id_nuevo_viaje= $viaje_nuevo[0]['via_id'];
+                print_r( $viaje_nuevo);echo $viaje_nuevo[0]['via_id'];
 
                 if($result['resp']=='0' ){
-                    for ($i=0; $_POST['personales']; $i++) { 
+                    for ($i=0; $i<count($_POST['personales']); $i++) { 
                         //mandar a personal y viaje
+                        $data= array ('via_id'=> $id_nuevo_viaje,
+                              'per_id'=>  $_POST['personales'][$i]
+                              );
+                        $result=$this->viaje_model->crearViajePersonal($data) ;
+                        echo $result['msg']; 
                     }
 
                 }
-                echo $result['msg']; 
+                redirect('viaje/nuevo_viaje', 'refresh');
                 
             }
         }

@@ -1,4 +1,16 @@
 <link href="<?= base_url(); ?>css/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.option_oculta{
+    display: none;
+}
+
+.option_utilizada{
+    display: none;
+}
+
+</style>
+
+
 <form role="form" action="<?= base_url()."viaje/guardar_nuevo_viaje" ?>" method="post">
 <input type="hidden" value="1" name="guardar">    
 <div class="row"><!-- Formulario de la ruta Viaje -->
@@ -112,8 +124,8 @@
                                     <select class="form-control" id="vehiculo" name="vehiculo" >
                                         <option value="" >Seleccione Vehiculo</option>
                                         <?php
-                                        foreach ($vehiculo->result() as $datos ) {
-                                            echo "<option value='".$datos->veh_id."'>".$datos->veh_descripcion."</option>";
+                                        foreach ($vehiculo->result() as $d ) {
+                                            echo "<option value='".$d->veh_id."' tipo='".$d->veh_tipo."' class='option_oculta'   >".$d->veh_descripcion."</option>";
                                         }
                                         ?>
                                     </select>
@@ -157,7 +169,7 @@
                                     <option value="" >Seleccione Personal</option>
                                     <?php
                                         foreach ($personal->result() as $datos ) {
-                                            echo "<option value='".$datos->per_id."'>".$datos->per_nombres."</option>";
+                                            echo "<option value='".$datos->per_id."' cargo='".$datos->per_cargo."' class='option_oculta' estado='0'>".$datos->per_nombres."</option>";
                                         }
                                     ?>
                                 </select>

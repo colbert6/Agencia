@@ -25,6 +25,17 @@
                             'via_hora_llegada'=> $data['via_hora_llegada'],
                             'via_estado' => 1 );
             if($this->db->insert('viaje',$datos)){
+                 $query=array('resp'=>0,'msg'=>"ok");
+            }else{
+                 $query=array('resp'=>1,'msg'=>$this->db->_error_message());
+            }
+            return $query;            
+        }
+
+        function crearViajePersonal($data){
+            $datos=array(   'via_id'=> $data['via_id'],
+                            'per_id'=> $data['per_id'] );
+            if($this->db->insert('viaje_personal',$datos)){
                  $query=array('resp'=>0,'msg'=>$this->db->query("Select max(via_id) from viaje"));
             }else{
                  $query=array('resp'=>1,'msg'=>$this->db->_error_message());
