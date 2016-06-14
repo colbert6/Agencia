@@ -47,7 +47,7 @@
                     <div class="form-group" id="ciudades_form">
                         <label for="tipo">Ciudades</label>
                         <select class="form-control" id="ciudad" name="ciudad" >
-                             <option value="0"></option>
+                            <option value="0"></option>
                             <?php
                             foreach ($ciudad->result() as $datos ) {
                                 echo "<option value='".$datos->ciu_id."'>".$datos->ciu_nombre."</option>";

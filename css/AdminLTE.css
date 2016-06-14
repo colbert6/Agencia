@@ -1535,7 +1535,7 @@ body > .header .logo .icon {
   font-size: 9px;
 }
 .box .todo-list > li .tools {
-  display: none;
+  /*display: none;*/
   float: right;
   color: #f56954;
 }

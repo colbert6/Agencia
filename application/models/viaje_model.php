@@ -13,12 +13,43 @@
                $this->db=$this->db_pg;
             }
         }
+
+        function crearViaje($data){
+            $datos=array('via_origen'=> $data['via_origen'],
+                            'via_destino'=> $data['via_destino'],
+                            'via_vehiculo'=> $data['via_vehiculo'],
+                            'via_precio'=> $data['via_precio'],
+                            'via_fecha_salida'=> $data['via_fecha_salida'],
+                            'via_fecha_llegada'=> $data['via_fecha_llegada'],
+                            'via_hora_salida'=> $data['via_hora_salida'],
+                            'via_hora_llegada'=> $data['via_hora_llegada'],
+                            'via_estado' => 1 );
+            if($this->db->insert('viaje',$datos)){
+                 $query=array('resp'=>0,'msg'=>"ok");
+            }else{
+                 $query=array('resp'=>1,'msg'=>$this->db->_error_message());
+            }
+            return $query;            
+        }
+
+        function crearViajePersonal($data){
+            $datos=array(   'via_id'=> $data['via_id'],
+                            'per_id'=> $data['per_id'] );
+            if($this->db->insert('viaje_personal',$datos)){
+                 $query=array('resp'=>0,'msg'=>$this->db->query("Select max(via_id) from viaje"));
+            }else{
+                 $query=array('resp'=>1,'msg'=>$this->db->_error_message());
+            }
+            return $query;            
+        }
+
+
         function guardarViaje($_P){
 
             foreach ($_P['asiento'] as $key => $value) {
                 $datos=array(
                             'asi_viaje' => (int)$_P['idviaje'],
-                             'asi_num' => $value,
+                            'asi_num' => $value,
                             'asi_estado'=>1,
                             'pas_tipo_documento' => 1,
                             'pas_dni' =>  $_P['dni'][$key],
