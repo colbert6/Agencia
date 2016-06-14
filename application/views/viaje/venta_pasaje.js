@@ -24,7 +24,7 @@ $(document).ready(function(){
        //console.log(data['dni[]'][0]);
 
        var precioViaje = eval($("#precioViaje").text().replace('S/ ',''));
-       $("#totalPrecioViaje").html((precioViaje*asientoSeleccionados.length)-((precioViaje*0.18)*asientoSeleccionados.length).toFixed(2));
+       $("#totalPrecioViaje").html((precioViaje*asientoSeleccionados.length)+((precioViaje*0.18).toFixed(2)*asientoSeleccionados.length));
         $('#li_tab_3,#li_tab_2,#tab_3,#tab_2').toggleClass('active');
        
         //console.log(precioViaje);
