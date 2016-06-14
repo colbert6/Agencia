@@ -197,6 +197,10 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                     <!-- title row -->
                     <div class="row">
                         <div class="col-md-6">
+                            <h2 class="page-header">
+                                <i class="fa fa-globe"></i> Información de la venta
+                                
+                            </h2>
                             <p>Es importante que Usted lea el documento.</p>
                                 <p>
                                 Si tiene alguna duda por favor consulte a su ejecutivo de ventas o llame a nuestro celular #95959595 
@@ -212,7 +216,7 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                     <div class="row">
                         <div class="col-xs-12">
                             <h2 class="page-header">
-                                <i class="fa fa-globe"></i> Información de su pasajes(s)
+                                <i></i> Información de su pasajes(s)
                                 <small class="pull-right"><?php echo "Fecha: ".date("d/m/Y");?></small>
                             </h2>                         
                         </div><!-- /.col -->
@@ -275,7 +279,7 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                             <div class="table-responsive">
                                 <table class="table">
                                     <tr>
-                                        <th style="width:50%">Subtotal:</th>
+                                        <th style="width:50%">Total:</th>
                                         <td id="precioViaje"><?php echo "S/ ".$viaje->via_precio;?></td>
                                     </tr>
                                     <tr>
@@ -283,7 +287,7 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                                         <td>18%</td>
                                     </tr>
                                     <tr>
-                                        <th>Total:</th>
+                                        <th>Subtotal:</th>
                                         <td id="totalPrecioViaje">
 
                                             <?php

@@ -28,8 +28,6 @@
                         'logo'=>"logo_".$_POST['base'].".png",
                         'persona'=>"persona_".$_POST['base'].".png",
                         'img1'=>"slide_".$_POST['base']."1".".jpg",
-                        'img2'=>"slide_".$_POST['base']."2".".jpg",
-                        'img3'=>"slide_".$_POST['base']."3".".jpg",
                         'img_empresa'=>$_POST['base'].".png");
 
                     $this->session->set_userdata($data);
