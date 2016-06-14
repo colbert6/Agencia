@@ -1,4 +1,4 @@
-$(document).ready(function() {
+/*$(document).ready(function() {
     var base_url = $("#base_url").val();
     var table =$('#tab').DataTable( {
 
@@ -121,3 +121,4 @@ $(document).ready(function() {
     } );
 
 } );
+*/

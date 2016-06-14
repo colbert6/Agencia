@@ -60,9 +60,9 @@
                     <?php } ?>
                 </tbody>
             </table>
-            <div class="btn-group">
+            <!--div class="btn-group">
                     <a class="btn btn-primary" href="<?= base_url();?>index.php/viaje/nuevo" class="k-button">Nuevo</a>
-            </div>
+            </div-->
         </div>
     </div>   
 </div>  

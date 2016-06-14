@@ -44,6 +44,7 @@
                               );
                 $result=$this->viaje_model->crearViaje($data) ;
                 $viaje_nuevo=$result['msg']->result_array();
+
                 $id_nuevo_viaje= $viaje_nuevo[0]['via_id'];
                 print_r( $viaje_nuevo);echo $viaje_nuevo[0]['via_id'];
 
@@ -66,7 +67,7 @@
         public function index()
         {   
             $data['viaje'] = $this->viaje_model->select();
-            $dato= array ( 'titulo'=> 'viaje');
+            $dato= array ( 'titulo'=> 'Viaje');
             //echo"<pre>";print_r($data['viaje']);exit();
             $this->load->view("/layout/header.php",$dato);
             $this->load->view("/viaje/index.php",$data);
@@ -86,7 +87,6 @@
             $this->load->view("/viaje/venta_".$tipo.".php",$data);
             $this->load->view("/viaje/foother_venta_pasaje.php");
         }
-
         
         public function nuevo()
         {            
@@ -113,6 +113,7 @@
          $obj=  $this->viaje_model->guardarViaje($_REQUEST);
          print_r(json_encode($obj));
         }
+
         public function eliminar()
         {
             $id=$this->uri-> segment(3);
