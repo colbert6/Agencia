@@ -1,5 +1,5 @@
     var asientoSeleccionados = new Array();
-$(document).ready(function(){  
+$(document).ready(function(){ 
     $("#datos_pasajeros").submit(function(){
      // var str = $("#datos_pasajeros").serialize();
        // $.each(asientoSeleccionados,function(i,value){
@@ -23,7 +23,11 @@ $(document).ready(function(){
        //console.log(data);
        //console.log(data['dni[]'][0]);
 
+       var precioViaje = eval($("#precioViaje").text().replace('S/ ',''));
+       $("#totalPrecioViaje").html((precioViaje*asientoSeleccionados.length)-((precioViaje*0.18)*asientoSeleccionados.length).toFixed(2));
         $('#li_tab_3,#li_tab_2,#tab_3,#tab_2').toggleClass('active');
+       
+        //console.log(precioViaje);
         return false;
     });
 
@@ -79,16 +83,9 @@ function evaluar_asientos (){
     $('#cant_asiento').text(asientos.length);     
 
 }
-
-  $(".siguiente").click(function(){
-     asientos  = $('.asiento-seleccionado');
-
-     $('#cant_asientos').text(asientos.length);  
-  });
-
 $('#sgt_datos').on('click', function() {
 
-    console.log(asientoSeleccionados);
+    //console.log(asientoSeleccionados);
     var num_asientos=$('.asiento-seleccionado').length;
     var html = "" ;    
     var cueroFormulario = $("#cueroFormulario");
@@ -122,25 +119,11 @@ $('#sgt_datos').on('click', function() {
 
     cueroFormulario.append(html);
     if(num_asientos>0){
-        $('#li_tab_1,#li_tab_2,#tab_1,#tab_2').toggleClass('active');
-
-        
+        $('#li_tab_1,#li_tab_2,#tab_1,#tab_2').toggleClass('active');     
     }else{
         alert('Por favor seleccione un asiento');
     }
-        /* 
-        $('#form_1,#form_2,#form_3,#form_4').hide();
-        for(var i=1; i<=num_asientos; i++){
-           $('#form_'+i).show();  
-        } */
-
 });
-
-//$('#sgt_recibo').on('click', function() {
-  
-    
-//});
-    
 
 $('#submit').on('click',function(){
    // document.getElementById("datos_pasajeros").submit();

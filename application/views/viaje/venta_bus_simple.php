@@ -196,11 +196,25 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                 <section class="content invoice">                    
                     <!-- title row -->
                     <div class="row">
+                        <div class="col-md-6">
+                            <p>Es importante que Usted lea el documento.</p>
+                                <p>
+                                Si tiene alguna duda por favor consulte a su ejecutivo de ventas o llame a nuestro celular #95959595 
+                            </p>
+                        </div>
+                        
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <img src="/Agencia/img/logo_civa.png" alt="" width="200px">
+                        </div>
+                        
+                    </div>
+                    <div class="row">
                         <div class="col-xs-12">
                             <h2 class="page-header">
-                                <i class="fa fa-globe"></i> Datos de la venta de pasaje(s)
+                                <i class="fa fa-globe"></i> Información de su pasajes(s)
                                 <small class="pull-right"><?php echo "Fecha: ".date("d/m/Y");?></small>
-                            </h2>                            
+                            </h2>                         
                         </div><!-- /.col -->
                     </div>
                     <!-- info row -->
@@ -217,7 +231,7 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                             </address>
                         </div>
                         <div class="col-sm-4 invoice-col">
-                        
+                            
                             <address>
                                 <strong>Ciudad destino</strong><br>
                                 <?php echo $viaje->dest;?>  
@@ -262,17 +276,18 @@ td{width: 34px;height: 28px;margin-right: 8px;}
                                 <table class="table">
                                     <tr>
                                         <th style="width:50%">Subtotal:</th>
-                                        <td><?php echo "S/ ".$viaje->via_precio;?></td>
+                                        <td id="precioViaje"><?php echo "S/ ".$viaje->via_precio;?></td>
                                     </tr>
                                     <tr>
-                                        <th>Cantidad pasajes: </th>
-                                        <td id="cant_asientos"></td>
+                                        <th>Igv: </th>
+                                        <td>18%</td>
                                     </tr>
                                     <tr>
                                         <th>Total:</th>
-                                        <td><?php
+                                        <td id="totalPrecioViaje">
 
-                                         $total=3*$viaje->via_precio;
+                                            <?php
+                                                $total=$viaje->via_precio;
                                                 echo "S/ ".$total;
                                         ?></td>
                                     </tr>

@@ -135,6 +135,10 @@ h6,
   margin: 10px 0 20px 0;
   font-size: 22px;
 }
+.page-header>p{
+  font-size:14px;
+  margin:10px 0 0;
+}
 .page-header > small {
   color: #666;
   display: block;
