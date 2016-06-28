@@ -55,8 +55,7 @@
                             'pas_dni' =>  $_P['dni'][$key],
                             'pas_nombre' => $_P['nombre'][$key],
                             'pas_apellidos' => $_P['apellidos'][$key],
-                            'pas_edad' => 18,
-                            'pas_email'=> 'email',
+                            'pas_sexo' => $_P['sexo'][$key],
                             'pas_telefono'=> $_P['telefono'][$key]
                              );
 
