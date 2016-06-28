@@ -1,0 +1,4 @@
+error ..... en alert 
+al validar un campo vacio y salir, el msg queda con la alerta
+solucion:
+poner $('#msg').html(''); al abrir el modal

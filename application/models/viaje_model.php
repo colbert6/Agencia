@@ -85,7 +85,7 @@
 
         function selectId($id){
             $sql="SELECT c_ori.ciu_nombre as ori,c_des.ciu_nombre as dest,veh.veh_descripcion,veh.veh_matricula,veh.veh_tipo,
-                        v.via_precio,v.via_fecha_salida,v.via_hora_salida, v.via_id,veh.veh_tipo
+                        v.via_precio,v.via_fecha_salida,v.via_hora_salida,v.via_fecha_llegada,v.via_hora_llegada, v.via_id,veh.veh_tipo
 
                     FROM viaje as v,  ciudad as c_ori,    ciudad as c_des, vehiculo as veh
 

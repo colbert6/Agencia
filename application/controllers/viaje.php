@@ -9,7 +9,8 @@
             $this->load->model('ciudad_model');
             $this->load->model('vehiculo_model');
             $this->load->model('cargo_model');  
-            $this->load->model('personal_model');           
+            $this->load->model('personal_model'); 
+            $this->load->model('asiento_model');           
         }
         
 
@@ -28,7 +29,10 @@
 
         public function guardar_nuevo_viaje()
         {
-            echo "<pre>";print_r($_POST);//exit();
+            /*echo "<pre>";print_r($_POST);
+            $fecha=$this->input->post('fecha_viaje');
+                $fecha_viaje = explode(" ", $fecha);
+            echo "<pre>";print_r($fecha_viaje);exit();*/
             if (@$_POST['guardar'] == 1) {
                 $fecha=$this->input->post('fecha_viaje');
                 $fecha_viaje = explode(" ", $fecha);
@@ -38,8 +42,8 @@
                               'via_vehiculo'=> $this->input->post('vehiculo'),
                               'via_precio'=> $this->input->post('precio'),
                               'via_fecha_salida'=> $fecha_viaje[0],
-                              'via_fecha_llegada'=> $fecha_viaje[1],
-                              'via_hora_salida'=> $fecha_viaje[3],
+                              'via_hora_salida'=> $fecha_viaje[1],
+                              'via_fecha_llegada'=> $fecha_viaje[3],
                               'via_hora_llegada'=>  $fecha_viaje[4]
                               );
                 $result=$this->viaje_model->crearViaje($data) ;
@@ -67,10 +71,24 @@
         public function index()
         {   
             $data['viaje'] = $this->viaje_model->select();
-            $dato= array ( 'titulo'=> 'Viaje');
+            $dato_header= array ( 'titulo'=> 'Viaje');
             //echo"<pre>";print_r($data['viaje']);exit();
-            $this->load->view("/layout/header.php",$dato);
+            $this->load->view("/layout/header.php",$dato_header);
             $this->load->view("/viaje/index.php",$data);
+            $this->load->view("/layout/foother_table.php");
+        }
+
+        public function mas_detalle($id_viaje)
+        {            
+            //echo $id_viaje;
+            $data['viaje'] = $this->viaje_model->selectId($id_viaje);
+            $data['asientos'] = $this->asiento_model->selectId($id_viaje);
+            $data['personal'] = $this->personal_model->selectId($id_viaje);
+            //echo "<pre>";print_r($data['asientos']->result());exit();
+
+            $dato_header= array ( 'titulo'=> 'Viaje');
+            $this->load->view("/layout/header.php",$dato_header);
+            $this->load->view("/viaje/detalle_viaje.php",$data);
             $this->load->view("/layout/foother_table.php");
         }
 

@@ -107,7 +107,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="<?= base_url(); ?>viaje/nuevo_viaje"><i class="fa fa-angle-double-right"></i>Nuevo Viaje</a></li>
-                                <li><a href="<?= base_url(); ?>viaje/"><i class="fa fa-angle-double-right"></i>Lsita de Viajes</a></li>
+                                <li><a href="<?= base_url(); ?>viaje/"><i class="fa fa-angle-double-right"></i>Lista de Viajes</a></li>
                             </ul>
                         </li>
                         <!--li class="treeview">

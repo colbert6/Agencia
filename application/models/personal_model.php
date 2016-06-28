@@ -23,6 +23,19 @@
             return $query;            
         }
 
+        function selectId($id){
+            $sql="SELECT per.*,car.car_descripcion 
+
+                    FROM viaje_personal as v,  personal as per ,cargo as car
+
+                    WHERE v.per_id=per.per_id and  car.car_id=per.per_cargo and 
+                           v.via_id=".$id;
+                    
+            $query=$this->db->query($sql);
+            return $query;
+       
+        }
+
         function crear($data){
             $datos=array(
                         'per_dni' => $data['dni'],

@@ -52,7 +52,7 @@
                             <td><?= $datos->veh_descripcion; ?></td>  
                             <td><?= $datos->via_precio; ?></td>  
                             <td>                                
-                                <a href=<?php echo base_url()."viaje/mas_detalle/".$datos->via_id; ?> class="btn  btn-minier"><i class="fa fa-plus"></i></a>
+                                <a href=<?php echo base_url()."viaje/mas_detalle/".$datos->via_id; ?> class="btn  btn-minier"><i class="fa fa-eye"></i></a>
                                 <a href=<?php echo base_url()."viaje/venta_pasaje?idviaje=".$datos->via_id."&tipobus=".$datos->veh_tipo?> class="btn  btn-minier"><i class="fa fa-shopping-cart"></i></a>
                             </td>
                         </tr>
