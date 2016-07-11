@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2016 a las 16:07:32
+-- Tiempo de generación: 11-07-2016 a las 11:33:14
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -30,26 +30,26 @@ CREATE TABLE IF NOT EXISTS `asiento` (
 `asi_id` int(11) NOT NULL,
   `asi_viaje` int(11) NOT NULL,
   `asi_num` int(11) NOT NULL,
-  `asi_estado` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+  `asi_estado` int(11) NOT NULL,
+  `pas_tipo_documento` int(8) NOT NULL,
+  `pas_dni` varchar(20) NOT NULL,
+  `pas_nombre` varchar(100) NOT NULL,
+  `pas_apellidos` varchar(200) NOT NULL,
+  `pas_edad` int(11) DEFAULT NULL,
+  `pas_sexo` varchar(20) NOT NULL,
+  `pas_email` varchar(100) DEFAULT NULL,
+  `pas_telefono` varchar(30) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `asiento`
 --
 
-INSERT INTO `asiento` (`asi_id`, `asi_viaje`, `asi_num`, `asi_estado`) VALUES
-(1, 3, 1, 2),
-(2, 3, 2, 2),
-(3, 3, 3, 2),
-(4, 3, 4, 2),
-(5, 4, 10, 1),
-(6, 5, 11, 1),
-(7, 5, 1, 1),
-(8, 5, 2, 1),
-(9, 6, 3, 1),
-(10, 6, 5, 1),
-(11, 5, 11, 2),
-(12, 4, 21, 3);
+INSERT INTO `asiento` (`asi_id`, `asi_viaje`, `asi_num`, `asi_estado`, `pas_tipo_documento`, `pas_dni`, `pas_nombre`, `pas_apellidos`, `pas_edad`, `pas_sexo`, `pas_email`, `pas_telefono`) VALUES
+(1, 3, 1, 1, 1, '73031934', 'Colbert', 'Calampa', 18, '', 'email', '12345'),
+(2, 3, 5, 1, 1, '77805042', 'tUNO', 'aNGELES', 18, '', 'email', '12345'),
+(3, 5, 49, 1, 1, '73949944', 'Colbert', 'Tantachuco', NULL, 'm', NULL, '973949944'),
+(4, 3, 48, 1, 1, '45678899', 'ian', 'ruiz', NULL, 'm', NULL, '7657895');
 
 -- --------------------------------------------------------
 
@@ -61,46 +61,19 @@ CREATE TABLE IF NOT EXISTS `cargo` (
 `car_id` int(11) NOT NULL,
   `car_descripcion` varchar(50) NOT NULL,
   `car_estado` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `cargo`
 --
 
 INSERT INTO `cargo` (`car_id`, `car_descripcion`, `car_estado`) VALUES
-(1, 'chofer 2', 0),
-(2, 'Terramozas', 1),
-(3, 'prueba_editar', 1),
-(4, 'prueba', 1),
-(5, 'prueba', 1),
-(6, 'prueba', 1),
-(7, 'asss', 1),
-(8, 'as', 1),
-(9, 'as', 1),
-(10, 's', 1),
-(11, 'as', 1),
-(12, 'as', 1),
-(13, 'qw', 1),
-(14, 'nuevo', 1),
-(15, 'nuevo', 1),
-(16, 'adasd', 1),
-(17, '', 1),
-(18, '', 1),
-(19, 'asd', 1),
-(20, 'hola', 1),
-(21, 'as', 1),
-(22, 'as', 1),
-(23, 'as', 1),
-(24, 'rrr', 1),
-(25, 'asas', 0),
-(26, 'd', 0),
-(27, 'assada', 0),
-(28, '´rueba', 0),
-(29, 'colberts', 0),
-(30, '', 1),
-(31, '', 1),
-(32, '', 1),
-(33, 'hola', 1);
+(1, 'Conductor', 1),
+(2, 'Vigilante', 1),
+(3, 'Terramoza', 1),
+(4, 'Supervisor', 1),
+(5, 'Mecanico', 1),
+(6, 'Auxiliar', 1);
 
 -- --------------------------------------------------------
 
@@ -127,8 +100,8 @@ INSERT INTO `ciudad` (`ciu_id`, `ciu_codigo_postal`, `ciu_nombre`, `ciu_estado`)
 (5, '005', 'Arequipa', 1),
 (6, '006', 'Lima', 1),
 (7, '007', 'Chiclayo', 0),
-(8, '12', '12s', 1),
-(9, '12', '12', 1);
+(8, '12', '12s', 0),
+(9, '12', '12', 0);
 
 -- --------------------------------------------------------
 
@@ -176,12 +149,22 @@ CREATE TABLE IF NOT EXISTS `personal` (
 `per_id` int(11) NOT NULL,
   `per_dni` varchar(8) NOT NULL,
   `per_nombres` varchar(100) NOT NULL,
-  `per_apellidos` varchar(100) NOT NULL,
   `per_fecha_nac` date NOT NULL,
   `per_fecha_reg` date NOT NULL,
   `per_cargo` int(11) NOT NULL,
   `per_estado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `personal`
+--
+
+INSERT INTO `personal` (`per_id`, `per_dni`, `per_nombres`, `per_fecha_nac`, `per_fecha_reg`, `per_cargo`, `per_estado`) VALUES
+(1, '12345678', 'Andy Vazques', '1990-06-08', '2010-06-08', 2, 1),
+(2, '12345679', 'Jorge Delgado', '1980-08-08', '2016-06-11', 1, 1),
+(3, '12345670', 'Cristhian Valera', '1979-06-07', '2016-06-11', 5, 1),
+(4, '12345671', 'Pedro Manrique', '1960-04-05', '2016-06-11', 6, 1),
+(5, '12345672', 'Manuel Torres', '1978-09-05', '2016-06-11', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -216,8 +199,8 @@ CREATE TABLE IF NOT EXISTS `terminal` (
 --
 
 INSERT INTO `terminal` (`ter_id`, `ter_descripcion`, `ter_direccion`, `ter_ciudad`, `ter_estado`) VALUES
-(1, 'Termina Civa 01', 'Jr. Termina Civa 01', 1, 1),
-(3, 'wewewewewe', 'dsdsdsdsd', 1, 1);
+(1, 'Terminal de Tarapoto', 'Jr. Tarapoto #453', 1, 1),
+(3, 'Terminal de Arequipa', 'Jr. Arequipa 132', 5, 1);
 
 -- --------------------------------------------------------
 
@@ -253,18 +236,19 @@ CREATE TABLE IF NOT EXISTS `vehiculo` (
   `veh_fecha_compra` date NOT NULL,
   `veh_num_asientos` int(11) NOT NULL,
   `veh_estado` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `vehiculo`
 --
 
 INSERT INTO `vehiculo` (`veh_id`, `veh_tipo`, `veh_descripcion`, `veh_matricula`, `veh_fecha_compra`, `veh_num_asientos`, `veh_estado`) VALUES
-(1, 'bus_simple', 'Optimus', 'OPT-001', '0000-00-00', 50, 1),
-(2, 'bus_simple', 'Megatron', 'MEG-002', '0000-00-00', 50, 1),
-(3, 'bus_simple', 'futbrok', 'FB003', '0000-00-00', 80, 1),
-(4, 'bus_simple', 'People2b', 'p2b', '0000-00-00', 82, 1),
-(5, 'bus_doble', 'Herbie', 'Her-123', '0000-00-00', 12, 1);
+(1, 'bus_simple', 'Optimus', 'OPT-001', '2001-04-01', 50, 1),
+(2, 'bus_simple', 'Megatron', 'MEG-002', '2001-04-01', 50, 1),
+(3, 'bus_simple', 'futbrok', 'FB003', '2016-06-08', 80, 1),
+(4, 'bus_simple', 'People2b', 'p2b', '2016-06-09', 82, 1),
+(5, 'bus_exclusivo', 'Herbie', 'Her-123', '2006-06-07', 50, 1),
+(6, 'bus_doble', 'superciva', 'XL-9869', '0000-00-00', 53, 1);
 
 -- --------------------------------------------------------
 
@@ -278,25 +262,7 @@ CREATE TABLE IF NOT EXISTS `venta_pasaje` (
   `venpas_pasajero` int(11) NOT NULL,
   `venpas_precio` decimal(18,4) NOT NULL,
   `venpas_descuento` decimal(18,4) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `venta_pasaje`
---
-
-INSERT INTO `venta_pasaje` (`venpas_id`, `venpas_asiento`, `venpas_pasajero`, `venpas_precio`, `venpas_descuento`) VALUES
-(1, 1, 1, '110.0000', '0.0000'),
-(2, 2, 2, '110.0000', '0.0000'),
-(3, 3, 3, '110.0000', '0.0000'),
-(4, 4, 4, '110.0000', '0.0000'),
-(5, 5, 5, '100.0000', '30.0000'),
-(6, 6, 6, '100.0000', '20.0000'),
-(7, 7, 7, '100.0000', '20.0000'),
-(8, 8, 8, '90.0000', '50.0000'),
-(9, 9, 9, '20.0000', '0.0000'),
-(10, 10, 10, '90.0000', '0.0000'),
-(11, 11, 11, '40.0000', '0.0000'),
-(12, 12, 12, '110.0000', '20.0000');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -315,23 +281,17 @@ CREATE TABLE IF NOT EXISTS `viaje` (
   `via_hora_salida` varchar(10) NOT NULL,
   `via_hora_llegada` varchar(10) NOT NULL,
   `via_estado` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `viaje`
 --
 
 INSERT INTO `viaje` (`via_id`, `via_origen`, `via_destino`, `via_vehiculo`, `via_precio`, `via_fecha_salida`, `via_fecha_llegada`, `via_hora_salida`, `via_hora_llegada`, `via_estado`) VALUES
-(3, 1, 6, 1, '110.0000', '2016-05-09', '2016-05-11', '8:00', '14:00', 1),
-(4, 1, 4, 2, '110.0000', '2016-05-10', '2016-05-12', '7:00', '19:00', 1),
-(5, 2, 6, 4, '160.0000', '2016-05-11', '2016-05-13', '23:00', '6:00', 1),
-(6, 1, 3, 2, '30.0000', '2016-05-10', '2016-05-10', '8:00', '12:00', 1),
-(7, 3, 1, 1, '30.0000', '2016-05-09', '2016-05-09', '13:00', '17:00', 1),
-(8, 6, 3, 3, '155.0000', '2016-05-12', '2016-05-13', '8:00', '10:00', 1),
-(9, 6, 2, 2, '120.0000', '2016-05-10', '2016-05-11', '18:00', '11:30', 1),
-(10, 5, 6, 3, '120.0000', '2016-05-19', '2016-05-20', '20:00', '10:00', 0),
-(11, 7, 2, 1, '80.0000', '2016-05-16', '2016-05-16', '8:00', '22:00', 1),
-(12, 3, 7, 1, '90.0000', '2016-05-04', '2016-05-05', '18:00', '8:00', 2);
+(3, 1, 2, 1, '134.0000', '2016-06-15', '0000-00-00', '15:00', '10:00', 1),
+(4, 1, 4, 1, '150.0000', '2016-06-28', '0000-00-00', '00:00', '23:59', 1),
+(5, 1, 2, 1, '156.0000', '2016-06-28', '2016-06-29', '00:00', '00:00', 1),
+(6, 6, 1, 2, '150.0000', '2016-07-11', '2016-07-12', '05:00', '05:00', 1);
 
 -- --------------------------------------------------------
 
@@ -342,8 +302,24 @@ INSERT INTO `viaje` (`via_id`, `via_origen`, `via_destino`, `via_vehiculo`, `via
 CREATE TABLE IF NOT EXISTS `viaje_personal` (
   `via_id` int(11) NOT NULL,
   `per_id` int(11) NOT NULL,
-  `observacion` varchar(100) NOT NULL
+  `observacion` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `viaje_personal`
+--
+
+INSERT INTO `viaje_personal` (`via_id`, `per_id`, `observacion`) VALUES
+(3, 1, NULL),
+(3, 2, NULL),
+(3, 5, NULL),
+(4, 1, NULL),
+(4, 2, NULL),
+(4, 3, NULL),
+(5, 2, NULL),
+(6, 1, NULL),
+(6, 2, NULL),
+(6, 5, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -429,12 +405,12 @@ ALTER TABLE `viaje_personal`
 -- AUTO_INCREMENT de la tabla `asiento`
 --
 ALTER TABLE `asiento`
-MODIFY `asi_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+MODIFY `asi_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `cargo`
 --
 ALTER TABLE `cargo`
-MODIFY `car_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
+MODIFY `car_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `ciudad`
 --
@@ -449,7 +425,7 @@ MODIFY `pas_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 -- AUTO_INCREMENT de la tabla `personal`
 --
 ALTER TABLE `personal`
-MODIFY `per_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `per_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `ruta`
 --
@@ -469,26 +445,20 @@ MODIFY `usu_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT de la tabla `vehiculo`
 --
 ALTER TABLE `vehiculo`
-MODIFY `veh_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `veh_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `venta_pasaje`
 --
 ALTER TABLE `venta_pasaje`
-MODIFY `venpas_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+MODIFY `venpas_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `viaje`
 --
 ALTER TABLE `viaje`
-MODIFY `via_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+MODIFY `via_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `asiento`
---
-ALTER TABLE `asiento`
-ADD CONSTRAINT `asiento_ibfk_1` FOREIGN KEY (`asi_viaje`) REFERENCES `viaje` (`via_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `personal`
@@ -510,25 +480,9 @@ ALTER TABLE `terminal`
 ADD CONSTRAINT `terminal_ibfk_1` FOREIGN KEY (`ter_ciudad`) REFERENCES `ciudad` (`ciu_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `venta_pasaje`
---
-ALTER TABLE `venta_pasaje`
-ADD CONSTRAINT `venta_pasaje_ibfk_1` FOREIGN KEY (`venpas_asiento`) REFERENCES `asiento` (`asi_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `venta_pasaje_ibfk_2` FOREIGN KEY (`venpas_pasajero`) REFERENCES `pasajero` (`pas_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `viaje`
---
-ALTER TABLE `viaje`
-ADD CONSTRAINT `viaje_ibfk_2` FOREIGN KEY (`via_origen`) REFERENCES `ciudad` (`ciu_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `viaje_ibfk_3` FOREIGN KEY (`via_destino`) REFERENCES `ciudad` (`ciu_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `viaje_ibfk_4` FOREIGN KEY (`via_vehiculo`) REFERENCES `vehiculo` (`veh_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Filtros para la tabla `viaje_personal`
 --
 ALTER TABLE `viaje_personal`
-ADD CONSTRAINT `viaje_personal_ibfk_1` FOREIGN KEY (`via_id`) REFERENCES `viaje` (`via_id`) ON DELETE CASCADE ON UPDATE CASCADE,
 ADD CONSTRAINT `viaje_personal_ibfk_2` FOREIGN KEY (`per_id`) REFERENCES `personal` (`per_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
