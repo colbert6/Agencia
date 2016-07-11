@@ -104,7 +104,7 @@ $(document).ready(function() {
             $.post(base_url+"/Agencia/personal/guardar",{id:id,dni:d.dni,nombre:d.nombre,apellidos:d.apellidos,nacimiento:d.nacimiento,registro:d.registro,cargo:d.cargo},function(valor){
                 if(!isNaN(valor)){
                     alert('guardar exitoso');
-                    table.ajax.reload();
+                    table.ajax.reload(null, false);
                     $("#modal_form").modal('hide');
                 }else{
                     alert('guardar error:'+valor);
@@ -117,7 +117,7 @@ $(document).ready(function() {
         var id = $("#id_dato_eliminar").val();
         $.post(base_url+"/Agencia/personal/eliminar",{id:id},function(valor){
             if(!isNaN(valor)){
-                table.ajax.reload();
+                table.ajax.reload(null, false);
                 $("#modal_delete").modal('hide');
             }else{
                 alert('eliminar error:'+valor);

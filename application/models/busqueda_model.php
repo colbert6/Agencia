@@ -15,7 +15,7 @@
 
 	    	$sql_civa="SELECT 'Civa' as 'empresa' ,";
 	    	$sql_movil="SELECT 'Movil Tour' as empresa ,";
-	    	$sql=" ori.ciu_nombre as origen,dest.ciu_nombre as destino, via.via_fecha_salida,
+	    	$sql=" via.via_id,ori.ciu_nombre as origen,dest.ciu_nombre as destino, via.via_fecha_salida,
 	    		asi.asi_num,asi.pas_dni,asi.pas_nombre, asi.pas_edad
 				FROM asiento as asi, viaje as via ,ciudad as ori,ciudad as dest 
 				WHERE asi.asi_viaje=via.via_id and via.via_origen=ori.ciu_id 

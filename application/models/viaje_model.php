@@ -75,7 +75,7 @@
 
                     FROM viaje as v,  ciudad as c_ori,    ciudad as c_des, vehiculo as veh
 
-                    WHERE v.via_origen=c_ori.ciu_id and v.via_destino=c_des.ciu_id and v.via_vehiculo=veh.veh_id ";
+                    WHERE v.via_origen=c_ori.ciu_id and v.via_destino=c_des.ciu_id and v.via_vehiculo=veh.veh_id and v.via_fecha_salida>=CURDATE() ";
                     
             $query=$this->db->query($sql);
             return $query;

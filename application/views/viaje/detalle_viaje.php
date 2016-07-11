@@ -10,6 +10,7 @@
 </style>
 
 <input type="hidden" value="1" name="guardar">    
+<h3>Reporte de Viaje</h3>
 <div class="row"><!-- Formulario de la ruta Viaje -->
     <div class="col-md-11">
         <div class="box box-primary">
@@ -136,7 +137,7 @@
                                 
                                     <?php 
                                     foreach ($personal->result() as $datos) {
-                                       echo "<li >";
+                                       echo "<li style='width:420px'>";
                                        echo "<span class='handle'><i class='fa fa-user'></i></span> ";
                                        echo "<span class='text'>".$datos->per_nombres." </span>";
                                        echo "<small class='label label-info'>".$datos->car_descripcion."</small>";
@@ -208,6 +209,9 @@
 
 <a class="btn btn-primary " href="javascript:history.go(-1);">
     <i class="fa fa-arrow-circle-o-left"></i>&nbsp; Volver
+</a>
+<a class="btn btn-default " onclick="window.print()">
+    <i class="fa fa-print"></i>&nbsp; Imprimir
 </a>
 
 

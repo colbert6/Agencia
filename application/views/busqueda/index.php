@@ -10,7 +10,8 @@
 			            <th>Destino</th>			        	
 			            <th>Asiento</th>
 			            <th>Dni</th>
-			            <th>Pasajero</th>	
+			            <th>Pasajero</th>
+			            <th>Viaje</th>	
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -22,7 +23,11 @@
 			                <td><?= $datos->destino; ?></td>  			                	
 			                <td><?= $datos->asi_num; ?></td> 			                
 			                <td><?= $datos->pas_dni; ?></td>
-			            	<td><?= $datos->pas_nombre; ?></td> 
+			            	<td><?= $datos->pas_nombre; ?></td>
+			            	<th><a href="<?= base_url().'viaje/mas_detalle/'.$datos->via_id;?>">
+			            			<i class="fa fa-arrow-circle-o-left"></i>
+								</a>
+							</th> 
 			                
 			            </tr>
 			        <?php } ?>

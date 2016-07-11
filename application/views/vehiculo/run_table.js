@@ -145,7 +145,7 @@ $(document).ready(function() {
         $.post(base_url+"vehiculo/guardar",{id:id,descripcion:descripcion,tipo:tipo,fecha_compra:fecha_compra,capacidad:capacidad,matricula:matricula},function(valor){
             if(!isNaN(valor)){
                 alert('Guardado exitoso');
-                table.ajax.reload();
+                table.ajax.reload(null, false);
                 $("#modal_form").modal('hide');
             }else{
                 alert('guardar error:'+valor);
@@ -160,7 +160,7 @@ $(document).ready(function() {
         $.post(base_url+"vehiculo/eliminar",{id:id},function(valor){
             if(!isNaN(valor)){
                 alert('Dato eliminado');
-                table.ajax.reload();
+                table.ajax.reload(null, false);
                 $("#modal_delete").modal('hide');
             }else{
                 alert('eliminar error:'+valor);

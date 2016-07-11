@@ -109,7 +109,7 @@ $(document).ready(function() {
         $.post(base_url+"terminal/guardar",{id:id,descripcion:descripcion,direccion:direccion,ciudad:ciudad},function(valor){
             if(!isNaN(valor)){
                 alert('Guardado exitoso');
-                table.ajax.reload();
+                table.ajax.reload(null, false);
                 $("#modal_form").modal('hide');
             }else{
                 alert('guardar error:'+valor);
@@ -122,7 +122,7 @@ $(document).ready(function() {
         $.post(base_url+"terminal/eliminar",{id:id},function(valor){
             if(!isNaN(valor)){
                 alert('Dato eliminado');
-                table.ajax.reload();
+                table.ajax.reload(null, false);
                 $("#modal_delete").modal('hide');
             }else{
                 alert('eliminar error:'+valor);
